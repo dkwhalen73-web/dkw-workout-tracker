@@ -850,9 +850,9 @@ const EQ_MAP = [
   { keys: ['rear-delt machine','rear delt machine'], label: 'Rear Delt Machine' },
   { keys: ['pull-up','pull up','dead hang'], label: 'Pull-up Bar' },
   { keys: ['barbell','bb'],   label: 'Barbell' },
-  { keys: ['sled'],           label: 'Sled' },
-  { keys: ['tire'],           label: 'Tire' },
-  { keys: ['yoke'],           label: 'Yoke' },
+  { keys: ['sled'],                        label: 'Sled' },
+  { keys: ['tire flip','tire drag','tire pull','tire push'], label: 'Tire' },
+  { keys: ['yoke'],                        label: 'Yoke' },
   { keys: ['landmine'],       label: 'Landmine' },
   { keys: ['reax'],           label: 'REAX Table/Tread' },
   { keys: ['skierg','ski erg'], label: 'SkiErg' },
@@ -871,7 +871,13 @@ function inferEquipment() {
   W.blocks.forEach(b => b.ss.forEach(ss => ss.exs.forEach(ex => {
     const txt = (ex.name + ' ' + (ex.cue || '')).toLowerCase();
     EQ_MAP.forEach(eq => {
-      if (eq.keys.some(k => txt.includes(k))) found.add(eq.label);
+      if (eq.keys.some(k => {
+        // Use word-boundary matching to prevent substring false positives
+        // e.g. "tire" must not match inside "entire"
+        const escaped = k.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        const boundary = k.includes(' ') ? escaped : `\\b${escaped}\\b`;
+        return new RegExp(boundary, 'i').test(txt);
+      })) found.add(eq.label);
     });
   })));
   return [...found];
@@ -893,7 +899,7 @@ function buildOverview() {
   <div class="ov-card">
     <div class="ov-card-title">Session Summary</div>
     <div class="ov-stat-row">
-      <div class="ov-stat"><div class="val">${W.blocks.length}</div><div class="lbl">Blocks</div></div>
+      <div class="ov-stat"><div class="val">${W.blocks.filter(b=>b.type!=='warmup'&&b.type!=='finisher').length}</div><div class="lbl">Blocks</div></div>
       <div class="ov-stat"><div class="val">${totalSetsCount}</div><div class="lbl">Total Sets</div></div>
       <div class="ov-stat"><div class="val">${W.duration || '55-65'}</div><div class="lbl">Est. Min</div></div>
     </div>
