@@ -1,3 +1,289 @@
+
+Dr. Gains Workout Plan
+/
+FYI I moved the folder of resources to this location '/Users/danielwhalen/Library/CloudStorage/GoogleDrive-dkwhalen73@gmail.com/My Drive/Dev_World/Dr. Gains Workout Program'
+
+4:44 AM
+Got it — noted the new folder location for the Dr. Gains resources. Anything you need today — a workout, tracker JSON, or something else?
+
+A workout for today at the gym geared towards completing the Murph by Memorial Day. I have my 20lb vest and very competent in my pullups and pushups. It's more about getting speed to improve my time. I can do 20 rounds of 5/10/15 reps on the pull, push, squat in about 30 minutes
+
+4:46 AM
+Love it — solid baseline. 30 minutes for 20 rounds is a strong foundation. To build speed, we need to train your pacing system, not just your fitness. Let me ask a couple things first:
+
+Q: What's your target Murph time on Memorial Day (with vest)?
+A: Under 45 min
+
+Q: How many weeks out is Memorial Day for you?
+A: ~7 weeks
+
+Q: What's the biggest limiter in your Murph right now?
+A: Pull-up grip & endurance
+
+4:47 AM
+Perfect. Under 45 min in 7 weeks is very achievable from a 30-min partitioned base. The math: you need your 20 rounds to drop to ~22-23 min so the two 1-mile runs (target ~8-9 min total with vest) land you under 45.
+
+The training strategy:
+
+Build pull-up density — more reps in less rest
+Train grip endurance under fatigue
+Practice the vest so your shoulders adapt
+Keep push/squat volume high but efficient so they don't slow your pulls
+Here's today's session:
+
+
+
+Three things to log today:
+
+Your 10-round split time (Block 1) — this is your Week 1 baseline
+Your two 400m vest run splits
+Your fatigued max pull-ups (Finisher)
+Those three numbers are your weekly benchmarks. Each week we'll push the pace drill to 12 rounds, then 15, then full 20 — and tighten the per-round target until you're at race speed. Want me to build out the full 7-week Murph ramp plan?
+
+30 minutes does not include the running of the mile on the front or back end.
+
+4:49 AM
+Got it — so your current baseline is:
+
+1 mile run (front)
+30 min for 20 rounds of 5/10/15
+1 mile run (back)
+What's your current mile pace with the vest? That's the other variable I need to figure out where your 45-min target is actually tight vs. comfortable.
+
+I'll remove the vest for the run and shoot for an 8 minute mile. for the exercises, ideally I get down to fewer sets than 20 - like 15 sets or ultimately 10. I love seeing the visual that you provided but remember this must be put in Json for viewing and allowing me to track so you can build next program
+
+4:51 AM
+Smart strategy — removing the vest for the runs saves shoulder/trap fatigue for the work. And yes, moving from 20 rounds → 15 → 10 is exactly the right progression (bigger sets = less transition time = faster overall).
+
+So your math looks like this:
+
+2 miles @ 8 min = ~16 min
+Middle work target = ~28 min or less
+Total goal = sub-44 min ✅
+Now let me build the proper tracker JSON for today's session.
+
+Here's the JSON — copy and paste this directly into your tracker's Load tab:
+
+
+
+Your 3 numbers to log today:
+
+10-round split time (Block 1) — Week 1 baseline
+Two 400m vest run splits
+Fatigued max pull-ups (Finisher)
+The 7-week progression plan:
+
+Weeks 1–2: 10 rounds, <60s/round, 15–20s rest
+Weeks 3–4: 14 rounds, tighten rest to 10s
+Weeks 5–6: 20 rounds at race pace, bigger sets (7/14/21 or 10/20/30)
+Week 7: Full dress rehearsal — both miles + all 20 rounds with vest
+Want me to build the full 7-week plan as a reference doc?
+
+Screenshot 2026-04-11 at 5.24.13 AM.png
+Looks fabulous. If I'm doing this particular workout and have a run for time, would it be more possible for 'timed' exercises I log time vs. reps?
+
+5:25 AM
+Great catch — that's a real UX gap. For timed efforts (runs, dead hangs, holds) you want to log time not reps/weight. That's a tracker app feature request, not something the JSON controls today.
+
+Two questions to figure out the right fix:
+
+Q: Where does the tracker app live right now?
+A: on Netlify: dkw-workout-tracker.netlify.app
+
+Q: What do you want timed exercises to show instead of lbs + reps?
+A: Keep weight + time, so that I'll no if I'm wearing a vest or heavy KB holds for time
+
+5:27 AM
+Perfect — Weight + Time makes total sense. Vest = 20lb, KB hold = whatever weight, run = bodyweight. All loggable.
+
+To fix this in the tracker I need to see the current code. Can you share the source files? A few ways to do it:
+
+Google Drive — drop the project folder there and I'll pull it directly
+GitHub — if it's in a repo, share the link
+Paste the code — if it's a single file, paste it here
+Which is easiest for you right now?
+
+https://github.com/dkwhalen73-web/dkw-workout-tracker
+
+5:28 AM
+
+Searched the web
+Searched the web
+The repo isn't publicly accessible so I can't pull it directly. Easiest fix — two options:
+
+Make the repo public on GitHub (Settings → Change visibility → Public), then share the link again and I'll grab it instantly
+Copy/paste the relevant file — the part I need is wherever you have the set-row rendering logic (the lbs + reps input fields). Likely in index.html or a JS file. Search for "lbs" or "reps" in your code and paste that section here
+Which is easier?
+
+Now it is pub
+
+5:32 AM
+
+Searched the web
+Searched the web
+The search pulled other repos, not yours. Let me try fetching it directly now that it's public:
+
+
+Failed to fetch: https://github.com/dkwhalen73-web/dkw-workout-tracker
+Failed to fetch: https://github.com/dkwhalen73-web/dkw-workout-tracker
+Rate limited on GitHub right now. Two quick options to get around this:
+
+Option A — Raw file direct link Go to your repo → click index.html (or whatever your main file is) → click the Raw button → copy that URL and paste it here
+
+Option B — Search for "lbs" in your code Open the file locally, find where the set rows render (search for lbs or reps), and paste just that section here — it's probably 20-30 lines
+
+Either one gets us to the fix in one step. Which is easier?
+
+https://github.com/dkwhalen73-web/dkw-workout-tracker
+
+5:33 AM
+
+Fetched: GitHub - dkwhalen73-web/dkw-workout-tracker
+Fetched: GitHub - dkwhalen73-web/dkw-workout-tracker
+Got it — it's a single index.html file. Let me grab the raw content now:
+
+
+Failed to fetch: https://raw.githubusercontent.com/dkwhalen73-web/dkw-workout-tracker/main/index.html
+Failed to fetch: https://raw.githubusercontent.com/dkwhalen73-web/dkw-workout-tracker/main/index.html
+I can see the repo but the raw file fetcher is blocking raw.githubusercontent.com — it's a domain restriction on my end, not a permissions issue on yours.
+
+Here's the fastest fix — one step:
+
+Go to your repo: github.com/dkwhalen73-web/dkw-workout-tracker
+Click index.html
+Click the Raw button (top right of the file)
+Copy that URL from your browser address bar and paste it here
+It'll look like: https://raw.githubusercontent.com/dkwhalen73-web/dkw-workout-tracker/main/index.html
+
+Once you paste that URL directly into our chat, I can fetch it.
+
+https://github.com/dkwhalen73-web/dkw-workout-tracker/blob/main/index.html
+
+5:33 AM
+
+Fetched: dkw-workout-tracker/index.html at main · dkwhalen73-web/dkw-workout-tracker
+Fetched: dkw-workout-tracker/index.html at main · dkwhalen73-web/dkw-workout-tracker
+Got it — I can see the full tracker code. The set row is here:
+
+html
+<input class="set-input" type="number" inputmode="decimal" placeholder="lbs" ...>
+<input class="set-input" type="number" inputmode="numeric" placeholder="reps" ...>
+And the log output hardcodes lbs × reps. Here's exactly what needs to change to support Weight + Time for timed exercises:
+
+The plan — 3 targeted edits:
+
+Add a "logType" field to the JSON schema ("reps" default, "time" for timed exercises)
+Change the set row render to show lbs + mm:ss input when logType === "time"
+Update the log output to say 20 lbs · 1:32 instead of 20 lbs × 32 reps
+Before I write the code — do you edit and deploy this yourself (push to GitHub → Netlify auto-deploys), or do you need me to give you the full updated index.html to upload manually?
+
+
+DrGains_Workout_Tracker.html
+html
+
+full html. which I have attached the current version that is located in the resource folder at: '/Users/danielwhalen/Library/CloudStorage/GoogleDrive-dkwhalen73@gmail.com/My Drive/Dev_World/Dr. Gains Workout Program' -- this should be part of your working set
+
+6:05 AM
+
+Viewed a file, ran a command
+Viewed a file, ran a command
+The HTML file didn't come through in the upload — only the other docs are here. No worries though, I already grabbed the full code from GitHub. I have everything I need.
+
+Let me make the 3 edits now:
+
+
+Ran 2 commands
+Ran 2 commands
+Got it — 1039 lines, full file. Now let me make the targeted edits:
+
+
+Ran 3 commands
+Ran 3 commands
+Good — I have all 3 spots. Now making the edits:
+
+
+Edited 2 files
+Edited 2 files
+Now let me verify both edits look right:
+
+
+Verify all logType references are in place
+Verify all logType references are in place
+Clean. Now copy to outputs:
+
+
+Ran a command, read a file
+Ran a command, read a file
+Done. Here's what changed and how to use it:
+
+What changed — 3 lines of logic:
+
+Set header: REPS → TIME when logType is "time"
+Input field: number input → mm:ss text input when timed
+Log output: 20 lbs × 5 reps → 20 lbs · 1:32 when timed
+How to use it in JSON — just add "logType": "time" to any timed exercise:
+
+json
+{
+  "id": "r1",
+  "letter": "single",
+  "name": "400m Run with Vest",
+  "target": "2 × 400m",
+  "logType": "time",
+  "cue": "Log your split time",
+  "sets": 2
+}
+If logType is omitted, it defaults to normal reps — so nothing breaks on existing workouts.
+
+Next step: Replace the index.html in your GitHub repo with this file, and Netlify will auto-deploy. Want me to walk you through that?
+
+
+Drgains workout tracker
+Code · HTML 
+I thought you updated it for me. if not walk me through how to do this
+
+6:08 AM
+I did update it — the file is ready. Now you just need to get it from here into GitHub. Here's exactly how, one step at a time.
+
+Step 1 — Download the updated file
+
+Click the file I just shared above (DrGains Workout Tracker) to download it. It'll land in your Downloads folder as DrGains_Workout_Tracker.html.
+
+Done? Tell me and I'll give you Step 2.
+
+next
+
+6:08 AM
+Step 2 — Go to your GitHub repo
+
+Open this URL in your browser:
+
+👉 https://github.com/dkwhalen73-web/dkw-workout-tracker
+
+You should see your repo with the index.html file listed.
+
+Done? Tell me and I'll give you Step 3.
+
+yes
+
+6:09 AM
+Step 3 — Open the file for editing
+
+Click on index.html in the file list.
+
+Then click the pencil icon (✏️) in the top right of the file — it says "Edit this file" when you hover it.
+
+Done? Tell me and I'll give you Step 4.
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Drgains workout tracker · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +296,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html { font-size: 16px; }
 body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system, sans-serif; min-height: 100vh; padding-bottom: 110px; }
-
+ 
 /* ─── HONOR THREADS PALETTE ─── */
 :root {
   --navy:  #1F2A44;
@@ -22,7 +308,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
   --gold:  #D4AF37;
   --white: #ffffff;
 }
-
+ 
 /* ─── STARS FIELD HEADER ─── */
 .header {
   position: sticky; top: 0; z-index: 100;
@@ -42,11 +328,11 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .sets-counter { text-align: right; }
 .sets-counter .num { font-family: 'Anton', sans-serif; font-size: 22px; color: var(--gold); }
 .sets-counter .lbl { font-size: 10px; color: rgba(248,246,240,0.5); letter-spacing: 1px; text-transform: uppercase; }
-
+ 
 /* Red stripe + progress */
 .stripe-progress { background: var(--red); height: 6px; }
 .stripe-progress-fill { height: 6px; background: linear-gradient(90deg, #D4AF37, #fff); transition: width 0.4s ease; }
-
+ 
 /* ─── TABS ─── */
 .tabs { display: flex; background: var(--navy-deep); border-bottom: 2px solid rgba(212,175,55,0.2); }
 .tab-btn {
@@ -59,7 +345,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 .tab-pane { display: none; }
 .tab-pane.active { display: block; }
-
+ 
 /* ─── OVERVIEW TAB ─── */
 .overview-wrap { padding: 16px 14px 24px; }
 .ov-card { background: var(--navy-light); border-radius: 12px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(212,175,55,0.2); }
@@ -77,7 +363,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .ov-block-sets { font-family: 'Anton', sans-serif; font-size: 15px; color: var(--gold); flex-shrink: 0; padding-top: 2px; }
 .ov-block-sets-lbl { font-size: 9px; color: rgba(248,246,240,0.35); letter-spacing: 1px; text-transform: uppercase; text-align: right; }
 .eq-pill { display: inline-block; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: var(--gold); font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 20px; margin: 4px 4px 4px 0; }
-
+ 
 /* ─── SWAP UI ─── */
 .ex-header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .swap-btn { flex-shrink: 0; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.35); color: var(--gold); font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 8px; cursor: pointer; letter-spacing: 0.5px; white-space: nowrap; margin-top: 2px; }
@@ -89,11 +375,11 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .swap-option:last-child { border-bottom: none; }
 .swap-option:active { background: rgba(212,175,55,0.1); color: var(--gold); }
 .swap-option.selected { color: var(--gold); background: rgba(212,175,55,0.08); }
-
+ 
 /* ─── BLOCKS ─── */
 .blocks-wrap { padding: 0 14px; margin-top: 14px; }
 .block { margin-bottom: 14px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212,175,55,0.2); }
-
+ 
 .block-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 15px 16px; cursor: pointer; user-select: none;
@@ -114,7 +400,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .block-header.pull      { border-left-color: #4a90d9; }
 .block-header.cardio    { border-left-color: #f39c12; }
 .block-header.beast     { border-left-color: var(--gold); background: #1a1a0f; }
-
+ 
 /* ─── LOAD WORKOUT PANEL ─── */
 .load-wrap { padding: 16px 14px 24px; }
 .load-card { background: var(--navy-light); border-radius: 12px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(212,175,55,0.2); }
@@ -135,36 +421,36 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .share-url-inner { display: flex; align-items: center; gap: 8px; background: var(--navy-deep); border-radius: 8px; padding: 10px 12px; border: 1px solid rgba(212,175,55,0.2); }
 .share-url-text { font-size: 11px; color: rgba(248,246,240,0.45); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .share-copy-btn { flex-shrink: 0; background: var(--red); color: white; border: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 800; cursor: pointer; white-space: nowrap; }
-
+ 
 .block-title { font-family: 'Anton', sans-serif; font-size: 17px; letter-spacing: 1px; color: var(--cream); }
 .block-rounds { font-size: 11px; color: var(--gold); margin-top: 3px; letter-spacing: 0.5px; font-weight: 600; }
 .block-right { display: flex; align-items: center; gap: 10px; }
 .block-done-pill { background: #27ae60; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; }
 .chevron { color: var(--gold); font-size: 20px; transition: transform 0.25s; }
 .chevron.open { transform: rotate(180deg); }
-
+ 
 .block-body { background: var(--navy-deep); display: none; padding: 12px 14px 16px; }
 .block-body.open { display: block; }
-
+ 
 /* ─── SUPERSETS ─── */
 .superset { margin-bottom: 6px; }
 .ss-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: rgba(212,175,55,0.6); text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.15); padding-bottom: 6px; }
 .ss-divider { border: none; border-top: 1px dashed rgba(212,175,55,0.2); margin: 14px 0; }
-
+ 
 /* flow arrow */
 .flow-arrow { text-align: center; color: var(--red); font-size: 18px; font-weight: 900; margin: 6px 0; letter-spacing: 2px; }
-
+ 
 /* ─── EXERCISE CARDS ─── */
 .ex-card { background: var(--navy-light); border-radius: 10px; padding: 14px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.07); }
 .ex-card.ex-a { border-left: 4px solid var(--red); }
 .ex-card.ex-b { border-left: 4px solid #D4AF37; }
 .ex-card.ex-single { border-left: 4px solid rgba(255,255,255,0.2); }
-
+ 
 .ex-letter { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
 .ex-name { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--cream); line-height: 1.2; }
 .ex-target { font-size: 13px; color: var(--gold); font-weight: 700; margin-top: 5px; }
 .ex-cue { font-size: 12px; color: rgba(248,246,240,0.55); margin-top: 5px; font-style: italic; line-height: 1.4; }
-
+ 
 /* ─── SET ROWS ─── */
 .sets-table { margin-top: 14px; }
 .sets-thead { display: grid; grid-template-columns: 44px 1fr 1fr 48px; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.2); margin-bottom: 6px; }
@@ -173,7 +459,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .set-row:last-child { border-bottom: none; }
 .set-num { font-family: 'Anton', sans-serif; font-size: 15px; color: rgba(248,246,240,0.4); text-align: center; }
 .set-num.done { color: var(--gold); }
-
+ 
 .set-input {
   width: 100%; padding: 11px 6px;
   background: rgba(20,29,48,0.8);
@@ -187,7 +473,7 @@ body { background: #1F2A44; color: #F8F6F0; font-family: 'Inter', -apple-system,
 .set-input::placeholder { color: rgba(248,246,240,0.2); font-size: 12px; font-weight: 400; }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-
+ 
 .set-check-btn {
   width: 44px; height: 44px; border-radius: 50%;
   border: 2px solid rgba(212,175,55,0.35);
@@ -197,7 +483,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
   margin: 0 auto; transition: all 0.18s;
 }
 .set-check-btn.done { background: var(--red); border-color: var(--red); color: var(--white); }
-
+ 
 /* ─── REST TIMER ─── */
 .rest-block {
   background: linear-gradient(135deg, rgba(176,42,48,0.18), rgba(176,42,48,0.08));
@@ -231,16 +517,16 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
   text-shadow: 0 0 20px rgba(176,42,48,0.6);
   transition: color 0.3s;
 }
-
+ 
 /* ─── COMPLETE BUTTON ─── */
 .complete-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 14px 16px 20px; background: var(--navy-deep); border-top: 2px solid var(--red); }
 .complete-btn { width: 100%; padding: 18px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--red), #8b1a1f); color: var(--cream); font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 20px rgba(176,42,48,0.4); }
-
+ 
 /* ─── LOG MODAL ─── */
 .modal-overlay { position: fixed; inset: 0; background: rgba(10,15,25,0.96); z-index: 200; display: none; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .modal-overlay.open { display: block; }
 .modal { margin: 16px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(212,175,55,0.3); background: var(--navy-deep); }
-
+ 
 /* Modal hero: stars field */
 .modal-hero {
   background-color: var(--navy);
@@ -250,9 +536,9 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 }
 .modal-hero h2 { font-family: 'Anton', sans-serif; font-size: 28px; color: var(--cream); letter-spacing: 2px; }
 .modal-hero p { font-size: 13px; color: rgba(248,246,240,0.6); margin-top: 6px; }
-
+ 
 .modal-body { padding: 18px 18px 6px; }
-
+ 
 .log-section { margin-bottom: 22px; }
 .log-section-title { font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 1.5px; color: var(--gold); border-bottom: 1px solid rgba(212,175,55,0.25); padding-bottom: 6px; margin-bottom: 12px; }
 .log-ex { margin-bottom: 14px; }
@@ -261,29 +547,29 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 .log-set-line .val { color: var(--gold); font-weight: 700; }
 .log-set-line .done-icon { color: #27ae60; }
 .log-set-line .skip-icon { color: rgba(248,246,240,0.25); }
-
+ 
 .notes-box { background: var(--navy-light); border-radius: 10px; padding: 14px; margin-top: 4px; border: 1px solid rgba(212,175,55,0.2); }
 .notes-box label { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
 .notes-box textarea { width: 100%; background: transparent; border: none; color: var(--cream); font-size: 15px; resize: none; min-height: 80px; line-height: 1.5; font-family: 'Inter', sans-serif; }
 .notes-box textarea:focus { outline: none; }
 .notes-box textarea::placeholder { color: rgba(248,246,240,0.25); }
-
+ 
 .copy-note { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; }
 .copy-note p { font-size: 12px; color: rgba(248,246,240,0.65); line-height: 1.5; }
 .copy-note strong { color: var(--gold); }
-
+ 
 /* Modal actions */
 .modal-actions { display: flex; gap: 10px; padding: 14px 18px 24px; }
 .btn-copy { flex: 2; padding: 17px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--red), #8b1a1f); color: var(--cream); font-family: 'Anton', sans-serif; font-size: 17px; letter-spacing: 1px; cursor: pointer; }
 .btn-close { flex: 1; padding: 17px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3); background: transparent; color: rgba(248,246,240,0.6); font-size: 15px; font-weight: 700; cursor: pointer; }
-
+ 
 /* ─── TOAST ─── */
 .toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); background: #27ae60; color: #fff; font-weight: 800; padding: 12px 24px; border-radius: 24px; font-size: 14px; letter-spacing: 0.5px; display: none; z-index: 400; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
 .toast.show { display: block; }
 </style>
 </head>
 <body>
-
+ 
 <!-- ★ HEADER ★ -->
 <div class="header">
   <div class="stars-canton">
@@ -302,24 +588,24 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     <div class="stripe-progress-fill" id="progressFill" style="width:0%"></div>
   </div>
 </div>
-
+ 
 <!-- TABS -->
 <div class="tabs">
   <button class="tab-btn active" id="tbtn-overview" onclick="switchTab('overview')">★ OVERVIEW</button>
   <button class="tab-btn"        id="tbtn-workout"  onclick="switchTab('workout')">💪 WORKOUT</button>
   <button class="tab-btn"        id="tbtn-load"     onclick="switchTab('load')">⊕ LOAD</button>
 </div>
-
+ 
 <!-- OVERVIEW TAB -->
 <div class="tab-pane active" id="tab-overview">
   <div class="overview-wrap" id="overviewContainer"></div>
 </div>
-
+ 
 <!-- WORKOUT TAB -->
 <div class="tab-pane" id="tab-workout">
   <div class="blocks-wrap" id="workoutContainer"></div>
 </div>
-
+ 
 <!-- LOAD TAB -->
 <div class="tab-pane" id="tab-load">
   <div class="load-wrap">
@@ -356,12 +642,12 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     </div>
   </div>
 </div>
-
+ 
 <!-- COMPLETE -->
 <div class="complete-wrap">
   <button class="complete-btn" onclick="finishWorkout()">★ COMPLETE WORKOUT</button>
 </div>
-
+ 
 <!-- LOG MODAL -->
 <div class="modal-overlay" id="logModal">
   <div class="modal">
@@ -385,9 +671,9 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     </div>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast">★ Copied! Paste into Claude Project</div>
-
+ 
 <script>
 // ─── DEFAULT WORKOUT (FALLBACK — Apr 9 Back & Biceps + Legs) ───
 const DEFAULT_W = {
@@ -454,7 +740,7 @@ const DEFAULT_W = {
     }
   ]
 };
-
+ 
 // ─── LOAD WORKOUT FROM URL HASH OR DEFAULT ───
 // URL hash format: tracker.html#<base64url-encoded JSON>
 // Claude.ai generates the JSON → user pastes into Load tab → link is created
@@ -473,15 +759,15 @@ function loadWorkoutData() {
   }
   return DEFAULT_W;
 }
-
+ 
 // Active workout — set from URL hash or default
 let W = loadWorkoutData();
-
+ 
 // ─── STATE ───
 const sd = {};   // setData: { exId: [{weight:'', reps:'', done:false}] }
 let total = 0, completed = 0;
 const timers = {};
-
+ 
 function init() {
   W.blocks.forEach(b => b.ss.forEach(s => s.exs.forEach(ex => {
     sd[ex.id] = Array.from({length: ex.sets}, () => ({weight:'', reps:'', done:false}));
@@ -490,13 +776,13 @@ function init() {
   render();
   updateProgress();
 }
-
+ 
 // ─── RENDER ───
 function render() {
   const c = document.getElementById('workoutContainer');
   c.innerHTML = '';
   document.getElementById('headerMeta').textContent = W.meta;
-
+ 
   W.blocks.forEach((b, bi) => {
     const div = document.createElement('div');
     div.className = 'block';
@@ -520,7 +806,7 @@ function render() {
     c.appendChild(div);
   });
 }
-
+ 
 function renderBody(b) {
   let h = '';
   b.ss.forEach((ss, ssi) => {
@@ -545,15 +831,19 @@ function renderBody(b) {
         <div class="ex-cue">📌 ${ex.cue}</div>
         <div class="sets-table">
           <div class="sets-thead">
-            <span>SET</span><span>WEIGHT</span><span>REPS</span><span>DONE</span>
+            <span>SET</span><span>WEIGHT</span><span>${ex.logType === 'time' ? 'TIME' : 'REPS'}</span><span>DONE</span>
           </div>
           ${sd[ex.id].map((s,i) => `
           <div class="set-row" id="sr-${ex.id}-${i}">
             <div class="set-num ${s.done?'done':''}" id="sn-${ex.id}-${i}">${i+1}</div>
             <input class="set-input" type="number" inputmode="decimal" placeholder="lbs"
               value="${s.weight}" onchange="upd('${ex.id}',${i},'weight',this.value)">
-            <input class="set-input" type="number" inputmode="numeric" placeholder="reps"
-              value="${s.reps}" onchange="upd('${ex.id}',${i},'reps',this.value)">
+            ${ex.logType === 'time'
+              ? `<input class="set-input" type="text" inputmode="numeric" placeholder="mm:ss"
+                  value="${s.reps}" onchange="upd('${ex.id}',${i},'reps',this.value)">`
+              : `<input class="set-input" type="number" inputmode="numeric" placeholder="reps"
+                  value="${s.reps}" onchange="upd('${ex.id}',${i},'reps',this.value)">`
+            }
             <button class="set-check-btn ${s.done?'done':''}" id="ck-${ex.id}-${i}"
               onclick="tick('${ex.id}',${i})">✓</button>
           </div>`).join('')}
@@ -580,17 +870,17 @@ function renderBody(b) {
   });
   return h;
 }
-
+ 
 // ─── INTERACTIONS ───
 function toggleBlock(id) {
   document.getElementById('body-'+id).classList.toggle('open');
   document.getElementById('chev-'+id).classList.toggle('open');
 }
-
+ 
 function upd(exId, i, field, val) {
   sd[exId][i][field] = val;
 }
-
+ 
 function tick(exId, i) {
   const s = sd[exId][i];
   s.done = !s.done;
@@ -603,7 +893,7 @@ function tick(exId, i) {
   if (s.done) triggerRestTimer(exId);
   checkBlockBadge(exId);
 }
-
+ 
 // Fire rest timer whenever the LAST exercise in a superset has a set checked off
 function triggerRestTimer(exId) {
   for (const b of W.blocks) {
@@ -620,14 +910,14 @@ function triggerRestTimer(exId) {
     }
   }
 }
-
+ 
 function parseRestSecs(restStr) {
   // "60-90s" → 90, "90s" → 90, "45-60s" → 60
   const nums = restStr.match(/\d+/g);
   if (!nums) return 90;
   return parseInt(nums[nums.length - 1]);
 }
-
+ 
 function stopTimer(key) {
   if (timers[key]) { clearInterval(timers[key]); timers[key] = null; }
   const rb = document.getElementById('rb-' + key);
@@ -637,7 +927,7 @@ function stopTimer(key) {
   if (el) el.style.color = 'var(--red)';
   if (lb) lb.textContent = '■ Stopped';
 }
-
+ 
 function resetTimer(key, secs) {
   // Reset the label back to default before restarting
   const lb = document.getElementById('rl-' + key);
@@ -648,7 +938,7 @@ function resetTimer(key, secs) {
   if (rb) rb.classList.add('active');
   startTimer(key, secs);
 }
-
+ 
 function startTimer(key, secs) {
   if (timers[key]) clearInterval(timers[key]);
   let t = secs;
@@ -678,7 +968,7 @@ function startTimer(key, secs) {
     }
   }, 1000);
 }
-
+ 
 function checkBlockBadge(exId) {
   for (const b of W.blocks) {
     const ids = b.ss.flatMap(ss => ss.exs.map(e => e.id));
@@ -697,25 +987,25 @@ function checkBlockBadge(exId) {
     }
   }
 }
-
+ 
 function isBlockDone(b) {
   return b.ss.every(ss => ss.exs.every(ex => sd[ex.id] && sd[ex.id].every(s => s.done)));
 }
-
+ 
 function updateProgress() {
   const pct = total > 0 ? (completed/total)*100 : 0;
   document.getElementById('progressFill').style.width = pct+'%';
   document.getElementById('setsNum').textContent = `${completed}/${total}`;
 }
-
+ 
 // ─── FINISH & LOG ───
 function finishWorkout() {
   const now = new Date();
   const ds = now.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric',year:'numeric'});
   document.getElementById('logMeta').textContent = `${ds} · ${W.meta}`;
-
+ 
   let html = '', text = `DR. GAINS SESSION LOG\n${'★'.repeat(30)}\n${ds}\n${W.meta}\n${W.yesterday}\n\n`;
-
+ 
   W.blocks.forEach(b => {
     html += `<div class="log-section"><div class="log-section-title">${b.label}</div>`;
     text += `${b.label.replace(/[^\w\s·&]/g,'').trim()}\n`;
@@ -727,11 +1017,13 @@ function finishWorkout() {
           const w = s.weight || '--';
           const r = s.reps || '--';
           const dk = s.done ? '✓' : '○';
+          const isTime = ex.logType === 'time';
+          const rightCol = isTime ? `${w} lbs · ${r}` : `${w} lbs × ${r} reps`;
           html += `<div class="log-set-line">
             <span class="${s.done?'done-icon':'skip-icon'}">${dk}</span>
-            Set ${i+1}:&nbsp;<span class="val">${w} lbs × ${r} reps</span>
+            Set ${i+1}:&nbsp;<span class="val">${rightCol}</span>
           </div>`;
-          text += `    Set ${i+1}: ${w} lbs × ${r} reps ${dk}\n`;
+          text += `    Set ${i+1}: ${rightCol} ${dk}\n`;
         });
         html += '</div>';
         text += '\n';
@@ -740,17 +1032,17 @@ function finishWorkout() {
     html += '</div>';
     text += '\n';
   });
-
+ 
   window._logText = text;
   document.getElementById('logContent').innerHTML = html;
   document.getElementById('logModal').classList.add('open');
 }
-
+ 
 function copyLog() {
   const notes = document.getElementById('sessionNotes').value;
   const full = window._logText + (notes ? `NOTES:\n${notes}\n` : '') +
     `\n${'★'.repeat(30)}\nPaste this into your Dr. Gains Claude Project to track progress.\n`;
-
+ 
   // Robust copy: try clipboard API, fallback to execCommand
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(full)
@@ -760,7 +1052,7 @@ function copyLog() {
     fallbackCopy(full);
   }
 }
-
+ 
 function fallbackCopy(text) {
   const ta = document.createElement('textarea');
   ta.value = text;
@@ -776,17 +1068,17 @@ function fallbackCopy(text) {
   }
   document.body.removeChild(ta);
 }
-
+ 
 function showToast() {
   const t = document.getElementById('toast');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
-
+ 
 function closeModal() {
   document.getElementById('logModal').classList.remove('open');
 }
-
+ 
 // ─── TABS ───
 function switchTab(tab) {
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -796,7 +1088,7 @@ function switchTab(tab) {
   if (pane) pane.classList.add('active');
   if (btn)  btn.classList.add('active');
 }
-
+ 
 // ─── SWAP LOOKUP ───
 const SWAPS = {
   // Back
@@ -820,12 +1112,12 @@ const SWAPS = {
   // Finisher
   'f1': ['Incline DB Curl','Cable Curl (long pause)','Zottman Curl','Reverse Curl','Concentration Curl'],
 };
-
+ 
 function toggleSwap(exId) {
   const panel = document.getElementById('swappanel-' + exId);
   if (panel) panel.classList.toggle('open');
 }
-
+ 
 function selectSwap(exId, btn, newName) {
   // Update exercise name display
   const nameEl = document.getElementById('exname-' + exId);
@@ -838,7 +1130,7 @@ function selectSwap(exId, btn, newName) {
     setTimeout(() => panel.classList.remove('open'), 300);
   }
 }
-
+ 
 // ─── EQUIPMENT INFERENCE ───
 const EQ_MAP = [
   { keys: ['smith'],          label: 'Smith Machine' },
@@ -865,7 +1157,7 @@ const EQ_MAP = [
   { keys: ['bench'],          label: 'Flat Bench' },
   { keys: ['stability ball'], label: 'Stability Ball' },
 ];
-
+ 
 function inferEquipment() {
   const found = new Set();
   W.blocks.forEach(b => b.ss.forEach(ss => ss.exs.forEach(ex => {
@@ -882,19 +1174,19 @@ function inferEquipment() {
   })));
   return [...found];
 }
-
+ 
 // ─── OVERVIEW BUILDER ───
 const BLOCK_COLORS = {
   warmup:'#D4AF37', back:'#4a90d9', biceps:'#9b59b6', legs:'#27ae60', finisher:'#B02A30',
   chest:'#e74c3c', shoulders:'#1abc9c', arms:'#9b59b6', triceps:'#8e44ad',
   core:'#e67e22', push:'#e74c3c', pull:'#4a90d9', cardio:'#f39c12', beast:'#D4AF37'
 };
-
+ 
 function buildOverview() {
   const eq = inferEquipment();
   const totalBlocks = W.blocks.filter(b => b.id !== 'wu' && b.id !== 'finish').length;
   const totalSetsCount = Object.values(sd).flat().length;
-
+ 
   let html = `
   <div class="ov-card">
     <div class="ov-card-title">Session Summary</div>
@@ -907,7 +1199,7 @@ function buildOverview() {
       <div class="ov-stat" style="flex:1"><div class="val" style="font-size:14px;padding-top:4px">${W.meta}</div><div class="lbl">Location</div></div>
     </div>
   </div>
-
+ 
   <div class="ov-card">
     <div class="ov-card-title">Workout Blocks</div>
     ${W.blocks.map(b => {
@@ -928,20 +1220,20 @@ function buildOverview() {
     </div>`;
     }).join('')}
   </div>
-
+ 
   <div class="ov-card">
     <div class="ov-card-title">Equipment Needed</div>
     <div style="margin-top:4px">${eq.length ? eq.map(e=>`<span class="eq-pill">${e}</span>`).join('') : '<span style="color:rgba(248,246,240,0.4);font-size:13px">Bodyweight only</span>'}</div>
   </div>
-
+ 
   ${W.yesterday ? `<div class="ov-card" style="border-color:rgba(176,42,48,0.25)">
     <div class="ov-card-title">Yesterday</div>
     <div style="font-size:13px;color:rgba(248,246,240,0.65)">${W.yesterday}</div>
   </div>` : ''}`;
-
+ 
   document.getElementById('overviewContainer').innerHTML = html;
 }
-
+ 
 // ─── LOAD FROM JSON (Load Tab) ───
 function loadFromJSON() {
   const raw = document.getElementById('loadJsonInput').value.trim();
@@ -949,13 +1241,13 @@ function loadFromJSON() {
   const shareBox = document.getElementById('shareUrlBox');
   errEl.classList.remove('show');
   shareBox.classList.remove('show');
-
+ 
   if (!raw) {
     errEl.textContent = 'Please paste workout JSON above.';
     errEl.classList.add('show');
     return;
   }
-
+ 
   let parsed;
   try {
     parsed = JSON.parse(raw);
@@ -964,25 +1256,25 @@ function loadFromJSON() {
     errEl.classList.add('show');
     return;
   }
-
+ 
   if (!parsed.blocks || !Array.isArray(parsed.blocks)) {
     errEl.textContent = 'Invalid format — JSON must have a "blocks" array. Ask Claude to re-generate using the tracker JSON schema.';
     errEl.classList.add('show');
     return;
   }
-
+ 
   // Encode to URL-safe base64
   const encoded = btoa(encodeURIComponent(JSON.stringify(parsed)))
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-
+ 
   // Update the URL hash (no reload)
   history.replaceState(null, '', '#' + encoded);
-
+ 
   // Generate shareable URL
   const fullUrl = window.location.href;
   document.getElementById('shareUrlText').textContent = fullUrl;
   shareBox.classList.add('show');
-
+ 
   // Reload the workout into the tracker
   W = parsed;
   // Reset state
@@ -991,11 +1283,11 @@ function loadFromJSON() {
   Object.keys(timers).forEach(k => { clearInterval(timers[k]); delete timers[k]; });
   init();
   buildOverview();
-
+ 
   // Switch to workout tab
   switchTab('workout');
 }
-
+ 
 function copyShareUrl() {
   const url = document.getElementById('shareUrlText').textContent;
   if (!url) return;
@@ -1005,7 +1297,7 @@ function copyShareUrl() {
     shareUrlFallback(url);
   }
 }
-
+ 
 function shareUrlFallback(text) {
   const ta = document.createElement('textarea');
   ta.value = text;
@@ -1015,21 +1307,21 @@ function shareUrlFallback(text) {
   try { document.execCommand('copy'); showShareToast(); } catch(e) {}
   document.body.removeChild(ta);
 }
-
+ 
 function showShareToast() {
   const t = document.getElementById('toast');
   t.textContent = '★ Link copied — Bookmark it!';
   t.classList.add('show');
   setTimeout(() => { t.classList.remove('show'); t.textContent = '★ Copied! Paste into Claude Project'; }, 3000);
 }
-
+ 
 // If page loaded with a URL hash workout, show a banner pointing to Load tab info
 function maybeShowHashBanner() {
   if (window.location.hash.slice(1)) {
     document.getElementById('headerNote').textContent = '★ Workout loaded from link';
   }
 }
-
+ 
 // ─── GO ───
 init();
 buildOverview();
@@ -1037,3 +1329,7 @@ maybeShowHashBanner();
 </script>
 </body>
 </html>
+ 
+
+
+
