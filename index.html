@@ -236,6 +236,35 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 .complete-wrap { position: fixed; bottom: 0; left: 0; right: 0; padding: 14px 16px 20px; background: var(--navy-deep); border-top: 2px solid var(--red); }
 .complete-btn { width: 100%; padding: 18px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--red), #8b1a1f); color: var(--cream); font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 20px rgba(176,42,48,0.4); }
 
+/* ─── FLOATING STOPWATCH ─── */
+.stopwatch-float {
+  position: fixed; bottom: 90px; left: 16px; right: 16px;
+  background: linear-gradient(135deg, #0a1628, #0f1f3a);
+  border: 2px solid var(--gold);
+  border-radius: 14px; padding: 12px 18px;
+  display: none; align-items: center; justify-content: space-between;
+  z-index: 150; box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  animation: swFadeIn 0.25s ease;
+}
+.stopwatch-float.visible { display: flex; }
+@keyframes swFadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.sw-left { display: flex; flex-direction: column; }
+.sw-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: rgba(212,175,55,0.7); text-transform: uppercase; }
+.sw-block-name { font-size: 12px; color: var(--cream); font-weight: 600; margin-top: 2px; }
+.sw-time {
+  font-family: 'Anton', sans-serif; font-size: 38px; color: var(--gold);
+  letter-spacing: 1px; line-height: 1; min-width: 110px; text-align: center;
+}
+.sw-time.running { color: #ff4444; text-shadow: 0 0 16px rgba(255,68,68,0.5); }
+.sw-btn {
+  padding: 10px 20px; border-radius: 10px; border: none;
+  font-family: 'Anton', sans-serif; font-size: 15px; letter-spacing: 1px;
+  cursor: pointer; transition: all 0.18s;
+}
+.sw-btn.start { background: #27ae60; color: #fff; }
+.sw-btn.stop  { background: var(--red); color: #fff; }
+.sw-btn:active { opacity: 0.8; }
+
 /* ─── LOG MODAL ─── */
 .modal-overlay { position: fixed; inset: 0; background: rgba(10,15,25,0.96); z-index: 200; display: none; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .modal-overlay.open { display: block; }
@@ -355,6 +384,16 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
       </div>
     </div>
   </div>
+</div>
+
+<!-- FLOATING STOPWATCH -->
+<div class="stopwatch-float" id="stopwatchFloat">
+  <div class="sw-left">
+    <div class="sw-label">⏱ BLOCK TIMER</div>
+    <div class="sw-block-name" id="swBlockName">—</div>
+  </div>
+  <div class="sw-time" id="swDisplay">0:00</div>
+  <button class="sw-btn start" id="swBtn" onclick="toggleStopwatch()">START</button>
 </div>
 
 <!-- COMPLETE -->
@@ -586,9 +625,103 @@ function renderBody(b) {
 }
 
 // ─── INTERACTIONS ───
+// ─── STOPWATCH STATE ───
+let swInterval = null;
+let swSeconds = 0;
+let swRunning = false;
+let swTargetExIds = []; // timed ex IDs in the currently open timed block
+
 function toggleBlock(id) {
   document.getElementById('body-'+id).classList.toggle('open');
   document.getElementById('chev-'+id).classList.toggle('open');
+  checkStopwatchVisibility(id);
+}
+
+function checkStopwatchVisibility(blockId) {
+  const body = document.getElementById('body-' + blockId);
+  const isOpen = body.classList.contains('open');
+
+  if (!isOpen) {
+    // If we closed a block, check if any other timed block is still open
+    const anyTimedOpen = W.blocks.some(b => {
+      const hasTime = b.ss.some(ss => ss.exs.some(ex => ex.logType === 'time'));
+      const bodyEl = document.getElementById('body-' + b.id);
+      return hasTime && bodyEl && bodyEl.classList.contains('open');
+    });
+    if (!anyTimedOpen) hideStopwatch();
+    return;
+  }
+
+  // Find the block
+  const block = W.blocks.find(b => b.id === blockId);
+  if (!block) return;
+
+  // Collect timed ex IDs
+  const timedExs = block.ss.flatMap(ss => ss.exs.filter(ex => ex.logType === 'time'));
+  if (timedExs.length === 0) { hideStopwatch(); return; }
+
+  swTargetExIds = timedExs.map(ex => ex.id);
+  document.getElementById('swBlockName').textContent = block.label.replace(/[🔥🎽🤛🏃⚡💪🦵]/gu, '').trim();
+  document.getElementById('stopwatchFloat').classList.add('visible');
+}
+
+function hideStopwatch() {
+  if (swRunning) stopStopwatch();
+  document.getElementById('stopwatchFloat').classList.remove('visible');
+  swTargetExIds = [];
+}
+
+function toggleStopwatch() {
+  swRunning ? stopStopwatch() : startStopwatch();
+}
+
+function startStopwatch() {
+  swRunning = true;
+  swSeconds = 0;
+  const btn = document.getElementById('swBtn');
+  const display = document.getElementById('swDisplay');
+  btn.textContent = 'STOP';
+  btn.className = 'sw-btn stop';
+  display.classList.add('running');
+  swInterval = setInterval(() => {
+    swSeconds++;
+    const m = Math.floor(swSeconds / 60);
+    const s = swSeconds % 60;
+    display.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  }, 1000);
+}
+
+function stopStopwatch() {
+  if (swInterval) clearInterval(swInterval);
+  swRunning = false;
+  const btn = document.getElementById('swBtn');
+  const display = document.getElementById('swDisplay');
+  btn.textContent = 'START';
+  btn.className = 'sw-btn start';
+  display.classList.remove('running');
+
+  // Format time as mm:ss
+  const m = Math.floor(swSeconds / 60);
+  const s = swSeconds % 60;
+  const timeStr = `${m}:${s.toString().padStart(2,'0')}`;
+
+  // Auto-fill first empty timed set in target exercises
+  swTargetExIds.forEach(exId => {
+    if (!sd[exId]) return;
+    const emptySet = sd[exId].findIndex(set => !set.reps);
+    const targetIdx = emptySet >= 0 ? emptySet : sd[exId].length - 1;
+    sd[exId][targetIdx].reps = timeStr;
+    // Update the input in the DOM
+    const rows = document.querySelectorAll(`#exc-${exId} .set-input`);
+    // inputs are pairs: weight, reps — so reps inputs are odd-indexed
+    let repInputIdx = 0;
+    rows.forEach((input, i) => {
+      if (input.placeholder === 'mm:ss') {
+        if (repInputIdx === targetIdx) input.value = timeStr;
+        repInputIdx++;
+      }
+    });
+  });
 }
 
 function upd(exId, i, field, val) {
