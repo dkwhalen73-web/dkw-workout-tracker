@@ -229,6 +229,7 @@ button, select, textarea, input { font: inherit; }
   border-color: rgba(39,174,96,0.15);
 }
 .ex-name { font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.1; }
+.ex-tip { font-size: 11px; line-height: 1.35; color: rgba(248,246,240,0.72); margin-top: 5px; }
 .ex-target { font-size: 12px; color: var(--gold); font-weight: 800; margin-top: 4px; }
 .ex-cue { font-size: 12px; line-height: 1.45; color: rgba(248,246,240,0.62); margin-top: 6px; }
 
@@ -6271,7 +6272,10 @@ function renderOverview() {
 
   const workout = APP.workout;
   const exerciseNames = workout.blocks.flatMap(block => block.ss).flatMap(ss => ss.exs).map(ex => ex.name.toLowerCase());
-  const equipment = inferEquipment(exerciseNames, workout.eq || []);
+  const configuredEquipment = Array.isArray(workout.eq) ? workout.eq.filter(Boolean) : [];
+  const equipment = configuredEquipment.length > 0
+    ? Array.from(new Set(configuredEquipment))
+    : inferEquipment(exerciseNames, []);
   const statusPills = [
     workout.modeLabel || workout.type || 'Standard',
     workout.location || 'WFWHF',
@@ -6331,10 +6335,12 @@ function renderExerciseCard(ex, isLast, rest, blockId) {
   const sets = APP.sets[ex.id] || [];
   const primaryLabel = ex.logType === 'time' ? 'Time' : (ex.logType === 'distance' ? 'Distance' : 'Weight');
   const secondaryLabel = ex.logType === 'time' ? 'Notes' : 'Reps';
+  const tip = inferExerciseTip(ex);
 
   return `
     <div class="ex-card">
       <div class="ex-name">${escapeHtml(ex.name)}</div>
+      <div class="ex-tip">${escapeHtml(tip)}</div>
       <div class="ex-target">${escapeHtml(ex.target)}</div>
       ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
       <div style="margin-top:8px">
@@ -6888,9 +6894,14 @@ function parseSetCount(target) {
 }
 
 function inferLogType(name, target) {
-  const text = `${name} ${target}`.toLowerCase();
-  if (/(sec|min|time|run|row|erg|mile|m\b)/.test(text)) return 'time';
-  if (/distance/.test(text)) return 'distance';
+  const nameText = String(name).toLowerCase();
+  const targetText = String(target).toLowerCase();
+  const timeTargetPattern = /(\d+\s*(sec|secs|s|min|mins|minute|minutes)\b|for time|max time|amrap|emom|time cap|\bcap\b)/;
+  const distanceTargetPattern = /(\d+\s*(m|km|mi|mile|miles|meter|meters|metre|metres)\b|distance)/;
+
+  if (timeTargetPattern.test(targetText)) return 'time';
+  if (distanceTargetPattern.test(targetText)) return 'distance';
+  if (/(run|treadmill|bike|rower|ski(erg)?|erg)/.test(nameText) && timeTargetPattern.test(targetText)) return 'time';
   return 'standard';
 }
 
@@ -6927,6 +6938,21 @@ function cleanCue(note) {
     .trim();
 }
 
+function inferExerciseTip(ex) {
+  const cue = cleanCue(ex.cue || '');
+  if (cue) {
+    return cue.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
+  }
+
+  const name = String(ex.name || '').toLowerCase();
+  if (/row|pull|lat/.test(name)) return 'Lead with elbows. Squeeze upper back.';
+  if (/press|push/.test(name)) return 'Brace core. Control the eccentric.';
+  if (/squat|lunge|split squat/.test(name)) return 'Stay rooted. Keep knees tracking.';
+  if (/curl|tricep|extension|kickback/.test(name)) return 'Full range. No momentum.';
+  if (/core|plank|crunch|raise|sit-up|hollow/.test(name)) return 'Exhale hard. Keep ribcage down.';
+  return 'Controlled reps. Clean form every set.';
+}
+
 function isWarmupItem(item) {
   return /warm-up/i.test(item.prefix) || /warm-up/i.test(item.note) || /warm-up/i.test(item.name);
 }
@@ -6946,7 +6972,7 @@ function inferEquipment(exerciseNames, eq) {
     ['bench', 'Bench'],
     ['vest', 'Weighted Vest'],
     ['run', 'Track / Treadmill'],
-    ['row', 'Rower'],
+    ['rower', 'Rower'],
     ['bike', 'Bike'],
     ['landmine', 'Landmine'],
     ['sled', 'Sled'],
