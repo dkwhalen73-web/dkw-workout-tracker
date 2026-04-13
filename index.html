@@ -5860,7 +5860,7 @@ const DR_GAINS_FULL_DB = {
     <div class="h-row">
       <div>
         <div class="h-title" id="hTitle">Dr. Gains North Star</div>
-        <div class="h-meta" id="hMeta">Build a workout, resume a saved session, or load tracker JSON.</div>
+        <div class="h-meta" id="hMeta">Paste tracker JSON from Claude to load your workout.</div>
       </div>
       <div class="sets-num" id="setsDone">0 / 0</div>
     </div>
@@ -5869,21 +5869,23 @@ const DR_GAINS_FULL_DB = {
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" id="t-build" onclick="switchTab('build')">★ BUILD</button>
+  <button class="tab-btn active" id="t-load" onclick="switchTab('load')">⊕ LOAD</button>
   <button class="tab-btn" id="t-overview" onclick="switchTab('overview')">◼ OVERVIEW</button>
   <button class="tab-btn" id="t-workout" onclick="switchTab('workout')">💪 WORKOUT</button>
-  <button class="tab-btn" id="t-load" onclick="switchTab('load')">⊕ LOAD</button>
 </div>
 
-<div class="tab-pane active" id="p-build">
+<div class="tab-pane active" id="p-load">
   <div class="card">
-    <div class="card-title">Workout Builder</div>
-    <div class="builder-grid" id="builderFields"></div>
+    <div class="card-title">Load Workout</div>
+    <div class="hint" style="margin-bottom:10px">Paste the tracker JSON from Claude, then tap Load.</div>
+    <textarea class="text-area" id="loadInput" placeholder="Paste tracker JSON here..."></textarea>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-primary" onclick="loadFromJson()">Load JSON Workout</button>
+    </div>
   </div>
   <div class="card">
     <div class="card-title">Session Controls</div>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="buildWorkout()">Build Workout</button>
       <button class="btn btn-secondary" onclick="resumeSession()">Resume Last Session</button>
       <button class="btn btn-danger" onclick="clearSession()">Clear Saved Session</button>
     </div>
@@ -5893,17 +5895,6 @@ const DR_GAINS_FULL_DB = {
 
 <div class="tab-pane" id="p-overview"><div id="overviewContent"></div></div>
 <div class="tab-pane" id="p-workout"><div id="workoutContent"></div></div>
-
-<div class="tab-pane" id="p-load">
-  <div class="card">
-    <div class="card-title">Load Tracker JSON</div>
-    <div class="hint" style="margin-bottom:10px">This still works when you want Claude to generate a custom one-off session as tracker JSON.</div>
-    <textarea class="text-area" id="loadInput" placeholder="Paste tracker JSON here..."></textarea>
-    <div class="btn-row" style="margin-top:12px">
-      <button class="btn btn-primary" onclick="loadFromJson()">Load JSON Workout</button>
-    </div>
-  </div>
-</div>
 
 <div class="rest-pill" id="restPill">REST <span id="restVal">60</span>s <button class="rest-close" onclick="stopRest()">✕</button></div>
 
@@ -6013,8 +6004,6 @@ function switchTab(tab) {
 }
 
 function init() {
-  renderBuilder();
-  loadProgramReference();
   const raw = localStorage.getItem(SESSION_KEY);
   if (raw) {
     try {
@@ -6026,16 +6015,15 @@ function init() {
         sets: saved.sets || {},
         blockTimers: saved.blockTimers || {}
       };
-      renderBuilder();
       if (APP.workout) {
         renderAll();
-        setStatus('Saved session ready. Use Resume Last Session or go straight to Workout.');
+        setStatus('Saved session ready. Tap Resume Last Session or go to Workout tab.');
       }
     } catch (error) {
-      setStatus('Saved session was corrupted. You can clear it and rebuild.');
+      setStatus('Saved session was corrupted. Clear it and paste fresh JSON.');
     }
   } else {
-    setStatus('Choose a mode, build the session, and the app will remember your progress.');
+    setStatus('Paste tracker JSON from Claude, then tap Load.');
   }
 }
 
@@ -6044,133 +6032,7 @@ function setStatus(message) {
 }
 
 async function loadProgramReference() {
-  // Use embedded full database if available
-  if (typeof DR_GAINS_FULL_DB !== 'undefined') {
-    PROGRAM_READY = true;
-    setStatus('Full 8-week program loaded. All weeks and days available.');
-    renderBuilder();
-    return;
-  }
-  try {
-    const response = await fetch(PROGRAM_FILE);
-    if (!response.ok) throw new Error('reference fetch failed');
-    PROGRAM = parseProgramReference(await response.text());
-    PROGRAM_READY = true;
-    setStatus('Standard 8-week reference loaded. Full program mode is ready.');
-  } catch (error) {
-    PROGRAM = WEEK1_FALLBACK;
-    PROGRAM_READY = false;
-    setStatus('Week 1 fallback loaded. For full 8-week program, use the combined HTML file.');
-  }
-  renderBuilder();
-}
-
-function renderBuilder() {
-  const root = document.getElementById('builderFields');
-  const c = APP.config;
-  let html = `
-    <div>
-      <label class="field-label" for="modeSelect">Workout Mode</label>
-      <select class="select" id="modeSelect" onchange="updateConfig('mode', this.value)">
-        ${MODES.map(mode => `<option value="${mode.value}" ${c.mode === mode.value ? 'selected' : ''}>${mode.label}</option>`).join('')}
-      </select>
-    </div>
-  `;
-
-  if (c.mode === 'standard') {
-    html += `
-      <div>
-        <label class="field-label" for="weekSelect">Week</label>
-        <select class="select" id="weekSelect" onchange="updateConfig('week', this.value)">
-          ${Array.from({ length: 8 }, (_, idx) => `<option value="${idx + 1}" ${String(idx + 1) === c.week ? 'selected' : ''}>Week ${idx + 1}</option>`).join('')}
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="daySelect">Day</label>
-        <select class="select" id="daySelect" onchange="updateConfig('day', this.value)">
-          ${DAYS.map(day => `<option value="${day}" ${c.day === day ? 'selected' : ''}>${day}</option>`).join('')}
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="locationSelect">Location</label>
-        <select class="select" id="locationSelect" onchange="updateConfig('location', this.value)">
-          ${LOCATIONS.map(location => `<option value="${location}" ${c.location === location ? 'selected' : ''}>${location}</option>`).join('')}
-        </select>
-      </div>
-      <div class="hint">WFWHF uses the actual reference file. Crunch and Hotel build a location-appropriate modification for the same training day.</div>
-    `;
-  }
-
-  if (c.mode === 'murph') {
-    html += `
-      <div>
-        <label class="field-label" for="murphFocus">Murph Focus</label>
-        <select class="select" id="murphFocus" onchange="updateConfig('murphFocus', this.value)">
-          <option value="pace" ${c.murphFocus === 'pace' ? 'selected' : ''}>Pace Builder</option>
-          <option value="volume" ${c.murphFocus === 'volume' ? 'selected' : ''}>Volume Builder</option>
-          <option value="simulation" ${c.murphFocus === 'simulation' ? 'selected' : ''}>Half-Sim / Full-Sim Prep</option>
-          <option value="pullup" ${c.murphFocus === 'pullup' ? 'selected' : ''}>Pull-Up Capacity</option>
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="locationMurph">Location</label>
-        <select class="select" id="locationMurph" onchange="updateConfig('location', this.value)">
-          ${LOCATIONS.map(location => `<option value="${location}" ${c.location === location ? 'selected' : ''}>${location}</option>`).join('')}
-        </select>
-      </div>
-    `;
-  }
-
-  if (c.mode === 'travel') {
-    html += `
-      <div>
-        <label class="field-label" for="travelLocation">Travel Gym</label>
-        <select class="select" id="travelLocation" onchange="updateConfig('travelLocation', this.value)">
-          <option value="Crunch" ${c.travelLocation === 'Crunch' ? 'selected' : ''}>Crunch</option>
-          <option value="Hotel" ${c.travelLocation === 'Hotel' ? 'selected' : ''}>Hotel</option>
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="travelFocus">Focus</label>
-        <select class="select" id="travelFocus" onchange="updateConfig('travelFocus', this.value)">
-          ${['Chest & Back', 'Arms', 'Core & Spine', 'Legs & Shoulders', 'Full Upper', 'Full Body'].map(focus => `<option value="${focus}" ${c.travelFocus === focus ? 'selected' : ''}>${focus}</option>`).join('')}
-        </select>
-      </div>
-    `;
-  }
-
-  if (c.mode === 'beast') {
-    html += `
-      <div>
-        <label class="field-label" for="beastDay">Beast Day</label>
-        <select class="select" id="beastDay" onchange="updateConfig('beastDay', this.value)">
-          <option value="Friday" ${c.beastDay === 'Friday' ? 'selected' : ''}>Friday</option>
-          <option value="Saturday" ${c.beastDay === 'Saturday' ? 'selected' : ''}>Saturday</option>
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="beastFormat">Format</label>
-        <select class="select" id="beastFormat" onchange="updateConfig('beastFormat', this.value)">
-          ${['EMOM', 'AMRAP', 'Chipper', 'Intervals', 'For Time'].map(format => `<option value="${format}" ${c.beastFormat === format ? 'selected' : ''}>${format}</option>`).join('')}
-        </select>
-      </div>
-      <div>
-        <label class="field-label" for="beastDuration">Duration</label>
-        <select class="select" id="beastDuration" onchange="updateConfig('beastDuration', this.value)">
-          ${['60', '75', '90'].map(duration => `<option value="${duration}" ${c.beastDuration === duration ? 'selected' : ''}>${duration} min</option>`).join('')}
-        </select>
-      </div>
-      <div class="hint">These sessions are purpose-built for your longer metcon / x-fit / military-style days.</div>
-    `;
-  }
-
-  root.innerHTML = html;
-}
-
-function updateConfig(key, value) {
-  APP.config[key] = value;
-  saveSession();
-  renderBuilder();
+  // No longer needed — workouts are loaded via JSON paste from Claude
 }
 
 function saveSession() {
@@ -6266,7 +6128,7 @@ function renderHeader() {
 function renderOverview() {
   const root = document.getElementById('overviewContent');
   if (!APP.workout) {
-    root.innerHTML = `<div class="card empty-state">No active session yet. Build a workout from the Build tab or load tracker JSON.</div>`;
+    root.innerHTML = `<div class="card empty-state">No active session. Paste tracker JSON in the Load tab.</div>`;
     return;
   }
 
@@ -6287,17 +6149,24 @@ function renderOverview() {
       <div class="card-title">Session Identity</div>
       ${statusPills.map(pill => `<span class="status-pill">${escapeHtml(pill)}</span>`).join('')}
       <div class="hint" style="margin-top:8px">${escapeHtml(workout.meta || '')}</div>
+      ${workout.yesterday ? `<div class="hint" style="margin-top:4px; font-style:italic">${escapeHtml(workout.yesterday)}</div>` : ''}
     </div>
     <div class="card">
       <div class="card-title">Equipment</div>
-      ${equipment.map(item => `<span class="eq-pill">${escapeHtml(item)}</span>`).join('') || '<div class="hint">Bodyweight only.</div>'}
+      ${equipment.length > 0 ? equipment.map(item => `<span class="eq-pill">${escapeHtml(item)}</span>`).join('') : '<div class="hint">Bodyweight only.</div>'}
     </div>
     <div class="card">
       <div class="card-title">Block Preview</div>
       ${workout.blocks.map((block, idx) => `
         <div style="padding:10px 0; border-bottom:${idx === workout.blocks.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.06)'}">
           <div style="font-weight:800; color:var(--cream)">${escapeHtml(block.label)}</div>
-          <div class="hint">${escapeHtml(block.rounds || block.ss.map(ss => ss.exs.map(ex => ex.name).join(' · ')).join(' / '))}</div>
+          <div class="hint" style="margin-bottom:4px">${escapeHtml(block.rounds || '')}</div>
+          ${block.ss.map(ss => `
+            <div style="padding:3px 0 3px 12px; border-left:2px solid rgba(212,175,55,0.25); margin:4px 0">
+              ${ss.exs.map(ex => `<div class="hint" style="color:rgba(248,246,240,0.8)"><span style="color:var(--gold); font-weight:700">${ex.letter !== 'single' ? ex.letter.toUpperCase() + '.' : '►'}</span> ${escapeHtml(ex.name)} · <span style="color:rgba(248,246,240,0.5)">${escapeHtml(ex.target)}</span></div>`).join('')}
+              ${ss.rest ? `<div class="hint" style="font-size:10px; color:rgba(248,246,240,0.4)">⏱ ${escapeHtml(ss.rest)} · 🔄 ${escapeHtml(ss.ar || '')}</div>` : ''}
+            </div>
+          `).join('')}
         </div>
       `).join('')}
     </div>
@@ -6963,26 +6832,65 @@ function isFinisherItem(item) {
 
 function inferEquipment(exerciseNames, eq) {
   const found = new Set(eq);
+  const joined = exerciseNames.join(' ');
   const rules = [
-    ['cable', 'Cable Machine'],
-    ['pulldown', 'Cable Machine'],
-    ['lat ', 'Pulldown / Pull Station'],
-    ['db', 'Dumbbells'],
-    ['dumbbell', 'Dumbbells'],
-    ['bench', 'Bench'],
-    ['vest', 'Weighted Vest'],
-    ['run', 'Track / Treadmill'],
-    ['rower', 'Rower'],
-    ['bike', 'Bike'],
-    ['landmine', 'Landmine'],
-    ['sled', 'Sled'],
-    ['pull-up', 'Pull-Up Bar'],
-    ['ring', 'Rings / TRX']
+    // Cable machine patterns
+    [/cable|pulldown|pushdown|lat pull|rope ext|rope tri|rope curl|cross.?cable|contralateral|face.?pull|sitting.*row|seated.*row|tricep ext|90°.*ext/i, 'Cable Machine'],
+    // Dumbbells
+    [/\bdb\b|dumbbell|hammer curl|spider curl|concentration|incline curl|twist.?press|squeeze press|pull.?over|arnold|lateral raise|anterior raise|side.?hug|kickback|skull.?crush|zottman|fly|press combo/i, 'Dumbbells'],
+    // Bench
+    [/bench|incline|decline|preacher|prone|supine|spider curl|skull.?crush/i, 'Bench'],
+    // Pull-up bar
+    [/pull.?up|dead hang|hang|hanging|chin.?up/i, 'Pull-Up Bar'],
+    // Barbell
+    [/barbell|deadlift|squat|clean|snatch|landmine|jefferson|good morning|front squat|back squat|pendlay|t.?bar/i, 'Barbell'],
+    // Landmine (separate from barbell for specificity)
+    [/landmine/i, 'Landmine Attachment'],
+    // Sled
+    [/sled|drag/i, 'Sled'],
+    // Rings / TRX
+    [/ring|trx|suspension/i, 'Rings / TRX'],
+    // Stability ball
+    [/stability|ball crunch|hyperextend.*ball/i, 'Stability Ball'],
+    // Ab wheel / Rollout
+    [/rollout|ab wheel/i, 'Ab Wheel'],
+    // Bands
+    [/band|pull.?apart/i, 'Resistance Bands'],
+    // Plate
+    [/plate carry|plate pinch|weighted/i, 'Weight Plates'],
+    // Rope (cable attachment)
+    [/rope/i, 'Rope Attachment'],
+    // Cardio
+    [/run\b|treadmill|sprint/i, 'Treadmill / Track'],
+    [/rower|row.*erg/i, 'Rower'],
+    [/bike|assault/i, 'Assault Bike'],
+    [/skierg/i, 'SkiErg'],
+    [/jump rope/i, 'Jump Rope'],
+    // Specialty
+    [/yoke/i, 'Yoke'],
+    [/tire/i, 'Tire'],
+    [/battle rope/i, 'Battle Ropes'],
+    [/kettlebell|\bkb\b/i, 'Kettlebell'],
+    [/vest/i, 'Weighted Vest'],
+    [/box|plyo/i, 'Plyo Box'],
+    // Leg machines
+    [/leg press/i, 'Leg Press Machine'],
+    [/leg curl|leg extension|sitting.*curl|sitting.*ext/i, 'Leg Curl / Extension Machine'],
+    // Farmer carry implies DBs already covered
+    [/farmer/i, 'Dumbbells'],
+    // Calf raise
+    [/calf raise/i, 'Calf Raise Station'],
+    // Roman chair / GHD
+    [/roman|ghd|hyperextension/i, 'Roman Chair / GHD']
   ];
   exerciseNames.forEach(name => {
-    rules.forEach(([needle, label]) => {
-      if (name.includes(needle)) found.add(label);
+    rules.forEach(([pattern, label]) => {
+      if (pattern.test(name)) found.add(label);
     });
+  });
+  // Also test the joined string for context clues
+  rules.forEach(([pattern, label]) => {
+    if (pattern.test(joined)) found.add(label);
   });
   return Array.from(found);
 }
