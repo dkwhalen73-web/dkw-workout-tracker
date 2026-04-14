@@ -42,10 +42,10 @@ button, select, textarea, input { font: inherit; }
   position: relative;
   background-color: #1B2951;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='24'%3E%3Cpolygon points='13,2 15.5,8.5 22.5,9.2 17,13.5 18.5,20.5 13,17 7.5,20.5 9,13.5 3.5,9.2 10.5,8.5' fill='white' fill-opacity='0.4'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='24'%3E%3Cpolygon points='13,2 15.5,8.5 22.5,9.2 17,13.5 18.5,20.5 13,17 7.5,20.5 9,13.5 3.5,9.2 10.5,8.5' fill='white' fill-opacity='0.4'/%3E%3C/svg%3E");
-  background-size: 26px 24px;
-  background-position: 4px 2px, 17px 14px;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 80px 72px;
+  background-position: 4px 2px, 44px 38px;
   background-repeat: repeat;
 }
 .h-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
@@ -286,6 +286,49 @@ button, select, textarea, input { font: inherit; }
   border-color: var(--green);
   color: white;
   box-shadow: 0 0 12px rgba(39,174,96,0.4);
+}
+
+.swap-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(248,246,240,0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.swap-toggle:hover, .swap-toggle:active {
+  color: var(--gold);
+  border-color: rgba(212,175,55,0.4);
+}
+.swap-list {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.swap-list.open { display: flex; }
+.swap-chip {
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--gold);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.swap-chip:active {
+  background: rgba(212,175,55,0.2);
+  transform: scale(0.95);
 }
 
 .timer-btn {
@@ -6250,8 +6293,29 @@ function renderExerciseCard(ex, isLast, rest, blockId) {
           </div>
         `).join('')}
       </div>
+      ${ex.swaps && ex.swaps.length > 0 ? `
+        <button class="swap-toggle" onclick="this.nextElementSibling.classList.toggle('open')">⇄ Swap</button>
+        <div class="swap-list">
+          ${ex.swaps.map(s => `<div class="swap-chip" onclick="swapExercise('${ex.id}', '${escapeHtml(s)}')">${escapeHtml(s)}</div>`).join('')}
+        </div>
+      ` : ''}
     </div>
   `;
+}
+
+function swapExercise(exId, newName) {
+  for (const block of APP.workout.blocks) {
+    for (const ss of block.ss) {
+      const ex = ss.exs.find(e => e.id === exId);
+      if (ex) {
+        ex.originalName = ex.originalName || ex.name;
+        ex.name = newName;
+        saveSession();
+        renderWorkout();
+        return;
+      }
+    }
+  }
 }
 
 function updateSet(id, index, key, value) {
@@ -6813,8 +6877,11 @@ function extractActiveRestFromItems(items) {
 }
 
 function extractRestSeconds(rest) {
-  const match = String(rest).match(/(\d+)/);
-  return match ? Number(match[1]) : 0;
+  const matches = String(rest).match(/\d+/g);
+  if (!matches) return 0;
+  const nums = matches.map(Number).filter(n => n > 0);
+  if (nums.length === 0) return 0;
+  return Math.min(...nums, 60);
 }
 
 function cleanCue(note) {
