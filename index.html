@@ -5860,7 +5860,7 @@ const DR_GAINS_FULL_DB = {
     <div class="h-row">
       <div>
         <div class="h-title" id="hTitle">Dr. Gains North Star</div>
-        <div class="h-meta" id="hMeta">Paste tracker JSON from Claude to load your workout.</div>
+        <div class="h-meta" id="hMeta">Loading workout...</div>
       </div>
       <div class="sets-num" id="setsDone">0 / 0</div>
     </div>
@@ -5876,20 +5876,21 @@ const DR_GAINS_FULL_DB = {
 
 <div class="tab-pane active" id="p-load">
   <div class="card">
-    <div class="card-title">Load Workout</div>
-    <div class="hint" style="margin-bottom:10px">Paste the tracker JSON from Claude, then tap Load.</div>
-    <textarea class="text-area" id="loadInput" placeholder="Paste tracker JSON here..."></textarea>
-    <div class="btn-row" style="margin-top:12px">
-      <button class="btn btn-primary" onclick="loadFromJson()">Load JSON Workout</button>
-    </div>
-  </div>
-  <div class="card">
     <div class="card-title">Session Controls</div>
     <div class="btn-row">
+      <button class="btn btn-primary" onclick="autoFetchWorkout()">↻ Reload Latest Workout</button>
       <button class="btn btn-secondary" onclick="resumeSession()">Resume Last Session</button>
       <button class="btn btn-danger" onclick="clearSession()">Clear Saved Session</button>
     </div>
     <div class="hint" style="margin-top:12px" id="builderStatus"></div>
+  </div>
+  <div class="card" style="border-top:1px solid rgba(248,246,240,0.1)">
+    <div class="card-title">Manual Load (Backup)</div>
+    <div class="hint" style="margin-bottom:10px">Paste tracker JSON from Claude if auto-load isn't working.</div>
+    <textarea class="text-area" id="loadInput" placeholder="Paste tracker JSON here..."></textarea>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-secondary" onclick="loadFromJson()">Load Pasted JSON</button>
+    </div>
   </div>
 </div>
 
@@ -6004,6 +6005,7 @@ function switchTab(tab) {
 }
 
 function init() {
+  // 1. Check for a saved in-progress session first
   const raw = localStorage.getItem(SESSION_KEY);
   if (raw) {
     try {
@@ -6017,13 +6019,33 @@ function init() {
       };
       if (APP.workout) {
         renderAll();
-        setStatus('Saved session ready. Tap Resume Last Session or go to Workout tab.');
+        setStatus('Saved session loaded. Tap Resume or go to Workout tab.');
+        return; // Don't auto-fetch if we have a saved session
       }
     } catch (error) {
-      setStatus('Saved session was corrupted. Clear it and paste fresh JSON.');
+      // Corrupted save — fall through to auto-fetch
     }
-  } else {
-    setStatus('Paste tracker JSON from Claude, then tap Load.');
+  }
+
+  // 2. No saved session — auto-fetch current-workout.json from the repo
+  autoFetchWorkout();
+}
+
+async function autoFetchWorkout() {
+  setStatus('Loading today\'s workout...');
+  try {
+    const resp = await fetch('./current-workout.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('No workout file found');
+    const data = await resp.json();
+    APP.workout = normalizeLoadedWorkout(data);
+    APP.sets = createSetState(APP.workout);
+    APP.blockTimers = {};
+    saveSession();
+    renderAll();
+    switchTab('overview');
+    setStatus('Workout loaded automatically.');
+  } catch (err) {
+    setStatus('No auto-load workout found. Paste JSON in the Load tab, or push current-workout.json to the repo.');
   }
 }
 
@@ -6128,7 +6150,7 @@ function renderHeader() {
 function renderOverview() {
   const root = document.getElementById('overviewContent');
   if (!APP.workout) {
-    root.innerHTML = `<div class="card empty-state">No active session. Paste tracker JSON in the Load tab.</div>`;
+    root.innerHTML = `<div class="card empty-state">No active session. Tap "Reload Latest Workout" on the Load tab, or push current-workout.json to the repo.</div>`;
     return;
   }
 
