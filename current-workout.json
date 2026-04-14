@@ -1,124 +1,90 @@
 {
-  "title": "CHEST & BACK",
-  "meta": "WFWHF · Mon, Apr 13 · Week 1",
-  "yesterday": "Yesterday: Rest day (Sunday)",
-  "duration": "60-75",
+  "title": "BICEPS, TRICEPS & FOREARMS",
+  "meta": "WFWHF · Wed, Apr 16 · Week 1",
+  "yesterday": "Yesterday: Bootcamp — Deadlifts + Pull",
+  "duration": "55-65",
   "blocks": [
     {
-      "id": "wu",
-      "label": "🔥 WARM-UP",
-      "type": "warmup",
-      "rounds": null,
-      "ss": [
-        {
-          "id": "ss_wu",
-          "label": "WARM-UP MOVES",
-          "rest": "30s between each",
-          "ar": null,
-          "exs": [
-            {
-              "id": "w1",
-              "letter": "single",
-              "name": "Supine Arcs",
-              "target": "2 × 10",
-              "cue": "Lying on back, arms arc overhead with control — feel the chest open",
-              "sets": 2,
-              "swaps": ["Band Pull-Aparts", "Arm Circles", "Doorway Chest Stretch"]
-            },
-            {
-              "id": "w2",
-              "letter": "single",
-              "name": "Prone Retracted Arcs",
-              "target": "2 × 10",
-              "cue": "Face down, retract scapulae first, then arc arms — squeeze upper back",
-              "sets": 2,
-              "swaps": ["Prone Y-T-W", "Band Pull-Aparts", "Wall Slides"]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "block1",
-      "label": "💪 BLOCK 1 · CHEST & BACK",
-      "type": "chest",
+      "label": "💪 BLOCK 1 · BICEPS & TRICEPS",
+      "type": "arms",
       "rounds": "3 Rounds · Supersets",
       "ss": [
         {
           "id": "ss1",
           "label": "SUPERSET 1",
-          "rest": "60-90s",
-          "ar": "Thoracic rotation 5 reps/side",
+          "rest": "60s",
+          "ar": "Dead hang 20-30s",
           "exs": [
             {
-              "id": "s1a",
+              "id": "w1w_s1a",
               "letter": "a",
-              "name": "DB Twist-Press",
+              "name": "One-and-a-Half Hammer Curls",
               "target": "3 × 8-10",
-              "cue": "Start neutral grip at bottom, rotate to pronated at top — full press with twist at lockout",
+              "cue": "Full curl up, lower halfway, curl back up, lower all the way — that's 1 rep. Keep elbows pinned.",
               "sets": 3,
-              "swaps": ["DB Flat Press", "Incline DB Press", "Landmine Press", "Cable Chest Press"]
+              "swaps": ["Hammer Curls", "Cross-Body Hammer Curls", "Rope Cable Curls", "DB Neutral-Grip Curls"]
             },
             {
-              "id": "s1b",
+              "id": "w1w_s1b",
               "letter": "b",
-              "name": "Narrow-Grip Sitting Rows",
-              "target": "3 × 10-12",
-              "cue": "Close grip handle, drive elbows straight back, squeeze shoulder blades 1 sec at peak",
+              "name": "Leaning 90° Rope Tricep Extensions",
+              "target": "3 × 8-10 🔺 last set to failure",
+              "cue": "Lean forward ~30°, lock elbows at 90° start position, extend fully and squeeze at bottom.",
               "sets": 3,
-              "swaps": ["Cable Low Row", "DB Bent-Over Row", "TRX Row", "Chest-Supported Row"]
+              "swaps": ["Cable Tricep Pushdowns", "V-Bar Pushdowns", "Band Tricep Extensions", "Overhead Rope Extensions"]
             }
           ]
         },
         {
           "id": "ss2",
           "label": "SUPERSET 2",
-          "rest": "60-90s",
-          "ar": "Scapular wall slides x10",
+          "rest": "60s",
+          "ar": "Wrist circles x10 each direction",
           "exs": [
             {
-              "id": "s2a",
+              "id": "w1w_s2a",
               "letter": "a",
-              "name": "Incline Squeeze Press",
-              "target": "3 × 8-10",
-              "cue": "Press DBs together throughout — constant inward pressure, control the eccentric",
+              "name": "Spider Curls Full ROM – Supinating Unilateral",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Chest on incline bench, arm hangs straight. Curl with full supination — rotate palm up as you lift.",
               "sets": 3,
-              "swaps": ["Incline DB Press", "Incline Cable Fly", "Landmine Press", "Svend Press"]
+              "swaps": ["Incline DB Curls", "Preacher Curls", "Cable Spider Curls", "Concentration Curls"]
             },
             {
-              "id": "s2b",
+              "id": "w1w_s2b",
               "letter": "b",
-              "name": "2-DB Pull-Overs",
-              "target": "3 × 10",
-              "cue": "Slight elbow bend, feel the lat stretch at bottom, squeeze through full ROM",
+              "name": "Alternating Pronated & Supinated 90° Tricep Extensions",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Alternate grip each rep — pronate (palms down) then supinate (palms up). Full lockout each time.",
               "sets": 3,
-              "swaps": ["Single-DB Pull-Over", "Straight-Arm Lat Pull-Down", "Cable Pull-Over"]
+              "swaps": ["Single-Arm Cable Pushdowns", "Overhead DB Tricep Extension", "Skull Crushers", "Tricep Dips"]
             }
           ]
         },
         {
           "id": "ss3",
           "label": "SUPERSET 3",
-          "rest": "60-90s",
-          "ar": "Cat-cow x8 slow reps",
+          "rest": "60s",
+          "ar": "Farmers carry 15m (light DBs)",
           "exs": [
             {
-              "id": "s3a",
+              "id": "w1w_s3a",
               "letter": "a",
-              "name": "Triple-Stance Decline Press Combo – Unilateral",
-              "target": "3 × 8/side",
-              "cue": "3 elbow positions per set: low, mid, high — shift stance each rep cluster",
+              "name": "Kneeling Preacher Concentration Curls",
+              "target": "3 × 8-10 🔺 last set to failure",
+              "cue": "Kneel behind preacher pad, arm fully extended at bottom. Curl with control — no momentum.",
               "sets": 3,
-              "swaps": ["Decline DB Press", "Low Cable Fly", "Dip Machine", "Decline Push-Up"]
+              "swaps": ["Seated Concentration Curls", "Machine Preacher Curls", "Cable Concentration Curls", "EZ-Bar Preacher Curls"]
             },
             {
-              "id": "s3b",
+              "id": "w1w_s3b",
               "letter": "b",
-              "name": "Unilateral Incline Row",
-              "target": "3 × 8-10 each",
-              "cue": "Brace with free hand, row to hip not armpit — full stretch at bottom",
+              "name": "Behind-the-Back Tricep Pushdowns",
+              "target": "3 × 8-10 🔺 last set to failure",
+              "cue": "Face away from cable, grip behind hips, extend arms down and back. Squeeze triceps hard at lockout.",
               "sets": 3,
-              "swaps": ["DB Single-Arm Row", "Cable Row (single)", "Meadows Row", "TRX Single-Arm Row"]
+              "swaps": ["Tricep Kickbacks", "Overhead Cable Extensions", "Close-Grip Push-Ups", "Band Pushdowns"]
             }
           ]
         }
@@ -126,58 +92,59 @@
     },
     {
       "id": "block2",
-      "label": "💪 BLOCK 2 · ACCESSORIES",
-      "type": "back",
-      "rounds": "2 Rounds · Standalone",
+      "label": "💪 BLOCK 2 · COMPOUND COMBO",
+      "type": "arms",
+      "rounds": "3 Rounds · Standalone",
       "ss": [
         {
           "id": "ss4",
-          "label": "CHEST ACCESSORY",
-          "rest": "60-90s",
-          "ar": "Dead hang 30s (wide pronated grip)",
+          "label": "KAMALU COMBO",
+          "rest": "60s",
+          "ar": "Neck rolls + shoulder mobility 30s",
           "exs": [
             {
-              "id": "s4a",
+              "id": "w1w_k1",
               "letter": "single",
-              "name": "Super Isolateral Push-Up Fly",
-              "target": "2 sets → failure",
-              "cue": "One hand pushes up, other hand flies wide — alternate sides, stay controlled",
-              "sets": 2,
-              "swaps": ["Archer Push-Up", "Single-Arm Push-Up (assisted)", "TRX Fly Push-Up"]
+              "name": "Kamalu Compound Biceps & Triceps Combo",
+              "target": "3 sets → failure",
+              "cue": "Flow through curl-to-press-to-extension without stopping. Keep tension constant throughout the combo.",
+              "sets": 3,
+              "swaps": ["21s Bicep Curls + Skull Crushers", "Curl-to-Press Combo", "Cable Curl + Pushdown Superset"]
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "label": "⚡ FINISHER · FOREARMS",
+      "type": "finisher",
+      "rounds": "3 Rounds · Supersets",
+      "ss": [
         {
           "id": "ss5",
-          "label": "BACK ACCESSORY",
-          "rest": "60-90s",
-          "ar": "Arm circles — fwd + back 10 each",
+          "label": "FOREARM SUPERSET",
+          "rest": "60s",
+          "ar": "Band pull-aparts x12",
           "exs": [
             {
-              "id": "s5a",
-              "letter": "single",
-              "name": "Kamalu Total Back Combo",
-              "target": "2 × 10",
-              "cue": "Full combo — move through all positions fluidly, retract scapulae before each pull",
-              "sets": 2,
-              "swaps": ["Cable Face-Pull", "Band Pull-Apart Combo", "DB Reverse Fly Combo"]
-            }
-          ]
-        },
-        {
-          "id": "ss6",
-          "label": "ANTAGONISTIC COMBO",
-          "rest": "60-90s",
-          "ar": "Quadruped T-spine rotation x5/side",
-          "exs": [
+              "id": "w1w_f1a",
+              "letter": "a",
+              "name": "Walking Total Forearm Extensions + Hypers",
+              "target": "3 sets → failure/arm",
+              "cue": "Extend wrist up (top), then hyperextend down (bottom) while walking. Control each phase.",
+              "sets": 3,
+              "swaps": ["Seated Wrist Curls", "Reverse Wrist Curls", "Behind-Back Wrist Curls", "Cable Wrist Extensions"]
+            },
             {
-              "id": "s6a",
-              "letter": "single",
-              "name": "DB Push-Up & Row Antagonistic Combo",
-              "target": "2 sets (10 push-ups + 8 rows)",
-              "cue": "Push-up to full lockout, then row each arm from top — keep hips square throughout",
-              "sets": 2,
-              "swaps": ["Renegade Rows", "Push-Up + Band Row", "TRX Push-Up + Row"]
+              "id": "w1w_f1b",
+              "letter": "b",
+              "name": "Dead Hangs – Neutral Grip",
+              "target": "3 sets max time",
+              "cue": "Neutral grip handles, shoulders packed down, full hang. Hold as long as possible.",
+              "sets": 3,
+              "logType": "time",
+              "swaps": ["Dead Hang – Pronated", "Towel Hangs", "Plate Pinch Hold", "Fat Grip Hold"]
             }
           ]
         }
