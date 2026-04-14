@@ -42,8 +42,8 @@ button, select, textarea, input { font: inherit; }
   position: relative;
   background-color: #1B2951;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E");
   background-size: 80px 72px;
   background-position: 4px 2px, 44px 38px;
   background-repeat: repeat;
@@ -71,8 +71,13 @@ button, select, textarea, input { font: inherit; }
   white-space: nowrap;
 }
 .progress-bar {
-  height: 8px;
-  background: repeating-linear-gradient(90deg, #B02A30 0px, #B02A30 12px, #F8F6F0 12px, #F8F6F0 24px);
+  height: 10px;
+  background:
+    linear-gradient(180deg,
+      #8B2529 0%, #8B2529 50%,
+      #E8DFD0 50%, #E8DFD0 100%
+    );
+  background-size: 100% 10px;
 }
 .progress-fill {
   height: 100%;
