@@ -1,0 +1,187 @@
+{
+  "title": "CHEST & BACK",
+  "meta": "WFWHF · Mon, Apr 13 · Week 1",
+  "yesterday": "Yesterday: Rest day (Sunday)",
+  "duration": "60-75",
+  "blocks": [
+    {
+      "id": "wu",
+      "label": "🔥 WARM-UP",
+      "type": "warmup",
+      "rounds": null,
+      "ss": [
+        {
+          "id": "ss_wu",
+          "label": "WARM-UP MOVES",
+          "rest": "30s between each",
+          "ar": null,
+          "exs": [
+            {
+              "id": "w1",
+              "letter": "single",
+              "name": "Supine Arcs",
+              "target": "2 × 10",
+              "cue": "Lying on back, arms arc overhead with control — feel the chest open",
+              "sets": 2,
+              "swaps": ["Band Pull-Aparts", "Arm Circles", "Doorway Chest Stretch"]
+            },
+            {
+              "id": "w2",
+              "letter": "single",
+              "name": "Prone Retracted Arcs",
+              "target": "2 × 10",
+              "cue": "Face down, retract scapulae first, then arc arms — squeeze upper back",
+              "sets": 2,
+              "swaps": ["Prone Y-T-W", "Band Pull-Aparts", "Wall Slides"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block1",
+      "label": "💪 BLOCK 1 · CHEST & BACK",
+      "type": "chest",
+      "rounds": "3 Rounds · Supersets",
+      "ss": [
+        {
+          "id": "ss1",
+          "label": "SUPERSET 1",
+          "rest": "60-90s",
+          "ar": "Thoracic rotation 5 reps/side",
+          "exs": [
+            {
+              "id": "s1a",
+              "letter": "a",
+              "name": "DB Twist-Press",
+              "target": "3 × 8-10",
+              "cue": "Start neutral grip at bottom, rotate to pronated at top — full press with twist at lockout",
+              "sets": 3,
+              "swaps": ["DB Flat Press", "Incline DB Press", "Landmine Press", "Cable Chest Press"]
+            },
+            {
+              "id": "s1b",
+              "letter": "b",
+              "name": "Narrow-Grip Sitting Rows",
+              "target": "3 × 10-12",
+              "cue": "Close grip handle, drive elbows straight back, squeeze shoulder blades 1 sec at peak",
+              "sets": 3,
+              "swaps": ["Cable Low Row", "DB Bent-Over Row", "TRX Row", "Chest-Supported Row"]
+            }
+          ]
+        },
+        {
+          "id": "ss2",
+          "label": "SUPERSET 2",
+          "rest": "60-90s",
+          "ar": "Scapular wall slides x10",
+          "exs": [
+            {
+              "id": "s2a",
+              "letter": "a",
+              "name": "Incline Squeeze Press",
+              "target": "3 × 8-10",
+              "cue": "Press DBs together throughout — constant inward pressure, control the eccentric",
+              "sets": 3,
+              "swaps": ["Incline DB Press", "Incline Cable Fly", "Landmine Press", "Svend Press"]
+            },
+            {
+              "id": "s2b",
+              "letter": "b",
+              "name": "2-DB Pull-Overs",
+              "target": "3 × 10",
+              "cue": "Slight elbow bend, feel the lat stretch at bottom, squeeze through full ROM",
+              "sets": 3,
+              "swaps": ["Single-DB Pull-Over", "Straight-Arm Lat Pull-Down", "Cable Pull-Over"]
+            }
+          ]
+        },
+        {
+          "id": "ss3",
+          "label": "SUPERSET 3",
+          "rest": "60-90s",
+          "ar": "Cat-cow x8 slow reps",
+          "exs": [
+            {
+              "id": "s3a",
+              "letter": "a",
+              "name": "Triple-Stance Decline Press Combo – Unilateral",
+              "target": "3 × 8/side",
+              "cue": "3 elbow positions per set: low, mid, high — shift stance each rep cluster",
+              "sets": 3,
+              "swaps": ["Decline DB Press", "Low Cable Fly", "Dip Machine", "Decline Push-Up"]
+            },
+            {
+              "id": "s3b",
+              "letter": "b",
+              "name": "Unilateral Incline Row",
+              "target": "3 × 8-10 each",
+              "cue": "Brace with free hand, row to hip not armpit — full stretch at bottom",
+              "sets": 3,
+              "swaps": ["DB Single-Arm Row", "Cable Row (single)", "Meadows Row", "TRX Single-Arm Row"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block2",
+      "label": "💪 BLOCK 2 · ACCESSORIES",
+      "type": "back",
+      "rounds": "2 Rounds · Standalone",
+      "ss": [
+        {
+          "id": "ss4",
+          "label": "CHEST ACCESSORY",
+          "rest": "60-90s",
+          "ar": "Dead hang 30s (wide pronated grip)",
+          "exs": [
+            {
+              "id": "s4a",
+              "letter": "single",
+              "name": "Super Isolateral Push-Up Fly",
+              "target": "2 sets → failure",
+              "cue": "One hand pushes up, other hand flies wide — alternate sides, stay controlled",
+              "sets": 2,
+              "swaps": ["Archer Push-Up", "Single-Arm Push-Up (assisted)", "TRX Fly Push-Up"]
+            }
+          ]
+        },
+        {
+          "id": "ss5",
+          "label": "BACK ACCESSORY",
+          "rest": "60-90s",
+          "ar": "Arm circles — fwd + back 10 each",
+          "exs": [
+            {
+              "id": "s5a",
+              "letter": "single",
+              "name": "Kamalu Total Back Combo",
+              "target": "2 × 10",
+              "cue": "Full combo — move through all positions fluidly, retract scapulae before each pull",
+              "sets": 2,
+              "swaps": ["Cable Face-Pull", "Band Pull-Apart Combo", "DB Reverse Fly Combo"]
+            }
+          ]
+        },
+        {
+          "id": "ss6",
+          "label": "ANTAGONISTIC COMBO",
+          "rest": "60-90s",
+          "ar": "Quadruped T-spine rotation x5/side",
+          "exs": [
+            {
+              "id": "s6a",
+              "letter": "single",
+              "name": "DB Push-Up & Row Antagonistic Combo",
+              "target": "2 sets (10 push-ups + 8 rows)",
+              "cue": "Push-up to full lockout, then row each arm from top — keep hips square throughout",
+              "sets": 2,
+              "swaps": ["Renegade Rows", "Push-Up + Band Row", "TRX Push-Up + Row"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
