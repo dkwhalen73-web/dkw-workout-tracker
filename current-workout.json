@@ -1,154 +1,151 @@
 {
-  "title": "BICEPS, TRICEPS & FOREARMS",
-  "meta": "WFWHF · Wed, Apr 15 · Week 1",
-  "yesterday": "Yesterday: Bootcamp — Deadlifts + Pull",
-  "duration": "55-65",
-  "blocks": [
-    {
-      "id": "block1",
-      "label": "💪 BLOCK 1 · BICEPS & TRICEPS",
-      "type": "arms",
-      "rounds": "3 Rounds · Supersets",
-      "ss": [
-        {
-          "id": "ss1",
-          "label": "SUPERSET 1",
-          "rest": "60s",
-          "ar": "Dead hang 20-30s",
-          "exs": [
-            {
-              "id": "w1w_s1a",
-              "letter": "a",
-              "name": "One-and-a-Half Hammer Curls",
-              "target": "3 × 8-10",
-              "cue": "Full curl up, lower halfway, curl back up, lower all the way — that's 1 rep. Keep elbows pinned.",
-              "sets": 3,
-              "swaps": ["Hammer Curls", "Cross-Body Hammer Curls", "Rope Cable Curls", "DB Neutral-Grip Curls"]
-            },
-            {
-              "id": "w1w_s1b",
-              "letter": "b",
-              "name": "Leaning 90° Rope Tricep Extensions",
-              "target": "3 × 8-10 🔺 last set to failure",
-              "cue": "Lean forward ~30°, lock elbows at 90° start position, extend fully and squeeze at bottom.",
-              "sets": 3,
-              "swaps": ["Cable Tricep Pushdowns", "V-Bar Pushdowns", "Band Tricep Extensions", "Overhead Rope Extensions"]
-            }
-          ]
-        },
-        {
-          "id": "ss2",
-          "label": "SUPERSET 2",
-          "rest": "60s",
-          "ar": "Wrist circles x10 each direction",
-          "exs": [
-            {
-              "id": "w1w_s2a",
-              "letter": "a",
-              "name": "Spider Curls Full ROM – Supinating Unilateral",
-              "target": "3 × 10-12 🔺 last set to failure",
-              "cue": "Chest on incline bench, arm hangs straight. Curl with full supination — rotate palm up as you lift.",
-              "sets": 3,
-              "swaps": ["Incline DB Curls", "Preacher Curls", "Cable Spider Curls", "Concentration Curls"]
-            },
-            {
-              "id": "w1w_s2b",
-              "letter": "b",
-              "name": "Alternating Pronated & Supinated 90° Tricep Extensions",
-              "target": "3 × 10-12 🔺 last set to failure",
-              "cue": "Alternate grip each rep — pronate (palms down) then supinate (palms up). Full lockout each time.",
-              "sets": 3,
-              "swaps": ["Single-Arm Cable Pushdowns", "Overhead DB Tricep Extension", "Skull Crushers", "Tricep Dips"]
-            }
-          ]
-        },
-        {
-          "id": "ss3",
-          "label": "SUPERSET 3",
-          "rest": "60s",
-          "ar": "Farmers carry 15m (light DBs)",
-          "exs": [
-            {
-              "id": "w1w_s3a",
-              "letter": "a",
-              "name": "Kneeling Preacher Concentration Curls",
-              "target": "3 × 8-10 🔺 last set to failure",
-              "cue": "Kneel behind preacher pad, arm fully extended at bottom. Curl with control — no momentum.",
-              "sets": 3,
-              "swaps": ["Seated Concentration Curls", "Machine Preacher Curls", "Cable Concentration Curls", "EZ-Bar Preacher Curls"]
-            },
-            {
-              "id": "w1w_s3b",
-              "letter": "b",
-              "name": "Behind-the-Back Tricep Pushdowns",
-              "target": "3 × 8-10 🔺 last set to failure",
-              "cue": "Face away from cable, grip behind hips, extend arms down and back. Squeeze triceps hard at lockout.",
-              "sets": 3,
-              "swaps": ["Tricep Kickbacks", "Overhead Cable Extensions", "Close-Grip Push-Ups", "Band Pushdowns"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "block2",
-      "label": "💪 BLOCK 2 · COMPOUND COMBO",
-      "type": "arms",
-      "rounds": "3 Rounds · Standalone",
-      "ss": [
-        {
-          "id": "ss4",
-          "label": "KAMALU COMBO",
-          "rest": "60s",
-          "ar": "Neck rolls + shoulder mobility 30s",
-          "exs": [
-            {
-              "id": "w1w_k1",
-              "letter": "single",
-              "name": "Kamalu Compound Biceps & Triceps Combo",
-              "target": "3 sets → failure",
-              "cue": "Flow through curl-to-press-to-extension without stopping. Keep tension constant throughout the combo.",
-              "sets": 3,
-              "swaps": ["21s Bicep Curls + Skull Crushers", "Curl-to-Press Combo", "Cable Curl + Pushdown Superset"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "finish",
-      "label": "⚡ FINISHER · FOREARMS",
-      "type": "finisher",
-      "rounds": "3 Rounds · Supersets",
-      "ss": [
-        {
-          "id": "ss5",
-          "label": "FOREARM SUPERSET",
-          "rest": "60s",
-          "ar": "Band pull-aparts x12",
-          "exs": [
-            {
-              "id": "w1w_f1a",
-              "letter": "a",
-              "name": "Walking Total Forearm Extensions + Hypers",
-              "target": "3 sets → failure/arm",
-              "cue": "Extend wrist up (top), then hyperextend down (bottom) while walking. Control each phase.",
-              "sets": 3,
-              "swaps": ["Seated Wrist Curls", "Reverse Wrist Curls", "Behind-Back Wrist Curls", "Cable Wrist Extensions"]
-            },
-            {
-              "id": "w1w_f1b",
-              "letter": "b",
-              "name": "Dead Hangs – Neutral Grip",
-              "target": "3 sets max time",
-              "cue": "Neutral grip handles, shoulders packed down, full hang. Hold as long as possible.",
-              "sets": 3,
-              "logType": "time",
-              "swaps": ["Dead Hang – Pronated", "Towel Hangs", "Plate Pinch Hold", "Fat Grip Hold"]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+"title": "CORE & SPINE",
+"meta": "WFWHF · Fri, Apr 18 · Week 1",
+"yesterday": "Yesterday: Bootcamp — Legs/Hamstrings. Reduce redundant leg volume today.",
+"duration": "55-65",
+"blocks": [
+{
+"id": "wu",
+"label": "🔥 WARM-UP",
+"type": "warmup",
+"rounds": null,
+"ss": [
+{
+"id": "ss_wu",
+"label": "WARM-UP",
+"rest": null,
+"ar": null,
+"exs": [
+{
+"id": "w1",
+"letter": "single",
+"name": "Russian Twists",
+"target": "2 × ≥10/side",
+"cue": "Feet elevated or grounded, rotate fully side to side, controlled tempo",
+"sets": 2,
+"swaps": ["Seated Plate Twists", "Band Rotations", "Cable Rotations"]
+}
+]
+}
+]
+},
+{
+"id": "core",
+"label": "💪 BLOCK 1 · CORE & SPINE",
+"type": "core",
+"rounds": "3 Rounds · Supersets",
+"ss": [
+{
+"id": "ss_c1",
+"label": "SUPERSET 1",
+"rest": "60-90s",
+"ar": "Quadruped diaphragmatic breathing × 5",
+"exs": [
+{
+"id": "c1a",
+"letter": "a",
+"name": "Hanging Supported Full PPT",
+"target": "3 sets (8-10, failure)",
+"cue": "Hang from bar, posterior pelvic tilt — curl pelvis up toward ribs, full ROM, slow and controlled",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Hanging Knee Raises", "Decline Sit-Up PPT", "Bench Supported PPT", "Captain's Chair PPT"]
+},
+{
+"id": "c1b",
+"letter": "b",
+"name": "Stability APT",
+"target": "3 sets to failure 🔺",
+"cue": "On stability ball or bench — anterior pelvic tilt, arch the low back, hold and release with control",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Prone Back Extensions", "Bird Dog APT Hold", "Roman Chair APT"]
+}
+]
+},
+{
+"id": "ss_c2",
+"label": "SUPERSET 2",
+"rest": "60-90s",
+"ar": "Hip flexor stretch 20s/side",
+"exs": [
+{
+"id": "c2a",
+"letter": "a",
+"name": "TRUE Kneeling Curl-Downs",
+"target": "3 sets (6-8, failure)",
+"cue": "Kneeling on pad, feet anchored — hinge back slowly from knees, abs resisting, full ROM down and up",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Decline Sit-Up Negatives", "Ab Wheel from Knees", "GHD Sit-Up Partial"]
+},
+{
+"id": "c2b",
+"letter": "b",
+"name": "Stability Lumbar Extensions",
+"target": "3 sets to failure 🔺",
+"cue": "Stability ball under hips/pelvis, extend spine fully, squeeze glutes at top, control the descent",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Roman Chair Extensions", "Prone Superman Hold", "GHD Extensions"]
+}
+]
+},
+{
+"id": "ss_c3",
+"label": "SUPERSET 3",
+"rest": "60-90s",
+"ar": "Dead bug hold 20s",
+"exs": [
+{
+"id": "c3a",
+"letter": "a",
+"name": "Walking Oblique Side Bends",
+"target": "3 sets/side (10-12, failure)",
+"cue": "DB in one hand, walk 10m while bending laterally away from the load — full ROM side bend each step",
+"sets": 3,
+"swaps": ["Cable Side Bends", "Suitcase Carries", "Landmine Side Bends", "Standing DB Side Bends"]
+},
+{
+"id": "c3b",
+"letter": "b",
+"name": "Hanging Windshield Wipers",
+"target": "3 sets to failure 🔺",
+"cue": "Hang from bar, legs straight or bent, rotate hip-to-hip in full arc — control both directions",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Lying Windshield Wipers", "Hanging Oblique Raises", "Cable Rotational Raises"]
+}
+]
+},
+{
+"id": "ss_c4",
+"label": "SUPERSET 4",
+"rest": "60-90s",
+"ar": "Standing full-body reach × 5 slow",
+"exs": [
+{
+"id": "c4a",
+"letter": "a",
+"name": "Triple-Angle Serratus Protractions (Unilateral)",
+"target": "3 sets (pos3: 10-12, pos2: 10-12, pos1: failure)",
+"cue": "One arm on cable or band — protract scapula fully at each angle: low, mid, high. Keep elbow soft.",
+"sets": 3,
+"swaps": ["Wall Push-Up Plus", "Cable Serratus Punches", "Band Serratus Protractions", "DB Serratus Press"]
+},
+{
+"id": "c4b",
+"letter": "b",
+"name": "Kneeling Rollout",
+"target": "2-3 sets to failure 🔺",
+"cue": "Knees on pad, ab wheel arms extended — roll out as far as control allows, pull back with abs, no hip drop",
+"sets": 3,
+"logType": "reps",
+"swaps": ["Stability Ball Rollout", "Barbell Rollout", "TRX Fallout", "Plank Walkout"]
+}
+]
+}
+]
+}
+]
 }
