@@ -838,7 +838,6 @@ function renderWorkout() {
           ${ss.exs.map((ex, exIndex) => renderExerciseCard(ex, exIndex === ss.exs.length - 1, ss.rest, block.id)).join('')}
         `).join('')}
       </div>
-      ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
     </div>
   `).join('');
 }
