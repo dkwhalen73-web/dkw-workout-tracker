@@ -42,8 +42,8 @@ button, select, textarea, input { font: inherit; }
   position: relative;
   background-color: #1B2951;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E");
   background-size: 80px 72px;
   background-position: 4px 2px, 44px 38px;
   background-repeat: repeat;
@@ -233,10 +233,10 @@ button, select, textarea, input { font: inherit; }
 .ex-card:has(.btn-check.done) {
   border-color: rgba(39,174,96,0.15);
 }
-.ex-name { font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.1; }
-.ex-tip { font-size: 11px; line-height: 1.35; color: rgba(248,246,240,0.72); margin-top: 5px; }
-.ex-target { font-size: 12px; color: var(--gold); font-weight: 800; margin-top: 4px; }
-.ex-cue { font-size: 12px; line-height: 1.45; color: rgba(248,246,240,0.62); margin-top: 6px; }
+.ex-name { font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.1; }
+.ex-tip { display: none; }
+.ex-target { font-size: 18px; color: #FFE033; font-weight: 800; margin-top: 4px; }
+.ex-cue { font-size: 15px; line-height: 1.5; color: rgba(248,246,240,0.62); margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
 
 .set-row {
   display: grid;
@@ -263,11 +263,11 @@ button, select, textarea, input { font: inherit; }
 .set-input:focus { border-color: var(--gold); background: #000; outline: none; box-shadow: 0 0 0 3px rgba(212,175,55,0.15); }
 .set-input::placeholder { color: rgba(248,246,240,0.22); }
 .mini-label {
-  font-size: 8px;
+  font-size: 12px;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--gold);
+  color: #FFE033;
   margin-top: 3px;
   font-weight: 800;
 }
@@ -5926,7 +5926,7 @@ const DR_GAINS_FULL_DB = {
   <div class="card">
     <div class="card-title">Session Controls</div>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="forceReloadWorkout()">↻ Reload Latest Workout</button>
+      <button class="btn btn-primary" onclick="autoFetchWorkout()">↻ Reload Latest Workout</button>
       <button class="btn btn-secondary" onclick="resumeSession()">Resume Last Session</button>
       <button class="btn btn-danger" onclick="clearSession()">Clear Saved Session</button>
     </div>
@@ -6053,7 +6053,29 @@ function switchTab(tab) {
 }
 
 function init() {
-  // Always fetch the latest workout JSON first
+  // 1. Check for a saved in-progress session first
+  const raw = localStorage.getItem(SESSION_KEY);
+  if (raw) {
+    try {
+      const saved = JSON.parse(raw);
+      APP = {
+        ...APP,
+        config: { ...APP.config, ...(saved.config || {}) },
+        workout: saved.workout || null,
+        sets: saved.sets || {},
+        blockTimers: saved.blockTimers || {}
+      };
+      if (APP.workout) {
+        renderAll();
+        setStatus('Saved session loaded. Tap Resume or go to Workout tab.');
+        return; // Don't auto-fetch if we have a saved session
+      }
+    } catch (error) {
+      // Corrupted save — fall through to auto-fetch
+    }
+  }
+
+  // 2. No saved session — auto-fetch current-workout.json from the repo
   autoFetchWorkout();
 }
 
@@ -6063,72 +6085,20 @@ async function autoFetchWorkout() {
     const resp = await fetch('./current-workout.json?t=' + Date.now());
     if (!resp.ok) throw new Error('No workout file found');
     const data = await resp.json();
-    const freshWorkout = normalizeLoadedWorkout(data);
-    const freshKey = (data.title || '') + '|' + (data.meta || '');
-
-    // Check if we have a saved session for THIS SAME workout
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (raw) {
-      try {
-        const saved = JSON.parse(raw);
-        const savedKey = (saved.workout?.title || '') + '|' + (saved.workout?.meta || '');
-        if (savedKey === freshKey && saved.sets && Object.keys(saved.sets).length > 0) {
-          // Same workout — restore saved progress (weights, reps, checkmarks)
-          APP.workout = saved.workout;
-          APP.sets = saved.sets;
-          APP.blockTimers = saved.blockTimers || {};
-          APP.config = { ...APP.config, ...(saved.config || {}) };
-          renderAll();
-          setStatus('Resumed your in-progress session.');
-          return;
-        }
-      } catch (e) {
-        // Corrupted save — ignore and load fresh
-      }
-    }
-
-    // New workout or no saved session — load fresh
-    APP.workout = freshWorkout;
+    APP.workout = normalizeLoadedWorkout(data);
     APP.sets = createSetState(APP.workout);
     APP.blockTimers = {};
     saveSession();
     renderAll();
     switchTab('overview');
-    setStatus('Workout loaded.');
+    setStatus('Workout loaded automatically.');
   } catch (err) {
-    // Fetch failed — fall back to localStorage if anything is saved
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (raw) {
-      try {
-        const saved = JSON.parse(raw);
-        APP = {
-          ...APP,
-          config: { ...APP.config, ...(saved.config || {}) },
-          workout: saved.workout || null,
-          sets: saved.sets || {},
-          blockTimers: saved.blockTimers || {}
-        };
-        if (APP.workout) {
-          renderAll();
-          setStatus('Offline — showing last saved session.');
-          return;
-        }
-      } catch (e) {}
-    }
-    setStatus('No workout found. Paste JSON in the Load tab.');
+    setStatus('No auto-load workout found. Paste JSON in the Load tab, or push current-workout.json to the repo.');
   }
 }
 
 function setStatus(message) {
   document.getElementById('builderStatus').textContent = message;
-}
-
-function forceReloadWorkout() {
-  localStorage.removeItem(SESSION_KEY);
-  APP.workout = null;
-  APP.sets = {};
-  APP.blockTimers = {};
-  autoFetchWorkout();
 }
 
 async function loadProgramReference() {
@@ -6309,9 +6279,7 @@ function renderExerciseCard(ex, isLast, rest, blockId) {
   return `
     <div class="ex-card">
       <div class="ex-name">${escapeHtml(ex.name)}</div>
-      <div class="ex-tip">${escapeHtml(tip)}</div>
       <div class="ex-target">${escapeHtml(ex.target)}</div>
-      ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
       <div style="margin-top:8px">
         ${sets.map((setRow, index) => `
           <div class="set-row">
@@ -6328,6 +6296,7 @@ function renderExerciseCard(ex, isLast, rest, blockId) {
           </div>
         `).join('')}
       </div>
+      ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
       ${ex.swaps && ex.swaps.length > 0 ? `
         <button class="swap-toggle" onclick="this.nextElementSibling.classList.toggle('open')">⇄ Swap</button>
         <div class="swap-list">
