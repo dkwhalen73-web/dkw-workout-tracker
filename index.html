@@ -328,7 +328,11 @@
     }
 
     .ex-tip {
-      display: none;
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgba(248, 246, 240, 0.7);
+      margin-top: 4px;
+      font-style: italic;
     }
 
     .ex-target {
@@ -584,13 +588,46 @@
       color: rgba(248, 246, 240, 0.62);
       line-height: 1.6;
     }
-  </style>
-  <script>
-  </script>
-  <script src="parsed_db.js"></script>
-  <script>
 
-  </script>
+    /* Selector Grid */
+    .selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .sel-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .sel-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sel-input {
+      background: var(--navy-deep);
+      border: 1.5px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      color: var(--cream);
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      width: 100%;
+    }
+
+    .sel-input:focus {
+      border-color: var(--gold);
+    }
+  </style>
+  <script src="parsed_db.js"></script>
 </head>
 
 <body>
@@ -627,6 +664,60 @@
       <div class="hint" style="margin-top:12px" id="builderStatus"></div>
     </div>
     <div class="card" style="border-top:1px solid rgba(248,246,240,0.1)">
+      <div class="card-title">Program Builder</div>
+      <div class="hint">Select your session from the 8-week protocol.</div>
+      
+      <div class="selector-grid">
+        <div class="sel-group" style="grid-column: span 2">
+          <label class="sel-label">Training Mode</label>
+          <select id="sel-mode" class="sel-input" onchange="APP.config.mode = this.value; updateBuilderUI()">
+            <option value="standard">Standard 8-Week Program</option>
+            <option value="travel">Travel / Crunch / Hotel</option>
+            <option value="beast">Beast Mode (Sat/Sun)</option>
+            <option value="murph">Murph Prep</option>
+          </select>
+        </div>
+
+        <div class="sel-group" id="group-week">
+          <label class="sel-label">Week</label>
+          <select id="sel-week" class="sel-input" onchange="APP.config.week = this.value">
+            <option value="1">Week 1</option>
+            <option value="2">Week 2</option>
+            <option value="3">Week 3</option>
+            <option value="4">Week 4</option>
+            <option value="5">Week 5</option>
+            <option value="6">Week 6</option>
+            <option value="7">Week 7</option>
+            <option value="8">Week 8</option>
+          </select>
+        </div>
+
+        <div class="sel-group" id="group-day">
+          <label class="sel-label">Day</label>
+          <select id="sel-day" class="sel-input" onchange="APP.config.day = this.value">
+            <option value="Monday">Monday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>
+        </div>
+
+        <div class="sel-group" style="grid-column: span 2">
+          <label class="sel-label">Location / Equipment</label>
+          <select id="sel-location" class="sel-input" onchange="APP.config.location = this.value">
+            <option value="WFWHF">Main Gym (WFWHF)</option>
+            <option value="Crunch">Crunch Fitness (Swaps)</option>
+            <option value="Hotel">Hotel / Minimal (Swaps)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:20px">
+        <button class="btn btn-primary" style="width:100%" onclick="buildWorkout()">★ BUILD WORKOUT</button>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:1px solid rgba(248,246,240,0.1)">
       <div class="card-title">Manual Load (Backup)</div>
       <div class="hint" style="margin-bottom:10px">Paste tracker JSON from Claude if auto-load isn't working.</div>
       <textarea class="text-area" id="loadInput" placeholder="Paste tracker JSON here..."></textarea>
@@ -661,6 +752,7 @@
     </div>
   </div>
 
+  <script src="parsed_db.js"></script>
   <script>
     const SESSION_KEY = 'dg_v15_session';
     const PROGRAM_FILE = 'DrGains_8Week_Program_Reference.txt';
@@ -752,6 +844,12 @@
     }
 
     function init() {
+      // Initialize UI from config
+      document.getElementById('sel-mode').value = APP.config.mode;
+      document.getElementById('sel-week').value = APP.config.week;
+      document.getElementById('sel-day').value = APP.config.day;
+      document.getElementById('sel-location').value = APP.config.location;
+      
       // Always fetch the latest workout JSON first
       autoFetchWorkout();
     }
@@ -772,13 +870,37 @@
             const saved = JSON.parse(raw);
             const savedKey = (saved.workout?.title || '') + '|' + (saved.workout?.meta || '');
             if (savedKey === freshKey && saved.sets && Object.keys(saved.sets).length > 0) {
-              // Same workout — restore saved progress (weights, reps, checkmarks)
-              APP.workout = saved.workout;
+              // Same workout — update metadata (swaps, cues, targets) without resetting progress
+              const savedWorkout = saved.workout;
+              freshWorkout.blocks.forEach((fBlock, bIdx) => {
+                const sBlock = savedWorkout.blocks[bIdx];
+                if (!sBlock) return;
+                fBlock.ss.forEach((fSs, sIdx) => {
+                  const sSs = sBlock.ss[sIdx];
+                  if (!sSs) return;
+                  fSs.exs.forEach((fEx, eIdx) => {
+                    const sEx = sSs.exs[eIdx];
+                    if (!sEx) return;
+                    // Update definitions while keeping custom name (if swapped)
+                    sEx.swaps = fEx.swaps || [];
+                    sEx.cue = fEx.cue || '';
+                    sEx.target = fEx.target || '';
+                    if (!sEx.originalName) {
+                      sEx.name = fEx.name; // Not swapped yet, keep name in sync
+                    } else if (sEx.originalName === fEx.name) {
+                      // If sEx.originalName matches the new fEx.name, it means the base hasn't changed
+                      // But if fEx.name changed in the JSON, we should probably update the originalName
+                    }
+                  });
+                });
+              });
+
+              APP.workout = savedWorkout;
               APP.sets = saved.sets;
               APP.blockTimers = saved.blockTimers || {};
               APP.config = { ...APP.config, ...(saved.config || {}) };
               renderAll();
-              setStatus('Resumed your in-progress session.');
+              setStatus('Resumed session with updated definitions.');
               return;
             }
           } catch (e) {
@@ -820,6 +942,20 @@
 
     function setStatus(message) {
       document.getElementById('builderStatus').textContent = message;
+    }
+
+    function updateBuilderUI() {
+      const mode = APP.config.mode;
+      const weekGrp = document.getElementById('group-week');
+      const dayGrp = document.getElementById('group-day');
+
+      if (mode === 'standard') {
+        weekGrp.style.display = 'flex';
+        dayGrp.style.display = 'flex';
+      } else {
+        weekGrp.style.display = 'none';
+        dayGrp.style.display = 'none';
+      }
     }
 
     function forceReloadWorkout() {
@@ -1008,6 +1144,7 @@
       return `
     <div class="ex-card">
       <div class="ex-name">${escapeHtml(ex.name)}</div>
+      <div class="ex-tip">${escapeHtml(tip)}</div>
       
       <div class="ex-target">${escapeHtml(ex.target)}</div>
       <div style="margin-top:8px">
@@ -1031,9 +1168,9 @@
         <button class="swap-toggle" onclick="this.nextElementSibling.classList.toggle('open')">⇄ Swap</button>
         <div class="swap-list">
           ${ex.originalName && ex.originalName !== ex.name ? `
-            <div class="swap-chip" style="background:rgba(212,175,55,0.15); border:1px solid var(--gold); color:var(--gold)" onclick="swapExercise('${ex.id}', '${escapeHtml(ex.originalName).replace(/'/g, "\\'")}')">↺ Original: ${escapeHtml(ex.originalName)}</div>
+            <div class="swap-chip" style="background:rgba(212,175,55,0.15); border:1px solid var(--gold); color:var(--gold)" onclick="swapExercise('${ex.id}', ${JSON.stringify(ex.originalName).replace(/"/g, '&quot;')})">↺ Original: ${escapeHtml(ex.originalName)}</div>
           ` : ''}
-          ${ex.swaps.map(s => `<div class="swap-chip" onclick="swapExercise('${ex.id}', '${escapeHtml(s).replace(/'/g, "\\'")}')">${escapeHtml(s)}</div>`).join('')}
+          ${ex.swaps.map(s => `<div class="swap-chip" onclick="swapExercise('${ex.id}', ${JSON.stringify(s).replace(/"/g, '&quot;')})">${escapeHtml(s)}</div>`).join('')}
         </div>
       ` : ''}
     </div>
