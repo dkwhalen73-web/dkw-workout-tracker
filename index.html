@@ -656,10 +656,15 @@
   <div class="tab-pane active" id="p-load">
     <div class="card">
       <div class="card-title">Session Controls</div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="forceReloadWorkout()">↻ Reload Latest Workout</button>
-        <button class="btn btn-secondary" onclick="resumeSession()">Resume Last Session</button>
-        <button class="btn btn-danger" onclick="clearSession()">Clear Saved Session</button>
+      <div class="btn-row" style="display:flex; flex-direction:column; gap:8px">
+        <div style="display:flex; gap:8px">
+          <button class="btn btn-primary" style="flex:2" onclick="forceReloadWorkout()">↻ Reload Latest Workout</button>
+          <button class="btn btn-secondary" style="flex:1" onclick="hardRefresh()">★ Hard Reload</button>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button class="btn btn-secondary" style="flex:1" onclick="resumeSession()">Resume Session</button>
+          <button class="btn btn-danger" style="flex:1" onclick="clearSession()">Clear All Data</button>
+        </div>
       </div>
       <div class="hint" style="margin-top:12px" id="builderStatus"></div>
     </div>
@@ -754,6 +759,24 @@
 
   <script src="parsed_db.js"></script>
   <script>
+    const TECHNIQUE_TIPS = {
+      'Russian Twists': 'Rotate shoulders, not just arms. Keep heels down.',
+      'Hanging Supported Full PPT': 'Tuck hips forward. Squeeze lower abs to flatten back.',
+      'Stability APT': 'Arch lower back slightly. Focus on the stretch and control.',
+      'TRUE Kneeling Curl-Downs': 'Crunch ribcage specifically toward hips. Roll like a ball.',
+      'Stability Lumbar Extensions': 'Pause at top. Keep neck neutral. No swinging.',
+      'Walking Oblique Side Bends': 'Focus on lateral contraction. Don\'t lean forward or back.',
+      'Hanging Windshield Wipers': 'Rotate from the trunk. Keep legs straight & controlled.',
+      'Triple-Angle Serratus Protractions (Unilateral)': 'Push the weight forward as far as possible. Don\'t bend elbow.',
+      'Kneeling Rollout': 'Keep back rounded. Only go as far as you can control.',
+      'Hollow Body Rockers': 'Keep lower back pressed into floor. Rock as one unit.',
+      'Reverse Crunches': 'Exhale as knees come up. Focus on the lower-abs tuck.',
+      'Captain\'s Chair Leg Raises': 'Don\'t swing. Lift from the pelvis, not just the legs.',
+      'Lying Leg Raises': 'Press lower back into the floor. No arching.',
+      'Side Plank': 'Keep body in a straight line. Squeeze glutes.',
+      'Bird Dog': 'Reach long, don\'t arch up. Keep core braced.'
+    };
+
     const SESSION_KEY = 'dg_v15_session';
     const PROGRAM_FILE = 'DrGains_8Week_Program_Reference.txt';
     const DAYS = ['Monday', 'Wednesday', 'Friday', 'Saturday'];
@@ -955,6 +978,14 @@
       } else {
         weekGrp.style.display = 'none';
         dayGrp.style.display = 'none';
+      }
+    }
+
+    function hardRefresh() {
+      if (confirm('This will clear your saved session, weights, and reps. Proceed?')) {
+        localStorage.removeItem(SESSION_KEY);
+        sessionStorage.clear();
+        location.reload(true);
       }
     }
 
@@ -1761,31 +1792,42 @@
     function cleanCue(note) {
       if (!note) return '';
       return note
+        .replace(/Rest:\s*[^|]*\|?/ig, '')
+        .replace(/Active Rest:\s*[^|]*\|?/ig, '')
         .replace(/Warm-up\s*\|?/ig, '')
-        .replace(/Rest:\s*[^|]+/ig, '')
-        .replace(/Active Rest:\s*.+$/ig, '')
         .replace(/→\s*No rest[^|]*/ig, 'Move directly to the next exercise.')
         .replace(/\|\s*\|/g, '|')
-        .replace(/^\|\s*|\s*\|$/g, '')
+        .replace(/^[\s|]+|[\s|]+$/g, '')
         .trim();
     }
 
     function inferExerciseTip(ex) {
-      const cue = cleanCue(ex.cue || '');
-      // Only use the cue as a tip if it contains actual movement instructions, not just transitions
-      if (cue && !/move directly|next exercise|rest:|active rest/i.test(cue)) {
-        return cue.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
+      const name = String(ex.name || '');
+      const cleanName = name.replace(/^SS\d+[A-Z]:\s*/i, '').trim();
+      const rawCue = String(ex.cue || '').toLowerCase();
+      const clean = cleanCue(ex.cue || '');
+
+      // 1. Dictionary Lookup (High Precision)
+      if (TECHNIQUE_TIPS[cleanName]) return TECHNIQUE_TIPS[cleanName];
+      for (const [key, tip] of Object.entries(TECHNIQUE_TIPS)) {
+        if (cleanName.toLowerCase().includes(key.toLowerCase())) return tip;
       }
 
-      const name = String(ex.name || '').toLowerCase();
-      if (/row|pull|lat/.test(name)) return 'Lead with elbows. Squeeze upper back.';
-      if (/press|push/.test(name)) return 'Brace core. Control the eccentric.';
-      if (/squat|lunge|split squat/.test(name)) return 'Stay rooted. Keep knees tracking.';
-      if (/curl|tricep|extension|kickback/.test(name)) return 'Full range. No momentum.';
-      if (/bend|side bend|oblique/.test(name)) return 'Focus on lateral contraction. Don\'t lean forward.';
-      if (/twist|rotation|wiper/.test(name)) return 'Rotate from the trunk. Keep hips stable.';
-      if (/raise|crunch|sit-up|hollow|core|plank/.test(name)) return 'Exhale hard. Press lower back down/flat.';
-      return 'Controlled reps. Clean form every set.';
+      // 2. Keyword fallback (Moderated Precision)
+      const lowerName = cleanName.toLowerCase();
+      if (/row|pull|lat/.test(lowerName)) return 'Lead with elbows. Squeeze upper back.';
+      if (/press|push/.test(lowerName)) return 'Brace core. Control the eccentric.';
+      if (/squat|lunge|split squat/.test(lowerName)) return 'Stay rooted. Keep knees tracking.';
+      if (/curl|tricep|extension|kickback/.test(lowerName)) return 'Full range. No momentum.';
+
+      // 3. User-provided cue (Only if NOT transition noise)
+      const isTransition = /→|move directly|next exercise|rest:|active rest/i.test(rawCue) || /move directly|next exercise/i.test(clean);
+      if (clean && !isTransition && clean.length > 5) {
+        return clean.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
+      }
+
+      // 4. Absolute Fallback
+      return 'Controlled reps. Focus on the muscle contraction.';
     }
 
     function isWarmupItem(item) {
