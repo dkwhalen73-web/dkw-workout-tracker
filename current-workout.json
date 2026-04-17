@@ -19,7 +19,12 @@
               "name": "Russian Twists",
               "target": "2x\u226510/side",
               "sets": 2,
-              "cue": "\u26a1 BOOTCAMP DAY (Deadlifts + Pull) \u2014 Reduce hinge/pull overlap here. Complement;"
+              "cue": "\u26a1 BOOTCAMP DAY (Deadlifts + Pull) \u2014 Reduce hinge/pull overlap here. Complement;",
+              "swaps": [
+                "Bicycle Crunches",
+                "Heel Touches",
+                "Cable Woodchoppers"
+              ]
             }
           ]
         }
@@ -40,14 +45,24 @@
               "name": "SS1A: Hanging Supported Full PPT",
               "target": "3 sets (8-10, failure)",
               "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS1B"
+              "cue": "\u2192 No rest \u2014 go straight to SS1B",
+              "swaps": [
+                "Reverse Crunches",
+                "Captain's Chair Leg Raises",
+                "Lying Leg Raises"
+              ]
             },
             {
               "id": "w1_fri__ex3",
               "name": "SS1B: Stability APT",
               "target": "3 sets to failure",
               "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Quadruped diaphragmatic breathing x5"
+              "cue": "Rest: 60-90 sec | Active Rest: Quadruped diaphragmatic breathing x5",
+              "swaps": [
+                "Cat-Cow (APT focus)",
+                "Pelvic Tilts (floor)",
+                "Bird Dog"
+              ]
             }
           ]
         }
@@ -68,14 +83,24 @@
               "name": "SS2A: TRUE Kneeling Curl-Downs",
               "target": "3 sets (6-8, failure)",
               "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS2B"
+              "cue": "\u2192 No rest \u2014 go straight to SS2B",
+              "swaps": [
+                "Cable Crunches",
+                "Weighted Crunches",
+                "Sit-Ups"
+              ]
             },
             {
               "id": "w1_fri__ex5",
               "name": "SS2B: Stability Lumbar Extensions",
               "target": "3 sets to failure",
               "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Hip flexor stretch 20 sec/side"
+              "cue": "Rest: 60-90 sec | Active Rest: Hip flexor stretch 20 sec/side",
+              "swaps": [
+                "Supermans",
+                "Back Extensions (machine)",
+                "Good Mornings"
+              ]
             }
           ]
         }
@@ -96,14 +121,24 @@
               "name": "SS3A: Walking Oblique Side Bends",
               "target": "3 sets/side (10-12, failure)",
               "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS3B"
+              "cue": "\u2192 No rest \u2014 go straight to SS3B",
+              "swaps": [
+                "Dumbbell Side Bends",
+                "Side Plank",
+                "Cable Side Bends"
+              ]
             },
             {
               "id": "w1_fri__ex7",
               "name": "SS3B: Hanging Windshield Wipers",
               "target": "3 sets to failure",
               "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Dead bug hold 20 sec"
+              "cue": "Rest: 60-90 sec | Active Rest: Dead bug hold 20 sec",
+              "swaps": [
+                "Lying Windshield Wipers",
+                "Spider-Man Crunches",
+                "Hanging Leg Raises"
+              ]
             }
           ]
         }
@@ -124,14 +159,24 @@
               "name": "SS4A: Triple-Angle Serratus Protractions (Unilateral)",
               "target": "3 sets (pos3:10-12, pos2:10-12, pos1:failure)",
               "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS4B"
+              "cue": "\u2192 No rest \u2014 go straight to SS4B",
+              "swaps": [
+                "Incline Push-Up Plus",
+                "Serratus Wall Slides",
+                "Plank Reach"
+              ]
             },
             {
               "id": "w1_fri__ex9",
               "name": "SS4B: Kneeling Rollout",
               "target": "2-3 sets to failure",
               "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Standing full-body reach x5 slow"
+              "cue": "Rest: 60-90 sec | Active Rest: Standing full-body reach x5 slow",
+              "swaps": [
+                "Plank",
+                "Ab Wheel (standing)",
+                "Dead Bug"
+              ]
             }
           ]
         }
