@@ -1772,7 +1772,8 @@
 
     function inferExerciseTip(ex) {
       const cue = cleanCue(ex.cue || '');
-      if (cue) {
+      // Only use the cue as a tip if it contains actual movement instructions, not just transitions
+      if (cue && !/move directly|next exercise|rest:|active rest/i.test(cue)) {
         return cue.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
       }
 
@@ -1781,7 +1782,9 @@
       if (/press|push/.test(name)) return 'Brace core. Control the eccentric.';
       if (/squat|lunge|split squat/.test(name)) return 'Stay rooted. Keep knees tracking.';
       if (/curl|tricep|extension|kickback/.test(name)) return 'Full range. No momentum.';
-      if (/core|plank|crunch|raise|sit-up|hollow/.test(name)) return 'Exhale hard. Keep ribcage down.';
+      if (/bend|side bend|oblique/.test(name)) return 'Focus on lateral contraction. Don\'t lean forward.';
+      if (/twist|rotation|wiper/.test(name)) return 'Rotate from the trunk. Keep hips stable.';
+      if (/raise|crunch|sit-up|hollow|core|plank/.test(name)) return 'Exhale hard. Press lower back down/flat.';
       return 'Controlled reps. Clean form every set.';
     }
 
