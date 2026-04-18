@@ -1,29 +1,77 @@
 {
-  "title": "WEEK 1 - FRIDAY: Core & Spine",
-  "meta": "WFWHF \u00b7 Friday \u00b7 Week 1",
-  "yesterday": "Yesterday: Bootcamp \u2014 Legs / Hamstrings",
-  "duration": "45-55",
+  "title": "MURPH PREP — PULL-UP & PUSH-UP ENDURANCE",
+  "meta": "WFWHF · Sat, Apr 19 · Murph Training",
+  "yesterday": "Yesterday: Bootcamp — biceps & pulling (back, reverse sled pulls) + skier/rower cardio",
+  "duration": "40-50",
   "blocks": [
     {
-      "id": "w1_fri__b1",
-      "label": "EXERCISE",
-      "type": "core",
+      "id": "wu",
+      "label": "🔥 WARM-UP",
+      "type": "warmup",
+      "rounds": null,
       "ss": [
         {
-          "label": "SINGLE",
-          "rest": "",
-          "ar": "",
+          "id": "ss_wu",
+          "label": "WARM-UP MOVES",
+          "rest": null,
+          "ar": null,
           "exs": [
             {
-              "id": "w1_fri__ex1",
-              "name": "Russian Twists",
-              "target": "2x\u226510/side",
+              "id": "w1",
+              "letter": "single",
+              "name": "Arm Circles — Fwd & Back",
+              "target": "10 each direction",
+              "cue": "Big circles, gradually increase range of motion",
+              "sets": 1,
+              "swaps": ["Band Pull-Aparts", "Shoulder Rolls", "Wall Angels"]
+            },
+            {
+              "id": "w2",
+              "letter": "single",
+              "name": "Scapular Pull-Ups",
+              "target": "2 × 8",
+              "cue": "Dead hang start — depress and retract scaps without bending elbows",
               "sets": 2,
-              "cue": "\u26a1 BOOTCAMP DAY (Deadlifts + Pull) \u2014 Reduce hinge/pull overlap here. Complement;",
+              "swaps": ["Band-Assisted Scapular Pulls", "Hanging Shrugs", "Active Hang Holds"]
+            },
+            {
+              "id": "w3",
+              "letter": "single",
+              "name": "Incline Push-Ups (slow tempo)",
+              "target": "2 × 10",
+              "cue": "3 sec down, 1 sec up — activate chest and triceps before loading",
+              "sets": 2,
+              "swaps": ["Wall Push-Ups", "Knee Push-Ups", "Band-Assisted Push-Ups"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emom",
+      "label": "💥 BLOCK 1 · EMOM PULL-UP LADDER",
+      "type": "beast",
+      "rounds": "10 min EMOM",
+      "ss": [
+        {
+          "id": "ss_emom",
+          "label": "EVERY MINUTE ON THE MINUTE",
+          "rest": "Remainder of each minute",
+          "ar": "Shake arms out, stay loose between sets",
+          "exs": [
+            {
+              "id": "e1",
+              "letter": "single",
+              "name": "Strict Pull-Ups",
+              "target": "Min 1-4: 3 reps · Min 5-8: 4 reps · Min 9-10: max reps",
+              "cue": "Full dead hang at bottom, chin over bar, controlled descent — no kipping",
+              "sets": 10,
+              "logType": "reps",
               "swaps": [
-                "Bicycle Crunches",
-                "Heel Touches",
-                "Cable Woodchoppers"
+                "Band-Assisted Pull-Ups",
+                "Chin-Ups",
+                "Neutral-Grip Pull-Ups",
+                "Jumping Pull-Ups with Slow Negative"
               ]
             }
           ]
@@ -31,37 +79,30 @@
       ]
     },
     {
-      "id": "w1_fri__b2",
-      "label": "SUPERSET 1",
-      "type": "core",
+      "id": "pushup_vol",
+      "label": "💪 BLOCK 2 · PUSH-UP VOLUME BUILDER",
+      "type": "push",
+      "rounds": "5 Rounds · 90s cycle",
       "ss": [
         {
-          "label": "SS1A & SS1B",
-          "rest": "60-90 sec",
-          "ar": "Quadruped diaphragmatic breathing x5",
+          "id": "ss_p1",
+          "label": "PUSH-UP SETS ON THE 90s",
+          "rest": "Remainder of 90s",
+          "ar": "Dead hang 15-20s between rounds",
           "exs": [
             {
-              "id": "w1_fri__ex2",
-              "name": "SS1A: Hanging Supported Full PPT",
-              "target": "3 sets (8-10, failure)",
-              "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS1B",
+              "id": "p1",
+              "letter": "single",
+              "name": "Standard Push-Ups",
+              "target": "Rd 1-3: 20 reps · Rd 4-5: max reps",
+              "cue": "Full lockout at top, chest to floor, tight core — no sagging hips",
+              "sets": 5,
+              "logType": "reps",
               "swaps": [
-                "Reverse Crunches",
-                "Captain's Chair Leg Raises",
-                "Lying Leg Raises"
-              ]
-            },
-            {
-              "id": "w1_fri__ex3",
-              "name": "SS1B: Stability APT",
-              "target": "3 sets to failure",
-              "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Quadruped diaphragmatic breathing x5",
-              "swaps": [
-                "Cat-Cow (APT focus)",
-                "Pelvic Tilts (floor)",
-                "Bird Dog"
+                "Diamond Push-Ups",
+                "Wide Push-Ups",
+                "Decline Push-Ups",
+                "Hand-Release Push-Ups"
               ]
             }
           ]
@@ -69,37 +110,83 @@
       ]
     },
     {
-      "id": "w1_fri__b3",
-      "label": "SUPERSET 2",
-      "type": "core",
+      "id": "superset_block",
+      "label": "💪 BLOCK 3 · ENDURANCE SUPERSETS",
+      "type": "push",
+      "rounds": "3 Rounds · Supersets",
       "ss": [
         {
-          "label": "SS2A & SS2B",
-          "rest": "60-90 sec",
-          "ar": "Hip flexor stretch 20 sec/side",
+          "id": "ss_e1",
+          "label": "SUPERSET 1",
+          "rest": "60s",
+          "ar": "Wrist circles × 10 each direction",
           "exs": [
             {
-              "id": "w1_fri__ex4",
-              "name": "SS2A: TRUE Kneeling Curl-Downs",
-              "target": "3 sets (6-8, failure)",
+              "id": "s1a",
+              "letter": "a",
+              "name": "Kipping Pull-Up Practice",
+              "target": "3 × 8-10",
+              "cue": "Hip snap drives the movement, chin clears the bar — practice Murph rhythm and pacing",
               "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS2B",
+              "logType": "reps",
               "swaps": [
-                "Cable Crunches",
-                "Weighted Crunches",
-                "Sit-Ups"
+                "Butterfly Pull-Up Practice",
+                "Band-Assisted Kipping",
+                "Chin-Ups",
+                "Ring Rows"
               ]
             },
             {
-              "id": "w1_fri__ex5",
-              "name": "SS2B: Stability Lumbar Extensions",
-              "target": "3 sets to failure",
+              "id": "s1b",
+              "letter": "b",
+              "name": "Wide Push-Ups",
+              "target": "3 × 15-20",
+              "cue": "Hands wider than shoulders, elbows flare ~45°, full ROM chest to floor",
               "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Hip flexor stretch 20 sec/side",
+              "logType": "reps",
               "swaps": [
-                "Supermans",
-                "Back Extensions (machine)",
-                "Good Mornings"
+                "Standard Push-Ups",
+                "Archer Push-Ups",
+                "TRX Push-Ups",
+                "Deficit Push-Ups"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ss_e2",
+          "label": "SUPERSET 2",
+          "rest": "60s",
+          "ar": "Thoracic rotation × 5/side",
+          "exs": [
+            {
+              "id": "s2a",
+              "letter": "a",
+              "name": "Chin-Ups (close grip)",
+              "target": "3 × 6-8",
+              "cue": "Supinated grip, full stretch at bottom, squeeze lats at top",
+              "sets": 3,
+              "logType": "reps",
+              "swaps": [
+                "Neutral-Grip Pull-Ups",
+                "Band-Assisted Chin-Ups",
+                "TRX Rows",
+                "Inverted Rows"
+              ]
+            },
+            {
+              "id": "s2b",
+              "letter": "b",
+              "name": "Diamond Push-Ups",
+              "target": "3 × 12-15",
+              "cue": "Hands together under chest, elbows tight to ribcage, full lockout",
+              "sets": 3,
+              "logType": "reps",
+              "swaps": [
+                "Close-Grip Push-Ups",
+                "Tricep Push-Ups",
+                "Bench Dips",
+                "TRX Tricep Press"
               ]
             }
           ]
@@ -107,76 +194,45 @@
       ]
     },
     {
-      "id": "w1_fri__b4",
-      "label": "SUPERSET 3",
-      "type": "core",
+      "id": "finish",
+      "label": "⚡ FINISHER — MINI MURPH SIM",
+      "type": "beast",
+      "rounds": "2 Rounds · For Quality",
       "ss": [
         {
-          "label": "SS3A & SS3B",
-          "rest": "60-90 sec",
-          "ar": "Dead bug hold 20 sec",
+          "id": "ss_f1",
+          "label": "HALF-MURPH PARTITION (no squats)",
+          "rest": "90s between rounds",
+          "ar": "Walk 30s + shake arms out",
           "exs": [
             {
-              "id": "w1_fri__ex6",
-              "name": "SS3A: Walking Oblique Side Bends",
-              "target": "3 sets/side (10-12, failure)",
-              "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS3B",
-              "swaps": [
-                "Dumbbell Side Bends",
-                "Side Plank",
-                "Cable Side Bends"
-              ]
+              "id": "f1",
+              "letter": "single",
+              "name": "Pull-Ups",
+              "target": "5 reps per round",
+              "cue": "Strict or kipping — match what you'll do on race day, practice the transition",
+              "sets": 2,
+              "logType": "reps",
+              "swaps": ["Band-Assisted Pull-Ups", "Chin-Ups", "Jumping Pull-Ups"]
             },
             {
-              "id": "w1_fri__ex7",
-              "name": "SS3B: Hanging Windshield Wipers",
-              "target": "3 sets to failure",
-              "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Dead bug hold 20 sec",
-              "swaps": [
-                "Lying Windshield Wipers",
-                "Spider-Man Crunches",
-                "Hanging Leg Raises"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "w1_fri__b5",
-      "label": "SUPERSET 4",
-      "type": "core",
-      "ss": [
-        {
-          "label": "SS4A & SS4B",
-          "rest": "60-90 sec",
-          "ar": "Standing full-body reach x5 slow",
-          "exs": [
-            {
-              "id": "w1_fri__ex8",
-              "name": "SS4A: Triple-Angle Serratus Protractions (Unilateral)",
-              "target": "3 sets (pos3:10-12, pos2:10-12, pos1:failure)",
-              "sets": 3,
-              "cue": "\u2192 No rest \u2014 go straight to SS4B",
-              "swaps": [
-                "Incline Push-Up Plus",
-                "Serratus Wall Slides",
-                "Plank Reach"
-              ]
+              "id": "f2",
+              "letter": "single",
+              "name": "Push-Ups",
+              "target": "10 reps per round",
+              "cue": "Steady pace, don't burn out — this is Murph pacing practice",
+              "sets": 2,
+              "logType": "reps",
+              "swaps": ["Knee Push-Ups", "Incline Push-Ups", "Hand-Release Push-Ups"]
             },
             {
-              "id": "w1_fri__ex9",
-              "name": "SS4B: Kneeling Rollout",
-              "target": "2-3 sets to failure",
-              "sets": 3,
-              "cue": "Rest: 60-90 sec | Active Rest: Standing full-body reach x5 slow",
-              "swaps": [
-                "Plank",
-                "Ab Wheel (standing)",
-                "Dead Bug"
-              ]
+              "id": "f3",
+              "letter": "single",
+              "name": "400m Row or SkiErg",
+              "target": "1 bout after each round",
+              "cue": "Moderate pace — simulate the Murph run bookends without pre-fatiguing legs before the ride",
+              "sets": 2,
+              "swaps": ["400m Assault Bike", "2 min easy jog", "400m brisk walk"]
             }
           ]
         }
