@@ -353,7 +353,7 @@
 
     .set-row {
       display: grid;
-      grid-template-columns: 30px 1fr 1fr 48px;
+      grid-template-columns: 30px 1fr 1fr 48px 48px;
       gap: 8px;
       align-items: center;
       padding: 10px 0;
@@ -527,6 +527,37 @@
       border: none;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    .btn-go {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(212, 175, 55, 0.5);
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-go:active { background: rgba(212, 175, 55, 0.3); transform: scale(0.9); }
+    .btn-go.active { background: var(--red); border-color: var(--red); color: white; box-shadow: 0 0 12px rgba(176,42,48,0.5); }
+
+    .cycle-countdown {
+      font-family: 'Anton', sans-serif;
+      font-size: 13px;
+      color: var(--gold);
+      text-align: center;
+      margin-top: 2px;
+      letter-spacing: 1px;
+      min-height: 18px;
     }
 
     .finish-btn {
@@ -1190,8 +1221,10 @@
               <input class="set-input" value="${escapeHtml(setRow.r)}" placeholder="-" onchange="updateSet('${ex.id}', ${index}, 'r', this.value)">
               <div class="mini-label">${escapeHtml(secondaryLabel)}</div>
             </div>
+            <button class="btn-go" id="go-${ex.id}-${index}" onclick="startSetCycle('${ex.id}', ${index}, '${escapeHtml(rest || '')}')" title="Start cycle timer">GO</button>
             <button class="btn-check ${setRow.d ? 'done' : ''}" onclick="toggleSet('${ex.id}', ${index}, this, ${isLast}, '${escapeHtml(rest || '')}', '${blockId}')">✓</button>
           </div>
+          <div class="cycle-countdown" id="cycle-${ex.id}-${index}"></div>
         `).join('')}
       </div>
       ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
@@ -1289,6 +1322,32 @@
       const doneSets = allSets.filter(setRow => setRow.d).length;
       document.getElementById('setsDone').textContent = `${doneSets} / ${allSets.length}`;
       document.getElementById('pFill').style.width = allSets.length ? `${(doneSets / allSets.length) * 100}%` : '0%';
+    }
+
+    // EMOM-style cycle timer: tap GO at set start — counts down full interval (work+rest)
+    const _cycleTimers = {};
+    function startSetCycle(exId, index, restStr) {
+      const cycleKey = exId + '-' + index;
+      if (_cycleTimers[cycleKey]) { clearInterval(_cycleTimers[cycleKey]); delete _cycleTimers[cycleKey]; }
+      const totalSeconds = extractRestSeconds(restStr);
+      if (totalSeconds <= 0) return;
+      let remaining = totalSeconds;
+      const btn = document.getElementById('go-' + exId + '-' + index);
+      const display = document.getElementById('cycle-' + exId + '-' + index);
+      if (btn) btn.classList.add('active');
+      const update = () => { if (display) display.textContent = remaining + 's'; };
+      update();
+      _cycleTimers[cycleKey] = setInterval(() => {
+        remaining -= 1;
+        update();
+        if (remaining <= 0) {
+          clearInterval(_cycleTimers[cycleKey]);
+          delete _cycleTimers[cycleKey];
+          if (btn) btn.classList.remove('active');
+          if (display) display.textContent = '\u25b6 GO!';
+          try { navigator.vibrate([200, 100, 200]); } catch(e) {}
+        }
+      }, 1000);
     }
 
     function startRest(seconds) {
@@ -1786,7 +1845,8 @@
       if (!matches) return 0;
       const nums = matches.map(Number).filter(n => n > 0);
       if (nums.length === 0) return 0;
-      return Math.min(...nums, 60);
+      // Return largest number found (e.g. '60-90s' -> 90, '90s' -> 90)
+      return Math.max(...nums);
     }
 
     function cleanCue(note) {
