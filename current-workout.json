@@ -1,171 +1,170 @@
-Got it. Week 2 Monday — Chest & Back (Double Dropsets). Building the tracker JSON now.
 {
-"title": "CHEST & BACK",
-"meta": "WFWHF · Mon, Apr 20 · Week 2",
-"yesterday": "Yesterday: Rest day (Sunday)",
-"duration": "60-70",
-"blocks": [
-{
-"id": "wu",
-"label": "🔥 WARM-UP",
-"type": "warmup",
-"rounds": null,
-"ss": [
-{
-"id": "ss_wu",
-"label": "WARM-UP",
-"rest": null,
-"ar": null,
-"exs": [
-{
-"id": "wu1",
-"letter": "single",
-"name": "Can-Opener Progression",
-"target": "2 sets",
-"cue": "Lie on side, top arm sweeps from hip to full overhead arc — follow with eyes, open thoracic spine",
-"sets": 2,
-"swaps": ["Supine Arcs", "Prone Retracted Arcs", "Band Pull-Aparts", "Cat-Cow"]
-}
-]
-}
-]
-},
-{
-"id": "cb_main",
-"label": "💪 BLOCK 1 · CHEST & BACK",
-"type": "chest",
-"rounds": "2 Rounds · Double Dropsets (5-Tier Each)",
-"ss": [
-{
-"id": "ss1",
-"label": "SUPERSET 1",
-"rest": "60-90s",
-"ar": "Dead hang 30s (neutral grip)",
-"exs": [
-{
-"id": "s1a",
-"letter": "a",
-"name": "Narrow Neutral-Grip Pull-Downs",
-"target": "2 rounds × 5-tier dropsets 🔺",
-"cue": "Elbows drive straight down, chest tall, pause at full contraction — drop weight each tier without rest",
-"sets": 2,
-"swaps": ["Close-Grip Cable Row", "Neutral-Grip Lat Pulldown", "Seated Cable Row", "Single-Arm Pulldown"]
-},
-{
-"id": "s1b",
-"letter": "b",
-"name": "Standing Incline "Up & In" Press",
-"target": "2 rounds × 5-tier dropsets 🔺",
-"cue": "Stand facing cable at incline angle, press up and across midline — full stretch at bottom, squeeze at top",
-"sets": 2,
-"swaps": ["Incline DB Press", "Cable Chest Press (High to Low)", "Low-to-High Cable Fly", "Landmine Press"]
-}
-]
-},
-{
-"id": "ss2",
-"label": "SUPERSET 2",
-"rest": "60-90s",
-"ar": "Band pull-aparts × 15",
-"exs": [
-{
-"id": "s2a",
-"letter": "a",
-"name": "Alternating Incline Row with Isometrics",
-"target": "2 rounds × 5-tier dropsets 🔺",
-"cue": "One arm holds the isometric squeeze at top while the other rows — keep chest on pad, elbows high",
-"sets": 2,
-"swaps": ["Chest-Supported DB Row", "Single-Arm Cable Row", "Incline DB Row", "Pendlay Row"]
-},
-{
-"id": "s2b",
-"letter": "b",
-"name": "Chest Press Twists",
-"target": "2 rounds × 5-tier dropsets 🔺",
-"cue": "Press and rotate wrists to neutral at the top — twist adds inner pec activation, control the eccentric",
-"sets": 2,
-"swaps": ["DB Bench Press", "Flat Cable Press", "DB Rotating Press", "Machine Chest Press"]
-}
-]
-},
-{
-"id": "ss3",
-"label": "SUPERSET 3",
-"rest": "60-90s",
-"ar": "Thoracic rotation 5 reps/side",
-"exs": [
-{
-"id": "s3a",
-"letter": "a",
-"name": "Unilateral Reverse Flys – Closed & Open Stance",
-"target": "2 dropsets/side 🔺",
-"cue": "Closed stance first (more rhomboid), then open stance (more rear delt) — squeeze at top, don't shrug",
-"sets": 2,
-"swaps": ["Cable Reverse Fly", "DB Reverse Fly", "Face Pulls", "Bent-Over Lateral Raise"]
-},
-{
-"id": "s3b",
-"letter": "b",
-"name": "Unilateral Rotating Hybrid Fly-Press – Middle",
-"target": "2 dropsets/side 🔺",
-"cue": "Begin as a fly, rotate to press at the midpoint — mid-cable height, full chest stretch at the bottom",
-"sets": 2,
-"swaps": ["Single-Arm Cable Fly", "DB Fly to Press", "Pec Deck (Single Arm)", "Landmine Chest Press"]
-}
-]
-},
-{
-"id": "ss4",
-"label": "SUPERSET 4",
-"rest": "60-90s",
-"ar": "Scapular wall slides × 10",
-"exs": [
-{
-"id": "s4a",
-"letter": "a",
-"name": "Unilateral Depressed Max-to-Max Trap Shrug",
-"target": "2 dropsets/side 🔺",
-"cue": "Actively depress scapula first, then shrug to max elevation — full range, unilateral isolates better",
-"sets": 2,
-"swaps": ["DB Shrug (Unilateral)", "Cable Shrug", "Behind-the-Back Shrug", "Rack Pull Shrug"]
-},
-{
-"id": "s4b",
-"letter": "b",
-"name": "Midline-Crossing Inner Chest Press – Lower",
-"target": "2 dropsets/side 🔺",
-"cue": "Cable set low, press up and across midline — feel the stretch of the lower/inner pec, cross hand over at finish",
-"sets": 2,
-"swaps": ["Low Cable Fly", "DB Cross-Body Press", "Pec Deck (Low Angle)", "Incline Inner Press"]
-}
-]
-}
-]
-},
-{
-"id": "finish",
-"label": "⚡ FINISHER",
-"type": "finisher",
-"rounds": "3 sets/side",
-"ss": [
-{
-"id": "ss_fin",
-"label": "FINISHER",
-"rest": "60s",
-"ar": "Cat-cow × 8 slow reps",
-"exs": [
-{
-"id": "f1",
-"letter": "single",
-"name": "Landmine Pull & Press Combo",
-"target": "3 sets/side × 8-10",
-"cue": "Row to hip, then press up and forward from shoulder — fluid transition, brace core throughout",
-"sets": 3,
-"swaps": ["DB Row to Press", "Cable Row to Press", "Single-Arm Landmine Row", "KB Swing to Press"]
-}
-]
-}
-]
-}
-]
+  "title": "CHEST & BACK",
+  "meta": "WFWHF · Mon, Apr 20 · Week 2",
+  "yesterday": "Yesterday: Rest day (Sunday)",
+  "duration": "60-70",
+  "blocks": [
+    {
+      "id": "wu",
+      "label": "🔥 WARM-UP",
+      "type": "warmup",
+      "rounds": null,
+      "ss": [
+        {
+          "id": "ss_wu",
+          "label": "WARM-UP",
+          "rest": null,
+          "ar": null,
+          "exs": [
+            {
+              "id": "wu1",
+              "letter": "single",
+              "name": "Can-Opener Progression",
+              "target": "2 sets",
+              "cue": "Lie on side, top arm sweeps from hip to full overhead arc — follow with eyes, open thoracic spine",
+              "sets": 2,
+              "swaps": ["Supine Arcs", "Prone Retracted Arcs", "Band Pull-Aparts", "Cat-Cow"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cb_main",
+      "label": "💪 BLOCK 1 · CHEST & BACK",
+      "type": "chest",
+      "rounds": "2 Rounds · Double Dropsets (5-Tier Each)",
+      "ss": [
+        {
+          "id": "ss1",
+          "label": "SUPERSET 1",
+          "rest": "60-90s",
+          "ar": "Dead hang 30s (neutral grip)",
+          "exs": [
+            {
+              "id": "s1a",
+              "letter": "a",
+              "name": "Narrow Neutral-Grip Pull-Downs",
+              "target": "2 rounds x 5-tier dropsets",
+              "cue": "Elbows drive straight down, chest tall, pause at full contraction — drop weight each tier without rest",
+              "sets": 2,
+              "swaps": ["Close-Grip Cable Row", "Neutral-Grip Lat Pulldown", "Seated Cable Row", "Single-Arm Pulldown"]
+            },
+            {
+              "id": "s1b",
+              "letter": "b",
+              "name": "Standing Incline Up and In Press",
+              "target": "2 rounds x 5-tier dropsets",
+              "cue": "Stand facing cable at incline angle, press up and across midline — full stretch at bottom, squeeze at top",
+              "sets": 2,
+              "swaps": ["Incline DB Press", "Cable Chest Press High to Low", "Low-to-High Cable Fly", "Landmine Press"]
+            }
+          ]
+        },
+        {
+          "id": "ss2",
+          "label": "SUPERSET 2",
+          "rest": "60-90s",
+          "ar": "Band pull-aparts x 15",
+          "exs": [
+            {
+              "id": "s2a",
+              "letter": "a",
+              "name": "Alternating Incline Row with Isometrics",
+              "target": "2 rounds x 5-tier dropsets",
+              "cue": "One arm holds isometric squeeze at top while the other rows — chest on pad, elbows high",
+              "sets": 2,
+              "swaps": ["Chest-Supported DB Row", "Single-Arm Cable Row", "Incline DB Row", "Pendlay Row"]
+            },
+            {
+              "id": "s2b",
+              "letter": "b",
+              "name": "Chest Press Twists",
+              "target": "2 rounds x 5-tier dropsets",
+              "cue": "Press and rotate wrists to neutral at the top — twist adds inner pec activation, control the eccentric",
+              "sets": 2,
+              "swaps": ["DB Bench Press", "Flat Cable Press", "DB Rotating Press", "Machine Chest Press"]
+            }
+          ]
+        },
+        {
+          "id": "ss3",
+          "label": "SUPERSET 3",
+          "rest": "60-90s",
+          "ar": "Thoracic rotation 5 reps/side",
+          "exs": [
+            {
+              "id": "s3a",
+              "letter": "a",
+              "name": "Unilateral Reverse Flys – Closed and Open Stance",
+              "target": "2 dropsets/side",
+              "cue": "Closed stance first (more rhomboid), then open stance (more rear delt) — squeeze at top, no shrugging",
+              "sets": 2,
+              "swaps": ["Cable Reverse Fly", "DB Reverse Fly", "Face Pulls", "Bent-Over Lateral Raise"]
+            },
+            {
+              "id": "s3b",
+              "letter": "b",
+              "name": "Unilateral Rotating Hybrid Fly-Press – Middle",
+              "target": "2 dropsets/side",
+              "cue": "Begin as a fly, rotate to press at midpoint — mid-cable height, full chest stretch at the bottom",
+              "sets": 2,
+              "swaps": ["Single-Arm Cable Fly", "DB Fly to Press", "Pec Deck Single Arm", "Landmine Chest Press"]
+            }
+          ]
+        },
+        {
+          "id": "ss4",
+          "label": "SUPERSET 4",
+          "rest": "60-90s",
+          "ar": "Scapular wall slides x 10",
+          "exs": [
+            {
+              "id": "s4a",
+              "letter": "a",
+              "name": "Unilateral Depressed Max-to-Max Trap Shrug",
+              "target": "2 dropsets/side",
+              "cue": "Actively depress scapula first, then shrug to max elevation — full range, unilateral isolates better",
+              "sets": 2,
+              "swaps": ["DB Shrug Unilateral", "Cable Shrug", "Behind-the-Back Shrug", "Rack Pull Shrug"]
+            },
+            {
+              "id": "s4b",
+              "letter": "b",
+              "name": "Midline-Crossing Inner Chest Press – Lower",
+              "target": "2 dropsets/side",
+              "cue": "Cable set low, press up and across midline — feel the stretch of the lower inner pec, cross hand over at finish",
+              "sets": 2,
+              "swaps": ["Low Cable Fly", "DB Cross-Body Press", "Pec Deck Low Angle", "Incline Inner Press"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "label": "⚡ FINISHER",
+      "type": "finisher",
+      "rounds": "3 sets/side",
+      "ss": [
+        {
+          "id": "ss_fin",
+          "label": "FINISHER",
+          "rest": "60s",
+          "ar": "Cat-cow x 8 slow reps",
+          "exs": [
+            {
+              "id": "f1",
+              "letter": "single",
+              "name": "Landmine Pull and Press Combo",
+              "target": "3 sets/side x 8-10",
+              "cue": "Row to hip, then press up and forward from shoulder — fluid transition, brace core throughout",
+              "sets": 3,
+              "swaps": ["DB Row to Press", "Cable Row to Press", "Single-Arm Landmine Row", "KB Swing to Press"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
