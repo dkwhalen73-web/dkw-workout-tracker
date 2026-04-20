@@ -1,242 +1,171 @@
+Got it. Week 2 Monday — Chest & Back (Double Dropsets). Building the tracker JSON now.
 {
-  "title": "MURPH PREP — PULL-UP & PUSH-UP ENDURANCE",
-  "meta": "WFWHF · Sat, Apr 19 · Murph Training",
-  "yesterday": "Yesterday: Bootcamp — biceps & pulling (back, reverse sled pulls) + skier/rower cardio",
-  "duration": "40-50",
-  "blocks": [
-    {
-      "id": "wu",
-      "label": "🔥 WARM-UP",
-      "type": "warmup",
-      "rounds": null,
-      "ss": [
-        {
-          "id": "ss_wu",
-          "label": "WARM-UP MOVES",
-          "rest": null,
-          "ar": null,
-          "exs": [
-            {
-              "id": "w1",
-              "letter": "single",
-              "name": "Arm Circles — Fwd & Back",
-              "target": "10 each direction",
-              "cue": "Big circles, gradually increase range of motion",
-              "sets": 1,
-              "swaps": ["Band Pull-Aparts", "Shoulder Rolls", "Wall Angels"]
-            },
-            {
-              "id": "w2",
-              "letter": "single",
-              "name": "Scapular Pull-Ups",
-              "target": "2 × 8",
-              "cue": "Dead hang start — depress and retract scaps without bending elbows",
-              "sets": 2,
-              "swaps": ["Band-Assisted Scapular Pulls", "Hanging Shrugs", "Active Hang Holds"]
-            },
-            {
-              "id": "w3",
-              "letter": "single",
-              "name": "Incline Push-Ups (slow tempo)",
-              "target": "2 × 10",
-              "cue": "3 sec down, 1 sec up — activate chest and triceps before loading",
-              "sets": 2,
-              "swaps": ["Wall Push-Ups", "Knee Push-Ups", "Band-Assisted Push-Ups"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "emom",
-      "label": "💥 BLOCK 1 · EMOM PULL-UP LADDER",
-      "type": "beast",
-      "rounds": "10 min EMOM",
-      "ss": [
-        {
-          "id": "ss_emom",
-          "label": "EVERY MINUTE ON THE MINUTE",
-          "rest": "Remainder of each minute",
-          "ar": "Shake arms out, stay loose between sets",
-          "exs": [
-            {
-              "id": "e1",
-              "letter": "single",
-              "name": "Strict Pull-Ups",
-              "target": "Min 1-4: 3 reps · Min 5-8: 4 reps · Min 9-10: max reps",
-              "cue": "Full dead hang at bottom, chin over bar, controlled descent — no kipping",
-              "sets": 10,
-              "logType": "reps",
-              "swaps": [
-                "Band-Assisted Pull-Ups",
-                "Chin-Ups",
-                "Neutral-Grip Pull-Ups",
-                "Jumping Pull-Ups with Slow Negative"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "pushup_vol",
-      "label": "💪 BLOCK 2 · PUSH-UP VOLUME BUILDER",
-      "type": "push",
-      "rounds": "5 Rounds · 90s cycle",
-      "ss": [
-        {
-          "id": "ss_p1",
-          "label": "PUSH-UP SETS ON THE 90s",
-          "rest": "Remainder of 90s",
-          "ar": "Dead hang 15-20s between rounds",
-          "exs": [
-            {
-              "id": "p1",
-              "letter": "single",
-              "name": "Standard Push-Ups",
-              "target": "Rd 1-3: 20 reps · Rd 4-5: max reps",
-              "cue": "Full lockout at top, chest to floor, tight core — no sagging hips",
-              "sets": 5,
-              "logType": "reps",
-              "swaps": [
-                "Diamond Push-Ups",
-                "Wide Push-Ups",
-                "Decline Push-Ups",
-                "Hand-Release Push-Ups"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "superset_block",
-      "label": "💪 BLOCK 3 · ENDURANCE SUPERSETS",
-      "type": "push",
-      "rounds": "3 Rounds · Supersets",
-      "ss": [
-        {
-          "id": "ss_e1",
-          "label": "SUPERSET 1",
-          "rest": "60s",
-          "ar": "Wrist circles × 10 each direction",
-          "exs": [
-            {
-              "id": "s1a",
-              "letter": "a",
-              "name": "Kipping Pull-Up Practice",
-              "target": "3 × 8-10",
-              "cue": "Hip snap drives the movement, chin clears the bar — practice Murph rhythm and pacing",
-              "sets": 3,
-              "logType": "reps",
-              "swaps": [
-                "Butterfly Pull-Up Practice",
-                "Band-Assisted Kipping",
-                "Chin-Ups",
-                "Ring Rows"
-              ]
-            },
-            {
-              "id": "s1b",
-              "letter": "b",
-              "name": "Wide Push-Ups",
-              "target": "3 × 15-20",
-              "cue": "Hands wider than shoulders, elbows flare ~45°, full ROM chest to floor",
-              "sets": 3,
-              "logType": "reps",
-              "swaps": [
-                "Standard Push-Ups",
-                "Archer Push-Ups",
-                "TRX Push-Ups",
-                "Deficit Push-Ups"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "ss_e2",
-          "label": "SUPERSET 2",
-          "rest": "60s",
-          "ar": "Thoracic rotation × 5/side",
-          "exs": [
-            {
-              "id": "s2a",
-              "letter": "a",
-              "name": "Chin-Ups (close grip)",
-              "target": "3 × 6-8",
-              "cue": "Supinated grip, full stretch at bottom, squeeze lats at top",
-              "sets": 3,
-              "logType": "reps",
-              "swaps": [
-                "Neutral-Grip Pull-Ups",
-                "Band-Assisted Chin-Ups",
-                "TRX Rows",
-                "Inverted Rows"
-              ]
-            },
-            {
-              "id": "s2b",
-              "letter": "b",
-              "name": "Diamond Push-Ups",
-              "target": "3 × 12-15",
-              "cue": "Hands together under chest, elbows tight to ribcage, full lockout",
-              "sets": 3,
-              "logType": "reps",
-              "swaps": [
-                "Close-Grip Push-Ups",
-                "Tricep Push-Ups",
-                "Bench Dips",
-                "TRX Tricep Press"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "finish",
-      "label": "⚡ FINISHER — MINI MURPH SIM",
-      "type": "beast",
-      "rounds": "2 Rounds · For Quality",
-      "ss": [
-        {
-          "id": "ss_f1",
-          "label": "HALF-MURPH PARTITION (no squats)",
-          "rest": "90s between rounds",
-          "ar": "Walk 30s + shake arms out",
-          "exs": [
-            {
-              "id": "f1",
-              "letter": "single",
-              "name": "Pull-Ups",
-              "target": "5 reps per round",
-              "cue": "Strict or kipping — match what you'll do on race day, practice the transition",
-              "sets": 2,
-              "logType": "reps",
-              "swaps": ["Band-Assisted Pull-Ups", "Chin-Ups", "Jumping Pull-Ups"]
-            },
-            {
-              "id": "f2",
-              "letter": "single",
-              "name": "Push-Ups",
-              "target": "10 reps per round",
-              "cue": "Steady pace, don't burn out — this is Murph pacing practice",
-              "sets": 2,
-              "logType": "reps",
-              "swaps": ["Knee Push-Ups", "Incline Push-Ups", "Hand-Release Push-Ups"]
-            },
-            {
-              "id": "f3",
-              "letter": "single",
-              "name": "400m Row or SkiErg",
-              "target": "1 bout after each round",
-              "cue": "Moderate pace — simulate the Murph run bookends without pre-fatiguing legs before the ride",
-              "sets": 2,
-              "swaps": ["400m Assault Bike", "2 min easy jog", "400m brisk walk"]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+"title": "CHEST & BACK",
+"meta": "WFWHF · Mon, Apr 20 · Week 2",
+"yesterday": "Yesterday: Rest day (Sunday)",
+"duration": "60-70",
+"blocks": [
+{
+"id": "wu",
+"label": "🔥 WARM-UP",
+"type": "warmup",
+"rounds": null,
+"ss": [
+{
+"id": "ss_wu",
+"label": "WARM-UP",
+"rest": null,
+"ar": null,
+"exs": [
+{
+"id": "wu1",
+"letter": "single",
+"name": "Can-Opener Progression",
+"target": "2 sets",
+"cue": "Lie on side, top arm sweeps from hip to full overhead arc — follow with eyes, open thoracic spine",
+"sets": 2,
+"swaps": ["Supine Arcs", "Prone Retracted Arcs", "Band Pull-Aparts", "Cat-Cow"]
+}
+]
+}
+]
+},
+{
+"id": "cb_main",
+"label": "💪 BLOCK 1 · CHEST & BACK",
+"type": "chest",
+"rounds": "2 Rounds · Double Dropsets (5-Tier Each)",
+"ss": [
+{
+"id": "ss1",
+"label": "SUPERSET 1",
+"rest": "60-90s",
+"ar": "Dead hang 30s (neutral grip)",
+"exs": [
+{
+"id": "s1a",
+"letter": "a",
+"name": "Narrow Neutral-Grip Pull-Downs",
+"target": "2 rounds × 5-tier dropsets 🔺",
+"cue": "Elbows drive straight down, chest tall, pause at full contraction — drop weight each tier without rest",
+"sets": 2,
+"swaps": ["Close-Grip Cable Row", "Neutral-Grip Lat Pulldown", "Seated Cable Row", "Single-Arm Pulldown"]
+},
+{
+"id": "s1b",
+"letter": "b",
+"name": "Standing Incline "Up & In" Press",
+"target": "2 rounds × 5-tier dropsets 🔺",
+"cue": "Stand facing cable at incline angle, press up and across midline — full stretch at bottom, squeeze at top",
+"sets": 2,
+"swaps": ["Incline DB Press", "Cable Chest Press (High to Low)", "Low-to-High Cable Fly", "Landmine Press"]
+}
+]
+},
+{
+"id": "ss2",
+"label": "SUPERSET 2",
+"rest": "60-90s",
+"ar": "Band pull-aparts × 15",
+"exs": [
+{
+"id": "s2a",
+"letter": "a",
+"name": "Alternating Incline Row with Isometrics",
+"target": "2 rounds × 5-tier dropsets 🔺",
+"cue": "One arm holds the isometric squeeze at top while the other rows — keep chest on pad, elbows high",
+"sets": 2,
+"swaps": ["Chest-Supported DB Row", "Single-Arm Cable Row", "Incline DB Row", "Pendlay Row"]
+},
+{
+"id": "s2b",
+"letter": "b",
+"name": "Chest Press Twists",
+"target": "2 rounds × 5-tier dropsets 🔺",
+"cue": "Press and rotate wrists to neutral at the top — twist adds inner pec activation, control the eccentric",
+"sets": 2,
+"swaps": ["DB Bench Press", "Flat Cable Press", "DB Rotating Press", "Machine Chest Press"]
+}
+]
+},
+{
+"id": "ss3",
+"label": "SUPERSET 3",
+"rest": "60-90s",
+"ar": "Thoracic rotation 5 reps/side",
+"exs": [
+{
+"id": "s3a",
+"letter": "a",
+"name": "Unilateral Reverse Flys – Closed & Open Stance",
+"target": "2 dropsets/side 🔺",
+"cue": "Closed stance first (more rhomboid), then open stance (more rear delt) — squeeze at top, don't shrug",
+"sets": 2,
+"swaps": ["Cable Reverse Fly", "DB Reverse Fly", "Face Pulls", "Bent-Over Lateral Raise"]
+},
+{
+"id": "s3b",
+"letter": "b",
+"name": "Unilateral Rotating Hybrid Fly-Press – Middle",
+"target": "2 dropsets/side 🔺",
+"cue": "Begin as a fly, rotate to press at the midpoint — mid-cable height, full chest stretch at the bottom",
+"sets": 2,
+"swaps": ["Single-Arm Cable Fly", "DB Fly to Press", "Pec Deck (Single Arm)", "Landmine Chest Press"]
+}
+]
+},
+{
+"id": "ss4",
+"label": "SUPERSET 4",
+"rest": "60-90s",
+"ar": "Scapular wall slides × 10",
+"exs": [
+{
+"id": "s4a",
+"letter": "a",
+"name": "Unilateral Depressed Max-to-Max Trap Shrug",
+"target": "2 dropsets/side 🔺",
+"cue": "Actively depress scapula first, then shrug to max elevation — full range, unilateral isolates better",
+"sets": 2,
+"swaps": ["DB Shrug (Unilateral)", "Cable Shrug", "Behind-the-Back Shrug", "Rack Pull Shrug"]
+},
+{
+"id": "s4b",
+"letter": "b",
+"name": "Midline-Crossing Inner Chest Press – Lower",
+"target": "2 dropsets/side 🔺",
+"cue": "Cable set low, press up and across midline — feel the stretch of the lower/inner pec, cross hand over at finish",
+"sets": 2,
+"swaps": ["Low Cable Fly", "DB Cross-Body Press", "Pec Deck (Low Angle)", "Incline Inner Press"]
+}
+]
+}
+]
+},
+{
+"id": "finish",
+"label": "⚡ FINISHER",
+"type": "finisher",
+"rounds": "3 sets/side",
+"ss": [
+{
+"id": "ss_fin",
+"label": "FINISHER",
+"rest": "60s",
+"ar": "Cat-cow × 8 slow reps",
+"exs": [
+{
+"id": "f1",
+"letter": "single",
+"name": "Landmine Pull & Press Combo",
+"target": "3 sets/side × 8-10",
+"cue": "Row to hip, then press up and forward from shoulder — fluid transition, brace core throughout",
+"sets": 3,
+"swaps": ["DB Row to Press", "Cable Row to Press", "Single-Arm Landmine Row", "KB Swing to Press"]
+}
+]
+}
+]
+}
+]
 }
