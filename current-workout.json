@@ -1,8 +1,8 @@
 {
-  "title": "CHEST & BACK",
-  "meta": "WFWHF · Mon, Apr 20 · Week 2",
-  "yesterday": "Yesterday: Rest day (Sunday)",
-  "duration": "60-70",
+  "title": "BICEPS, TRICEPS & FOREARMS",
+  "meta": "WFWHF · Wed, Apr 22 · Week 2",
+  "yesterday": "Yesterday: Bootcamp — Deadlifts + Pull",
+  "duration": "55-65",
   "blocks": [
     {
       "id": "wu",
@@ -19,148 +19,156 @@
             {
               "id": "wu1",
               "letter": "single",
-              "name": "Can-Opener Progression",
-              "target": "2 sets",
-              "cue": "Lie on side, top arm sweeps from hip to full overhead arc — follow with eyes, open thoracic spine",
+              "name": "Inclined Abducted External Rotation with Punch Up",
+              "target": "2 × 10+",
+              "cue": "Lie on incline bench, arm abducted 90°. Control the external rotation, then punch up at the top — squeeze the rear delt.",
               "sets": 2,
-              "swaps": ["Supine Arcs", "Prone Retracted Arcs", "Band Pull-Aparts", "Cat-Cow"]
+              "swaps": ["Band External Rotation", "Face Pull", "Cuban Press", "Prone Y Raise"]
             }
           ]
         }
       ]
     },
     {
-      "id": "cb_main",
-      "label": "💪 BLOCK 1 · CHEST & BACK",
-      "type": "chest",
-      "rounds": "2 Rounds · Double Dropsets (5-Tier Each)",
+      "id": "arms",
+      "label": "💪 BLOCK 1 · BICEPS & TRICEPS",
+      "type": "arms",
+      "rounds": "3 Rounds · Circuit",
       "ss": [
         {
-          "id": "ss1",
-          "label": "SUPERSET 1",
-          "rest": "60-90s",
-          "ar": "Dead hang 30s (neutral grip)",
+          "id": "ss_2a2b",
+          "label": "SUPERSET 2A / 2B",
+          "rest": "90-120s",
+          "ar": "Dead hang 20-30 sec",
           "exs": [
             {
-              "id": "s1a",
+              "id": "w2w_2a",
               "letter": "a",
-              "name": "Narrow Neutral-Grip Pull-Downs",
-              "target": "2 rounds x 5-tier dropsets",
-              "cue": "Elbows drive straight down, chest tall, pause at full contraction — drop weight each tier without rest",
-              "sets": 2,
-              "swaps": ["Close-Grip Cable Row", "Neutral-Grip Lat Pulldown", "Seated Cable Row", "Single-Arm Pulldown"]
-            },
-            {
-              "id": "s1b",
-              "letter": "b",
-              "name": "Standing Incline Up and In Press",
-              "target": "2 rounds x 5-tier dropsets",
-              "cue": "Stand facing cable at incline angle, press up and across midline — full stretch at bottom, squeeze at top",
-              "sets": 2,
-              "swaps": ["Incline DB Press", "Cable Chest Press High to Low", "Low-to-High Cable Fly", "Landmine Press"]
-            }
-          ]
-        },
-        {
-          "id": "ss2",
-          "label": "SUPERSET 2",
-          "rest": "60-90s",
-          "ar": "Band pull-aparts x 15",
-          "exs": [
-            {
-              "id": "s2a",
-              "letter": "a",
-              "name": "Alternating Incline Row with Isometrics",
-              "target": "2 rounds x 5-tier dropsets",
-              "cue": "One arm holds isometric squeeze at top while the other rows — chest on pad, elbows high",
-              "sets": 2,
-              "swaps": ["Chest-Supported DB Row", "Single-Arm Cable Row", "Incline DB Row", "Pendlay Row"]
-            },
-            {
-              "id": "s2b",
-              "letter": "b",
-              "name": "Chest Press Twists",
-              "target": "2 rounds x 5-tier dropsets",
-              "cue": "Press and rotate wrists to neutral at the top — twist adds inner pec activation, control the eccentric",
-              "sets": 2,
-              "swaps": ["DB Bench Press", "Flat Cable Press", "DB Rotating Press", "Machine Chest Press"]
-            }
-          ]
-        },
-        {
-          "id": "ss3",
-          "label": "SUPERSET 3",
-          "rest": "60-90s",
-          "ar": "Thoracic rotation 5 reps/side",
-          "exs": [
-            {
-              "id": "s3a",
-              "letter": "a",
-              "name": "Unilateral Reverse Flys – Closed and Open Stance",
-              "target": "2 dropsets/side",
-              "cue": "Closed stance first (more rhomboid), then open stance (more rear delt) — squeeze at top, no shrugging",
-              "sets": 2,
-              "swaps": ["Cable Reverse Fly", "DB Reverse Fly", "Face Pulls", "Bent-Over Lateral Raise"]
-            },
-            {
-              "id": "s3b",
-              "letter": "b",
-              "name": "Unilateral Rotating Hybrid Fly-Press – Middle",
-              "target": "2 dropsets/side",
-              "cue": "Begin as a fly, rotate to press at midpoint — mid-cable height, full chest stretch at the bottom",
-              "sets": 2,
-              "swaps": ["Single-Arm Cable Fly", "DB Fly to Press", "Pec Deck Single Arm", "Landmine Chest Press"]
-            }
-          ]
-        },
-        {
-          "id": "ss4",
-          "label": "SUPERSET 4",
-          "rest": "60-90s",
-          "ar": "Scapular wall slides x 10",
-          "exs": [
-            {
-              "id": "s4a",
-              "letter": "a",
-              "name": "Unilateral Depressed Max-to-Max Trap Shrug",
-              "target": "2 dropsets/side",
-              "cue": "Actively depress scapula first, then shrug to max elevation — full range, unilateral isolates better",
-              "sets": 2,
-              "swaps": ["DB Shrug Unilateral", "Cable Shrug", "Behind-the-Back Shrug", "Rack Pull Shrug"]
-            },
-            {
-              "id": "s4b",
-              "letter": "b",
-              "name": "Midline-Crossing Inner Chest Press – Lower",
-              "target": "2 dropsets/side",
-              "cue": "Cable set low, press up and across midline — feel the stretch of the lower inner pec, cross hand over at finish",
-              "sets": 2,
-              "swaps": ["Low Cable Fly", "DB Cross-Body Press", "Pec Deck Low Angle", "Incline Inner Press"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "finish",
-      "label": "⚡ FINISHER",
-      "type": "finisher",
-      "rounds": "3 sets/side",
-      "ss": [
-        {
-          "id": "ss_fin",
-          "label": "FINISHER",
-          "rest": "60s",
-          "ar": "Cat-cow x 8 slow reps",
-          "exs": [
-            {
-              "id": "f1",
-              "letter": "single",
-              "name": "Landmine Pull and Press Combo",
-              "target": "3 sets/side x 8-10",
-              "cue": "Row to hip, then press up and forward from shoulder — fluid transition, brace core throughout",
+              "name": "Contralateral Cross-Cable Extensions",
+              "target": "3 × 10-12, 10-12, 🔺 failure",
+              "cue": "Cable set at chest height on opposite side. Elbow pinned to ribs, extend across body. Full lockout — squeeze the tricep hard at the end.",
               "sets": 3,
-              "swaps": ["DB Row to Press", "Cable Row to Press", "Single-Arm Landmine Row", "KB Swing to Press"]
+              "swaps": ["Rope Pressdown", "Single-Arm Cable Pushdown", "DB Skull Crusher", "Band Tricep Extension"]
+            },
+            {
+              "id": "w2w_2b",
+              "letter": "b",
+              "name": "Incline Wide Supinated Bicep Curl",
+              "target": "3 × 8-10, 8-10, 🔺 failure",
+              "cue": "Set bench to ~45-60°. Arms hang behind torso — full stretch at bottom. Supinate hard as you curl. No shoulder swing.",
+              "sets": 3,
+              "swaps": ["Incline DB Curl", "Preacher Curl", "Spider Curl", "Cable Curl"]
+            }
+          ]
+        },
+        {
+          "id": "ss_2c2d",
+          "label": "SUPERSET 2C / 2D",
+          "rest": "90-120s",
+          "ar": "Wrist circles x10 each direction",
+          "exs": [
+            {
+              "id": "w2w_2c",
+              "letter": "a",
+              "name": "Rotating Lateral Tricep Extensions – Tucked",
+              "target": "3 × 10-12, 10-12, 🔺 failure",
+              "cue": "Elbow tucked, upper arm parallel to floor. Rotate wrist as you extend — pronating at lockout. Squeeze the lateral head.",
+              "sets": 3,
+              "swaps": ["Rope Pushdown", "Cable Kickback", "DB Overhead Extension", "Band Pressdown"]
+            },
+            {
+              "id": "w2w_2d",
+              "letter": "b",
+              "name": "Mid-Cable Hammer Rope Curls",
+              "target": "3 × 8-10, 8-10, 🔺 failure",
+              "cue": "Cable at mid height, neutral (hammer) grip on rope. Keep elbows in — drive hands toward shoulders. Brachialis focus.",
+              "sets": 3,
+              "swaps": ["Hammer Curl", "Cross-Body Hammer Curl", "Cable Rope Curl", "Reverse Curl"]
+            }
+          ]
+        },
+        {
+          "id": "ss_2e2f",
+          "label": "SUPERSET 2E / 2F",
+          "rest": "90-120s",
+          "ar": "Farmers carry 15m (light DBs)",
+          "exs": [
+            {
+              "id": "w2w_2e",
+              "letter": "a",
+              "name": "Decline Skull-Crushers",
+              "target": "3 × 8-10, 8-10, 🔺 failure",
+              "cue": "On decline bench, elbows angled slightly back — lower bar toward forehead. Slow eccentric. Drive up without flaring elbows.",
+              "sets": 3,
+              "swaps": ["Flat Skull Crusher", "DB Skull Crusher", "Cable Overhead Extension", "EZ Bar Curl"]
+            },
+            {
+              "id": "w2w_2f",
+              "letter": "b",
+              "name": "Hybrid Iso-Supination Curls",
+              "target": "3 × 8-10, 8-10, 🔺 failure",
+              "cue": "Hold the non-working arm at 90° isometric while the other curls. Supinate at the top. Alternate every rep — burns fast.",
+              "sets": 3,
+              "swaps": ["Alternating DB Curl", "Concentration Curl", "Cable Curl", "Preacher Curl"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finisher",
+      "label": "⚡ FINISHER · TRICEPS & FOREARMS",
+      "type": "finisher",
+      "rounds": "2-3 Sets · To Failure",
+      "ss": [
+        {
+          "id": "ss_3a",
+          "label": "TRICEP FINISHER",
+          "rest": "60s",
+          "ar": "Dead hang 20 sec (alternating grips)",
+          "exs": [
+            {
+              "id": "w2w_3a",
+              "letter": "single",
+              "name": "Bent-to-Straight 2-Phase Low-Cable Tricep Extensions",
+              "target": "2-3 × 🔺 failure / side",
+              "cue": "Start bent-arm (elbow at 90°), extend to straight in two phases — first to parallel, then full lockout. Unilateral. Full tricep stretch at the start.",
+              "sets": 3,
+              "swaps": ["Rope Pushdown", "Overhead Cable Extension", "DB Kickback", "Band Pressdown"]
+            }
+          ]
+        },
+        {
+          "id": "ss_3b",
+          "label": "BICEP FINISHER",
+          "rest": "60s",
+          "ar": "Forearm stretch (palm up/down) 15 sec each",
+          "exs": [
+            {
+              "id": "w2w_3b",
+              "letter": "single",
+              "name": "Inverted Zottman Curls",
+              "target": "2-3 × 🔺 failure",
+              "cue": "Curl up supinated, lower down pronated (like a reverse curl negative). Full ROM. The eccentric pronated phase kills the brachioradialis.",
+              "sets": 3,
+              "swaps": ["Zottman Curl", "Reverse Curl", "Hammer Curl", "Pronated DB Curl"]
+            }
+          ]
+        },
+        {
+          "id": "ss_4",
+          "label": "FOREARM FINISHER",
+          "rest": "45s",
+          "ar": "Dead hang 20-30 sec",
+          "exs": [
+            {
+              "id": "w2w_4",
+              "letter": "single",
+              "name": "Kneeling Supported Forearm Flexor Combo",
+              "target": "2-3 × fatigue",
+              "cue": "Kneel at bench, forearm on pad. Full wrist flexion through all grips — standard, reverse, and sideways. Slow and controlled.",
+              "sets": 3,
+              "swaps": ["Wrist Curls", "Reverse Wrist Curls", "Plate Pinch", "Farmers Carry"]
             }
           ]
         }
