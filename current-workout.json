@@ -1,11 +1,11 @@
 {
-  "title": "BICEPS, TRICEPS & FOREARMS",
-  "meta": "WFWHF · Wed, Apr 22 · Week 2",
-  "yesterday": "Yesterday: Bootcamp — Deadlifts + Pull",
+  "title": "CORE & SPINE",
+  "meta": "WFWHF · Fri, Apr 25 · Week 2",
+  "yesterday": "Yesterday: Thursday Bootcamp (Legs / Hamstrings)",
   "duration": "55-65",
   "blocks": [
     {
-      "id": "wu",
+      "id": "w2f_wu",
       "label": "🔥 WARM-UP",
       "type": "warmup",
       "rounds": null,
@@ -13,162 +13,152 @@
         {
           "id": "ss_wu",
           "label": "WARM-UP",
-          "rest": null,
+          "rest": "30s",
           "ar": null,
           "exs": [
             {
-              "id": "wu1",
+              "id": "w2f_wu1",
               "letter": "single",
-              "name": "Inclined Abducted External Rotation with Punch Up",
-              "target": "2 × 10+",
-              "cue": "Lie on incline bench, arm abducted 90°. Control the external rotation, then punch up at the top — squeeze the rear delt.",
+              "name": "Serratus Anterior Upward Rotations",
+              "target": "2 × ≥10",
+              "cue": "Arms straight, rotate the scapula upward — think reaching the ceiling with your elbow. Slow and controlled.",
               "sets": 2,
-              "swaps": ["Band External Rotation", "Face Pull", "Cuban Press", "Prone Y Raise"]
+              "swaps": ["Wall Angel", "Plank Plus", "Band Overhead Reach", "Prone Y Raise"]
             }
           ]
         }
       ]
     },
     {
-      "id": "arms",
-      "label": "💪 BLOCK 1 · BICEPS & TRICEPS",
-      "type": "arms",
-      "rounds": "3 Rounds · Circuit",
+      "id": "w2f_circ",
+      "label": "🔥 CORE CIRCUIT",
+      "type": "core",
+      "rounds": "3 Rounds · Circuit · 15-30s between exercises, 90-120s after each round",
       "ss": [
         {
-          "id": "ss_2a2b",
-          "label": "SUPERSET 2A / 2B",
-          "rest": "90-120s",
-          "ar": "Dead hang 20-30 sec",
+          "id": "ss_2a",
+          "label": "CIRCUIT 2A",
+          "rest": "90-120s after round",
+          "ar": "Hollow body hold 20s",
           "exs": [
             {
-              "id": "w2w_2a",
-              "letter": "a",
-              "name": "Contralateral Cross-Cable Extensions",
-              "target": "3 × 10-12, 10-12, 🔺 failure",
-              "cue": "Cable set at chest height on opposite side. Elbow pinned to ribs, extend across body. Full lockout — squeeze the tricep hard at the end.",
+              "id": "w2f_2a",
+              "letter": "single",
+              "name": "Stiff-Leg Inverted Crunches",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Legs straight to ceiling, lower ribs pull toward hips. Drive the posterior tilt — don't just rock.",
               "sets": 3,
-              "swaps": ["Rope Pressdown", "Single-Arm Cable Pushdown", "DB Skull Crusher", "Band Tricep Extension"]
-            },
-            {
-              "id": "w2w_2b",
-              "letter": "b",
-              "name": "Incline Wide Supinated Bicep Curl",
-              "target": "3 × 8-10, 8-10, 🔺 failure",
-              "cue": "Set bench to ~45-60°. Arms hang behind torso — full stretch at bottom. Supinate hard as you curl. No shoulder swing.",
-              "sets": 3,
-              "swaps": ["Incline DB Curl", "Preacher Curl", "Spider Curl", "Cable Curl"]
+              "swaps": ["Hanging Knee Raise", "Decline Crunch", "Ab Wheel Rollout", "Captain's Chair Raise"]
             }
           ]
         },
         {
-          "id": "ss_2c2d",
-          "label": "SUPERSET 2C / 2D",
-          "rest": "90-120s",
-          "ar": "Wrist circles x10 each direction",
+          "id": "ss_2b",
+          "label": "CIRCUIT 2B",
+          "rest": "90-120s after round",
+          "ar": "Quadruped diaphragmatic breathing ×5",
           "exs": [
             {
-              "id": "w2w_2c",
-              "letter": "a",
-              "name": "Rotating Lateral Tricep Extensions – Tucked",
-              "target": "3 × 10-12, 10-12, 🔺 failure",
-              "cue": "Elbow tucked, upper arm parallel to floor. Rotate wrist as you extend — pronating at lockout. Squeeze the lateral head.",
+              "id": "w2f_2b",
+              "letter": "single",
+              "name": "Supine Hip-Drop Full ROM PPT",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Pelvis posterior tilts fully before the hip drops. Lower back stays in contact with floor. Full arc, not a swing.",
               "sets": 3,
-              "swaps": ["Rope Pushdown", "Cable Kickback", "DB Overhead Extension", "Band Pressdown"]
-            },
-            {
-              "id": "w2w_2d",
-              "letter": "b",
-              "name": "Mid-Cable Hammer Rope Curls",
-              "target": "3 × 8-10, 8-10, 🔺 failure",
-              "cue": "Cable at mid height, neutral (hammer) grip on rope. Keep elbows in — drive hands toward shoulders. Brachialis focus.",
-              "sets": 3,
-              "swaps": ["Hammer Curl", "Cross-Body Hammer Curl", "Cable Rope Curl", "Reverse Curl"]
+              "swaps": ["Lying Leg Raise", "Stability Ball PPT", "Dead Bug", "Reverse Crunch"]
             }
           ]
         },
         {
-          "id": "ss_2e2f",
-          "label": "SUPERSET 2E / 2F",
-          "rest": "90-120s",
-          "ar": "Farmers carry 15m (light DBs)",
+          "id": "ss_2c",
+          "label": "CIRCUIT 2C",
+          "rest": "90-120s after round",
+          "ar": "Hip flexor stretch 20s/side",
           "exs": [
             {
-              "id": "w2w_2e",
-              "letter": "a",
-              "name": "Decline Skull-Crushers",
-              "target": "3 × 8-10, 8-10, 🔺 failure",
-              "cue": "On decline bench, elbows angled slightly back — lower bar toward forehead. Slow eccentric. Drive up without flaring elbows.",
+              "id": "w2f_2c",
+              "letter": "single",
+              "name": "Prone APT – Straight-Knee",
+              "target": "3 × 6-8 🔺 last set to failure",
+              "cue": "Lying face down — squeeze glutes and tilt pelvis posteriorly without lifting legs. Hold each rep 1-2 seconds.",
               "sets": 3,
-              "swaps": ["Flat Skull Crusher", "DB Skull Crusher", "Cable Overhead Extension", "EZ Bar Curl"]
-            },
+              "swaps": ["Glute Bridge", "Hip Thrust", "Bird Dog Hold", "Prone Hip Extension"]
+            }
+          ]
+        },
+        {
+          "id": "ss_2d",
+          "label": "CIRCUIT 2D",
+          "rest": "90-120s after round",
+          "ar": "Dead bug hold 20s",
+          "exs": [
             {
-              "id": "w2w_2f",
-              "letter": "b",
-              "name": "Hybrid Iso-Supination Curls",
-              "target": "3 × 8-10, 8-10, 🔺 failure",
-              "cue": "Hold the non-working arm at 90° isometric while the other curls. Supinate at the top. Alternate every rep — burns fast.",
+              "id": "w2f_2d",
+              "letter": "single",
+              "name": "Total Oblique Elevated Side-Dips",
+              "target": "3 sets/side 🔺 to failure each set",
+              "cue": "Hip elevated off bench or box. Full lateral crunch — squeeze the oblique hard at top, full stretch at bottom.",
               "sets": 3,
-              "swaps": ["Alternating DB Curl", "Concentration Curl", "Cable Curl", "Preacher Curl"]
+              "swaps": ["Side Plank Dips", "Cable Side Bend", "DB Side Bend", "Landmine Side Bend"]
+            }
+          ]
+        },
+        {
+          "id": "ss_2e",
+          "label": "CIRCUIT 2E",
+          "rest": "90-120s after round",
+          "ar": "Standing full-body reach ×5 slow",
+          "exs": [
+            {
+              "id": "w2f_2e",
+              "letter": "single",
+              "name": "Jefferson Curls",
+              "target": "3 × 8-10 slow",
+              "cue": "Vertebra by vertebra — chin to chest first, then round down slowly. Load is light. Spine decompression on the way up.",
+              "sets": 3,
+              "swaps": ["Barbell Good Morning", "Seated DB Forward Bend", "Banded Jefferson Curl", "Slow Deadlift Negative"]
+            }
+          ]
+        },
+        {
+          "id": "ss_2f",
+          "label": "CIRCUIT 2F",
+          "rest": "90-120s after round",
+          "ar": "Quadruped rock-back stretch 30s",
+          "exs": [
+            {
+              "id": "w2f_2f",
+              "letter": "single",
+              "name": "Landmine Stiff-Arm Oblique Twists",
+              "target": "3 × 14-16 🔺 last set to failure",
+              "cue": "Arms straight throughout — rotate from the trunk, not the shoulders. Keep hips square. Control the return.",
+              "sets": 3,
+              "swaps": ["Cable Woodchop", "DB Rotational Swing", "Band Pallof Rotation", "Med Ball Rotational Slam"]
             }
           ]
         }
       ]
     },
     {
-      "id": "finisher",
-      "label": "⚡ FINISHER · TRICEPS & FOREARMS",
+      "id": "w2f_finish",
+      "label": "⚡ FINISHER",
       "type": "finisher",
       "rounds": "2-3 Sets · To Failure",
       "ss": [
         {
-          "id": "ss_3a",
-          "label": "TRICEP FINISHER",
+          "id": "ss_fin",
+          "label": "FINISHER",
           "rest": "60s",
-          "ar": "Dead hang 20 sec (alternating grips)",
+          "ar": "Supine knee-hug 20s each side",
           "exs": [
             {
-              "id": "w2w_3a",
+              "id": "w2f_fin1",
               "letter": "single",
-              "name": "Bent-to-Straight 2-Phase Low-Cable Tricep Extensions",
-              "target": "2-3 × 🔺 failure / side",
-              "cue": "Start bent-arm (elbow at 90°), extend to straight in two phases — first to parallel, then full lockout. Unilateral. Full tricep stretch at the start.",
+              "name": "Diagonal Elbow-to-Knee Crunches w/ Hip Flexion",
+              "target": "2-3 sets → failure/side",
+              "cue": "Bring opposite elbow and knee together while the other leg extends. Crunch and rotate — don't just touch and bounce.",
               "sets": 3,
-              "swaps": ["Rope Pushdown", "Overhead Cable Extension", "DB Kickback", "Band Pressdown"]
-            }
-          ]
-        },
-        {
-          "id": "ss_3b",
-          "label": "BICEP FINISHER",
-          "rest": "60s",
-          "ar": "Forearm stretch (palm up/down) 15 sec each",
-          "exs": [
-            {
-              "id": "w2w_3b",
-              "letter": "single",
-              "name": "Inverted Zottman Curls",
-              "target": "2-3 × 🔺 failure",
-              "cue": "Curl up supinated, lower down pronated (like a reverse curl negative). Full ROM. The eccentric pronated phase kills the brachioradialis.",
-              "sets": 3,
-              "swaps": ["Zottman Curl", "Reverse Curl", "Hammer Curl", "Pronated DB Curl"]
-            }
-          ]
-        },
-        {
-          "id": "ss_4",
-          "label": "FOREARM FINISHER",
-          "rest": "45s",
-          "ar": "Dead hang 20-30 sec",
-          "exs": [
-            {
-              "id": "w2w_4",
-              "letter": "single",
-              "name": "Kneeling Supported Forearm Flexor Combo",
-              "target": "2-3 × fatigue",
-              "cue": "Kneel at bench, forearm on pad. Full wrist flexion through all grips — standard, reverse, and sideways. Slow and controlled.",
-              "sets": 3,
-              "swaps": ["Wrist Curls", "Reverse Wrist Curls", "Plate Pinch", "Farmers Carry"]
+              "swaps": ["Bicycle Crunch", "Cross-Body Mountain Climber", "Cable Cross Crunch", "V-Up Twist"]
             }
           ]
         }
