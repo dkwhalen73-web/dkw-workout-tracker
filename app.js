@@ -33,7 +33,9 @@
       workout: null,
       sets: {},
       blockTimers: {},
-      restInterval: null
+      restInterval: null,
+      lastLogText: '',
+      lastLogJson: ''
     };
 
     function escapeHtml(value) {
@@ -53,14 +55,23 @@
     }
 
     function init() {
-      // Initialize UI from config
+      syncBuilderInputsFromConfig();
+      autoFetchWorkout();
+    }
+
+    function syncBuilderInputsFromConfig() {
       document.getElementById('sel-mode').value = APP.config.mode;
       document.getElementById('sel-week').value = APP.config.week;
       document.getElementById('sel-day').value = APP.config.day;
       document.getElementById('sel-location').value = APP.config.location;
-      
-      // Always fetch the latest workout JSON first
-      autoFetchWorkout();
+      updateBuilderUI();
+    }
+
+    function syncBuilderConfigFromInputs() {
+      APP.config.mode = document.getElementById('sel-mode').value;
+      APP.config.week = document.getElementById('sel-week').value;
+      APP.config.day = document.getElementById('sel-day').value;
+      APP.config.location = document.getElementById('sel-location').value;
     }
 
     async function autoFetchWorkout() {
@@ -108,6 +119,7 @@
               APP.sets = saved.sets;
               APP.blockTimers = saved.blockTimers || {};
               APP.config = { ...APP.config, ...(saved.config || {}) };
+              syncBuilderInputsFromConfig();
               renderAll();
               setStatus('Resumed session with updated definitions.');
               return;
@@ -122,6 +134,7 @@
         APP.sets = createSetState(APP.workout);
         APP.blockTimers = {};
         saveSession();
+        syncBuilderInputsFromConfig();
         renderAll();
         switchTab('overview');
         setStatus('Workout loaded.');
@@ -139,6 +152,7 @@
               blockTimers: saved.blockTimers || {}
             };
             if (APP.workout) {
+              syncBuilderInputsFromConfig();
               renderAll();
               setStatus('Offline — showing last saved session.');
               return;
@@ -213,6 +227,7 @@
     }
 
     function buildWorkout() {
+      syncBuilderConfigFromInputs();
       const c = APP.config;
       let workout = null;
 
@@ -241,6 +256,7 @@
       APP.sets = createSetState(workout);
       APP.blockTimers = {};
       saveSession();
+      syncBuilderInputsFromConfig();
       renderAll();
       switchTab('overview');
       setStatus('Workout built. Review the overview, then head to Workout.');
@@ -350,8 +366,7 @@
 
     function renderExerciseCard(ex, isLast, rest, blockId) {
       const sets = APP.sets[ex.id] || [];
-      const primaryLabel = ex.logType === 'time' ? 'Time' : (ex.logType === 'distance' ? 'Distance' : 'Weight');
-      const secondaryLabel = ex.logType === 'time' ? 'Notes' : 'Reps';
+      const labels = getLogFieldLabels(ex.logType);
       const tip = inferExerciseTip(ex);
 
       return `
@@ -366,16 +381,14 @@
             <div class="set-num">${index + 1}</div>
             <div>
               <input class="set-input" value="${escapeHtml(setRow.w)}" placeholder="-" onchange="updateSet('${ex.id}', ${index}, 'w', this.value)">
-              <div class="mini-label">${escapeHtml(primaryLabel)}</div>
+              <div class="mini-label">${escapeHtml(labels.primary)}</div>
             </div>
             <div>
               <input class="set-input" value="${escapeHtml(setRow.r)}" placeholder="-" onchange="updateSet('${ex.id}', ${index}, 'r', this.value)">
-              <div class="mini-label">${escapeHtml(secondaryLabel)}</div>
+              <div class="mini-label">${escapeHtml(labels.secondary)}</div>
             </div>
-            <button class="btn-go" id="go-${ex.id}-${index}" onclick="startSetCycle('${ex.id}', ${index}, '${escapeHtml(rest || '')}')" title="Start cycle timer">GO</button>
             <button class="btn-check ${setRow.d ? 'done' : ''}" onclick="toggleSet('${ex.id}', ${index}, this, ${isLast}, '${escapeHtml(rest || '')}', '${blockId}')">✓</button>
           </div>
-          <div class="cycle-countdown" id="cycle-${ex.id}-${index}"></div>
         `).join('')}
       </div>
       ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
@@ -419,7 +432,7 @@
       if (row.d && APP.workout.blocks.find(block => block.id === blockId)?.timer && !APP.blockTimers[blockId]?.running && !APP.blockTimers[blockId]?.done) {
         toggleBlockTimer(blockId);
       }
-      if (row.d && isLast && rest) {
+      if (row.d && shouldStartRest(rest)) {
         const seconds = extractRestSeconds(rest);
         if (seconds > 0) startRest(seconds);
       }
@@ -475,32 +488,6 @@
       document.getElementById('pFill').style.width = allSets.length ? `${(doneSets / allSets.length) * 100}%` : '0%';
     }
 
-    // EMOM-style cycle timer: tap GO at set start — counts down full interval (work+rest)
-    const _cycleTimers = {};
-    function startSetCycle(exId, index, restStr) {
-      const cycleKey = exId + '-' + index;
-      if (_cycleTimers[cycleKey]) { clearInterval(_cycleTimers[cycleKey]); delete _cycleTimers[cycleKey]; }
-      const totalSeconds = extractRestSeconds(restStr);
-      if (totalSeconds <= 0) return;
-      let remaining = totalSeconds;
-      const btn = document.getElementById('go-' + exId + '-' + index);
-      const display = document.getElementById('cycle-' + exId + '-' + index);
-      if (btn) btn.classList.add('active');
-      const update = () => { if (display) display.textContent = remaining + 's'; };
-      update();
-      _cycleTimers[cycleKey] = setInterval(() => {
-        remaining -= 1;
-        update();
-        if (remaining <= 0) {
-          clearInterval(_cycleTimers[cycleKey]);
-          delete _cycleTimers[cycleKey];
-          if (btn) btn.classList.remove('active');
-          if (display) display.textContent = '\u25b6 GO!';
-          try { navigator.vibrate([200, 100, 200]); } catch(e) {}
-        }
-      }, 1000);
-    }
-
     function startRest(seconds) {
       stopRest();
       const pill = document.getElementById('restPill');
@@ -531,13 +518,37 @@
       APP.workout.blocks.forEach(block => block.ss.forEach(ss => ss.exs.forEach(ex => { exerciseLookup[ex.id] = ex; })));
 
       let text = `DR. GAINS SESSION\n${APP.workout.title}\n${APP.workout.meta}\n`;
+      const completedExercises = [];
       Object.keys(APP.sets).forEach(id => {
         const completed = APP.sets[id].filter(setRow => setRow.d);
         if (!completed.length) return;
         const ex = exerciseLookup[id];
+        completedExercises.push({
+          id,
+          name: ex.name,
+          target: ex.target,
+          completedSets: completed.map(setRow => ({
+            weight: setRow.w || '',
+            reps: setRow.r || '',
+            done: !!setRow.d
+          }))
+        });
         text += `\n${ex.name}: ${completed.map(setRow => `${setRow.w || '-'} x ${setRow.r || '-'}`).join(', ')}`;
       });
 
+      APP.lastLogText = text;
+      APP.lastLogJson = JSON.stringify({
+        exportedAt: new Date().toISOString(),
+        workout: {
+          title: APP.workout.title,
+          meta: APP.workout.meta,
+          modeLabel: APP.workout.modeLabel || '',
+          location: APP.workout.location || '',
+          duration: APP.workout.duration || '',
+          blocks: APP.workout.blocks
+        },
+        completedExercises
+      }, null, 2);
       document.getElementById('logBody').textContent = text;
       document.getElementById('logModal').style.display = 'flex';
     }
@@ -547,8 +558,20 @@
     }
 
     function copyLog() {
-      navigator.clipboard.writeText(document.getElementById('logBody').textContent)
+      const text = APP.lastLogText || document.getElementById('logBody').textContent;
+      navigator.clipboard.writeText(text)
         .then(() => alert('Session log copied.'))
+        .catch(() => alert('Copy failed in this browser.'));
+    }
+
+    function copyClaudeJson() {
+      if (!APP.lastLogJson) {
+        alert('Finish a session first so there is something to export.');
+        return;
+      }
+
+      navigator.clipboard.writeText(APP.lastLogJson)
+        .then(() => alert('Claude JSON copied.'))
         .catch(() => alert('Copy failed in this browser.'));
     }
 
@@ -756,9 +779,9 @@
 
       if (format === 'EMOM') {
         blocks.push(group('EMOM Engine', [
-          { name: day === 'Friday' ? 'Calorie row' : 'Calorie bike', target: '12 rounds', cue: 'Minute 1' },
-          { name: day === 'Friday' ? 'Toes-to-bar or knee raise' : 'DB thruster', target: '12 rounds', cue: 'Minute 2' },
-          { name: day === 'Friday' ? 'Burpee-over-erg' : 'Walking lunge', target: '12 rounds', cue: 'Minute 3' }
+          { name: day === 'Friday' ? 'Calorie row' : 'Calorie bike', target: '12 rounds', logType: 'calories', cue: 'Minute 1. Hard but repeatable effort. Leave a few seconds to transition.' },
+          { name: day === 'Friday' ? 'Toes-to-bar or knee raise' : 'DB thruster', target: '12 rounds', logType: 'reps', cue: day === 'Friday' ? 'Minute 2. Stay tight through the midline. Scale to knee raises if needed.' : 'Minute 2. Smooth full-body reps. Do not sprint the first rounds.' },
+          { name: day === 'Friday' ? 'Burpee-over-erg' : 'Walking lunge', target: '12 rounds', logType: 'reps', cue: day === 'Friday' ? 'Minute 3. Smooth burpees over the erg. Stay moving without redlining.' : 'Minute 3. Long controlled steps. Keep posture tall and breathing steady.' }
         ], 'Built into EMOM', 'Move to next station'));
       } else if (format === 'AMRAP') {
         blocks.push(group('AMRAP', [
@@ -799,7 +822,7 @@
         type: 'beast',
         location: 'WFWHF',
         duration,
-        eq: ['Rower / Bike / SkiErg', 'Dumbbells', 'Bodyweight', 'Sled / Carry implements'],
+        eq: inferEquipment(blocks.flatMap(block => block.ss).flatMap(ss => ss.exs).map(ex => ex.name.toLowerCase()), []),
         blocks
       };
     }
@@ -826,8 +849,11 @@
     }
 
     function parseSetCount(target) {
-      const match = String(target).match(/(\d+)(?:\s*x|\s*sets?)/i);
-      if (match) return Number(match[1]);
+      const text = String(target);
+      const roundsMatch = text.match(/(\d+)\s+rounds?/i);
+      if (roundsMatch) return Number(roundsMatch[1]);
+      const setsMatch = text.match(/(\d+)(?:\s*x|\s*sets?)/i);
+      if (setsMatch) return Number(setsMatch[1]);
       return 1;
     }
 
@@ -847,6 +873,14 @@
       };
 
       return labels[type] || capitalize(String(type || '').replace(/[_-]+/g, ' '));
+    }
+
+    function getLogFieldLabels(logType) {
+      if (logType === 'time') return { primary: 'Time', secondary: 'Notes' };
+      if (logType === 'distance') return { primary: 'Distance', secondary: 'Notes' };
+      if (logType === 'calories') return { primary: 'Calories', secondary: 'Notes' };
+      if (logType === 'reps') return { primary: 'Reps', secondary: 'Notes' };
+      return { primary: 'Weight', secondary: 'Reps' };
     }
 
     function collectWorkoutErrors(workout, label) {
@@ -945,9 +979,12 @@
       const targetText = String(target).toLowerCase();
       const timeTargetPattern = /(\d+\s*(sec|secs|s|min|mins|minute|minutes)\b|for time|max time|amrap|emom|time cap|\bcap\b)/;
       const distanceTargetPattern = /(\d+\s*(m|km|mi|mile|miles|meter|meters|metre|metres)\b|distance)/;
+      const roundPattern = /\d+\s+rounds?/;
 
       if (timeTargetPattern.test(targetText)) return 'time';
       if (distanceTargetPattern.test(targetText)) return 'distance';
+      if (/calorie/.test(nameText) || /calorie/.test(targetText)) return 'calories';
+      if (roundPattern.test(targetText) && /(burpee|pull.?up|push.?up|air squat|toes.?to.?bar|knee raise|thruster|walking lunge|sit.?up|v.?up|push press)/.test(nameText)) return 'reps';
       if (/(run|treadmill|bike|rower|ski(erg)?|erg)/.test(nameText) && timeTargetPattern.test(targetText)) return 'time';
       return 'standard';
     }
@@ -959,6 +996,13 @@
       if (nums.length === 0) return 0;
       // Return largest number found (e.g. '60-90s' -> 90, '90s' -> 90)
       return Math.max(...nums);
+    }
+
+    function shouldStartRest(rest) {
+      const value = String(rest || '').toLowerCase().trim();
+      if (!value) return false;
+      if (/built into emom|move to next station|as needed|minimal transition|no rest/.test(value)) return false;
+      return extractRestSeconds(rest) > 0;
     }
 
     function inferExerciseTip(ex) {
@@ -973,20 +1017,20 @@
         if (cleanName.toLowerCase().includes(key.toLowerCase())) return tip;
       }
 
-      // 2. Keyword fallback (Moderated Precision)
+      // 2. Prefer the authored cue when it contains real instruction.
+      const isTransition = /→|move directly|next exercise|rest:|active rest/i.test(rawCue) || /move directly|next exercise/i.test(clean);
+      if (clean && !isTransition && clean.length > 5) {
+        return clean.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
+      }
+
+      // 3. Keyword fallback (Moderated Precision)
       const lowerName = cleanName.toLowerCase();
       if (/row|pull|lat/.test(lowerName)) return 'Lead with elbows. Squeeze upper back.';
       if (/press|push/.test(lowerName)) return 'Brace core. Control the eccentric.';
       if (/squat|lunge|split squat/.test(lowerName)) return 'Stay rooted. Keep knees tracking.';
       if (/curl|tricep|extension|kickback/.test(lowerName)) return 'Full range. No momentum.';
 
-      // 3. User-provided cue (Only if NOT transition noise)
-      const isTransition = /→|move directly|next exercise|rest:|active rest/i.test(rawCue) || /move directly|next exercise/i.test(clean);
-      if (clean && !isTransition && clean.length > 5) {
-        return clean.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
-      }
-
-      // 4. Absolute Fallback
+      // 4. Absolute fallback
       return 'Controlled reps. Focus on the muscle contraction.';
     }
 

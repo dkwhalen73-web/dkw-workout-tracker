@@ -343,7 +343,7 @@
 
     .set-row {
       display: grid;
-      grid-template-columns: 30px 1fr 1fr 48px 48px;
+      grid-template-columns: 30px 1fr 1fr 48px;
       gap: 8px;
       align-items: center;
       padding: 10px 0;
@@ -517,37 +517,6 @@
       border: none;
       font-size: 16px;
       cursor: pointer;
-    }
-
-    .btn-go {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2.5px solid rgba(212, 175, 55, 0.5);
-      background: rgba(212, 175, 55, 0.12);
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      transition: all 0.2s;
-      flex-shrink: 0;
-    }
-
-    .btn-go:active { background: rgba(212, 175, 55, 0.3); transform: scale(0.9); }
-    .btn-go.active { background: var(--red); border-color: var(--red); color: white; box-shadow: 0 0 12px rgba(176,42,48,0.5); }
-
-    .cycle-countdown {
-      font-family: 'Anton', sans-serif;
-      font-size: 13px;
-      color: var(--gold);
-      text-align: center;
-      margin-top: 2px;
-      letter-spacing: 1px;
-      min-height: 18px;
     }
 
     .finish-btn {
