@@ -48,7 +48,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b3",
           "label": "SUPERSET 1",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -76,7 +76,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b4",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -104,7 +104,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b5",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -132,7 +132,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b6",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -153,7 +153,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b7",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -174,7 +174,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_mon__b8",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -204,7 +204,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_wed__b1",
           "label": "SUPERSET 1",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -232,7 +232,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_wed__b2",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -260,7 +260,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_wed__b3",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -288,7 +288,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_wed__b4",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -309,7 +309,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_wed__b5",
           "label": "SUPERSET 4",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -505,7 +505,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_sat__b2",
           "label": "SUPERSET 1",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -533,7 +533,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_sat__b3",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -561,7 +561,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_sat__b4",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -589,7 +589,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_sat__b5",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -617,7 +617,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w1_sat__b6",
           "label": "SUPERSET 5",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -677,7 +677,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_mon__b2",
           "label": "SUPERSET 1",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -705,7 +705,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_mon__b3",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -733,7 +733,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_mon__b4",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -761,7 +761,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_mon__b5",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -789,7 +789,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_mon__b6",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "FINISHER",
@@ -840,7 +840,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_wed__b2",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "2A & 2B & 2C & 2D & 2E & 2F",
@@ -896,7 +896,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_wed__b3",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "3A & 3B",
@@ -924,7 +924,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_wed__b4",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "FINISHER",
@@ -1078,7 +1078,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_sat__b2",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "2A & 2B & 2C & 2D & 2E & 2F & 2G & 2H",
@@ -1148,7 +1148,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_sat__b3",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -1176,7 +1176,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w2_sat__b4",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "FINISHER",
@@ -1229,7 +1229,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_mon__b2",
           "label": "SUPERSET 1",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -1257,7 +1257,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_mon__b3",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -1285,7 +1285,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_mon__b4",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -1313,7 +1313,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_mon__b5",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -1341,7 +1341,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_mon__b6",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "FINISHER",
@@ -1392,7 +1392,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b2",
           "label": "SUPERSET 1",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -1420,7 +1420,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b3",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -1448,7 +1448,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b4",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -1476,7 +1476,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b5",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "FINISHER",
@@ -1497,7 +1497,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b6",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -1518,7 +1518,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_wed__b7",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -1700,7 +1700,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_sat__b2",
           "label": "SUPERSET 1",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -1728,7 +1728,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_sat__b3",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -1756,7 +1756,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_sat__b4",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -1784,7 +1784,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_sat__b5",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -1812,7 +1812,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w3_sat__b6",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -1872,7 +1872,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_mon__b2",
           "label": "SUPERSET 1",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -1900,7 +1900,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_mon__b3",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -1928,7 +1928,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_mon__b4",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -1956,7 +1956,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_mon__b5",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -1984,7 +1984,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_mon__b6",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -2042,7 +2042,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_wed__b2",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -2070,7 +2070,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_wed__b3",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -2098,7 +2098,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_wed__b4",
           "label": "SUPERSET 4",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -2126,7 +2126,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_wed__b5",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -2343,7 +2343,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b2",
           "label": "SUPERSET 1",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -2371,7 +2371,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b3",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -2399,7 +2399,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b4",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -2427,7 +2427,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b5",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A",
@@ -2448,7 +2448,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b6",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4B",
@@ -2469,7 +2469,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w4_sat__b7",
           "label": "EXERCISE",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SINGLE",
@@ -2522,7 +2522,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_mon__b2",
           "label": "SUPERSET 1",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -2550,7 +2550,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_mon__b3",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -2578,7 +2578,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_mon__b4",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -2606,7 +2606,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_mon__b5",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -2634,7 +2634,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_mon__b6",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -2692,7 +2692,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_wed__b2",
           "label": "SUPERSET 1",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS1A & SS1B",
@@ -2720,7 +2720,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_wed__b3",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -2748,7 +2748,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_wed__b4",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -2776,7 +2776,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_wed__b5",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -2993,7 +2993,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_sat__b2",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -3021,7 +3021,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_sat__b3",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -3049,7 +3049,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_sat__b4",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -3077,7 +3077,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_sat__b5",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -3105,7 +3105,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w5_sat__b6",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "FINISHER",
@@ -3137,7 +3137,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_mon__b1",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -3165,7 +3165,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_mon__b2",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -3193,7 +3193,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_mon__b3",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -3221,7 +3221,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_mon__b4",
           "label": "SUPERSET 5",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -3249,7 +3249,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_mon__b5",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "FINISHER",
@@ -3300,7 +3300,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_wed__b2",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "2A & 2B & 2C",
@@ -3335,7 +3335,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_wed__b3",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "3A & 3B & 3C",
@@ -3370,7 +3370,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_wed__b4",
           "label": "SUPERSET 4",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "4A & 4B & 4C",
@@ -3405,7 +3405,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_wed__b5",
           "label": "SUPERSET 5",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "5A & 5B & 5C",
@@ -3440,7 +3440,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_wed__b6",
           "label": "SUPERSET 6",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "6A & 6B & 6C",
@@ -3650,7 +3650,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_sat__b2",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "2A & 2B & 2C",
@@ -3685,7 +3685,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_sat__b3",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "3A & 3B & 3C",
@@ -3720,7 +3720,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_sat__b4",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "4A & 4B & 4C",
@@ -3755,7 +3755,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_sat__b5",
           "label": "EXERCISE",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SINGLE",
@@ -3776,7 +3776,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w6_sat__b6",
           "label": "SUPERSET 6",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "6A & 6B & 6C",
@@ -3822,7 +3822,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_mon__b1",
           "label": "SUPERSET 2",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -3850,7 +3850,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_mon__b2",
           "label": "SUPERSET 3",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -3878,7 +3878,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_mon__b3",
           "label": "SUPERSET 4",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -3906,7 +3906,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_mon__b4",
           "label": "SUPERSET 5",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -3934,7 +3934,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_mon__b5",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SS6A & SS6B",
@@ -3971,7 +3971,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_wed__b1",
           "label": "SUPERSET 2",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -3999,7 +3999,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_wed__b2",
           "label": "SUPERSET 3",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -4027,7 +4027,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_wed__b3",
           "label": "SUPERSET 4",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -4055,7 +4055,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_wed__b4",
           "label": "SUPERSET 5",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -4083,7 +4083,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_wed__b5",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SS6A & SS6B",
@@ -4237,7 +4237,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_sat__b1",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -4265,7 +4265,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_sat__b2",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -4293,7 +4293,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_sat__b3",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -4321,7 +4321,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_sat__b4",
           "label": "SUPERSET 5",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -4349,7 +4349,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w7_sat__b5",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS6A & SS6B",
@@ -4409,7 +4409,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b2",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4430,7 +4430,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b3",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4451,7 +4451,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b4",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4472,7 +4472,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b5",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4493,7 +4493,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b6",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4514,7 +4514,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b7",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4535,7 +4535,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b8",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4556,7 +4556,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b9",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4577,7 +4577,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b10",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4598,7 +4598,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b11",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4619,7 +4619,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b12",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4640,7 +4640,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b13",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4661,7 +4661,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b14",
           "label": "EXERCISE",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "SINGLE",
@@ -4682,7 +4682,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b15",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "FINISHER",
@@ -4703,7 +4703,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_mon__b16",
           "label": "FINISHER",
-          "type": "back",
+          "type": "upper",
           "ss": [
             {
               "label": "FINISHER",
@@ -4733,7 +4733,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b1",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4754,7 +4754,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b2",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4775,7 +4775,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b3",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4796,7 +4796,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b4",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4817,7 +4817,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b5",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4838,7 +4838,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b6",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4859,7 +4859,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b7",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4880,7 +4880,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b8",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4901,7 +4901,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b9",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4922,7 +4922,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b10",
           "label": "EXERCISE",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "SINGLE",
@@ -4943,7 +4943,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_wed__b11",
           "label": "FINISHER",
-          "type": "triceps",
+          "type": "arms",
           "ss": [
             {
               "label": "FINISHER",
@@ -5293,7 +5293,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b2",
           "label": "SUPERSET 2",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS2A & SS2B",
@@ -5321,7 +5321,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b3",
           "label": "SUPERSET 3",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS3A & SS3B",
@@ -5349,7 +5349,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b4",
           "label": "SUPERSET 4",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS4A & SS4B",
@@ -5377,7 +5377,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b5",
           "label": "SUPERSET 5",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS5A & SS5B",
@@ -5405,7 +5405,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b6",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "SS6A & SS6B",
@@ -5433,7 +5433,7 @@ const DR_GAINS_FULL_DB = {
         {
           "id": "w8_sat__b7",
           "label": "FINISHER",
-          "type": "shoulders",
+          "type": "legs_shoulders",
           "ss": [
             {
               "label": "FINISHER",
