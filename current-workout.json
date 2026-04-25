@@ -1,164 +1,247 @@
 {
-  "title": "CORE & SPINE",
-  "meta": "WFWHF · Fri, Apr 25 · Week 2",
-  "yesterday": "Yesterday: Thursday Bootcamp (Legs / Hamstrings)",
-  "duration": "55-65",
+  "title": "MURPH PREP — WEEK 3",
+  "meta": "WFWHF · Sat, Apr 26 · Murph Block Week 3",
+  "yesterday": "Yesterday: Core & Spine (Friday Dr. Gains)",
+  "duration": "60-75",
   "blocks": [
     {
-      "id": "w2f_wu",
+      "id": "wu",
       "label": "🔥 WARM-UP",
       "type": "warmup",
-      "rounds": null,
+      "rounds": "2 Rounds",
       "ss": [
         {
-          "id": "ss_wu",
-          "label": "WARM-UP",
-          "rest": "30s",
+          "id": "wu_prime",
+          "label": "PRIME THE ENGINE",
+          "rest": null,
           "ar": null,
           "exs": [
             {
-              "id": "w2f_wu1",
+              "id": "wu1",
               "letter": "single",
-              "name": "Serratus Anterior Upward Rotations",
-              "target": "2 × ≥10",
-              "cue": "Arms straight, rotate the scapula upward — think reaching the ceiling with your elbow. Slow and controlled.",
+              "name": "Easy Run / Treadmill",
+              "target": "400m easy",
+              "cue": "Nasal breathing, conversational pace — get blood moving before any hanging",
+              "sets": 1,
+              "logType": "time",
+              "swaps": ["SkiErg 3 min", "Row 3 min", "Assault Bike 3 min"]
+            },
+            {
+              "id": "wu2",
+              "letter": "single",
+              "name": "Dead Hang",
+              "target": "2 × 30 sec",
+              "cue": "Full grip decompression — shoulder blades packed down, not shrugging",
               "sets": 2,
-              "swaps": ["Wall Angel", "Plank Plus", "Band Overhead Reach", "Prone Y Raise"]
+              "logType": "time",
+              "swaps": ["Active hang with shrug", "Band lat stretch"]
+            },
+            {
+              "id": "wu3",
+              "letter": "single",
+              "name": "Scap Pull-Up",
+              "target": "2 × 10",
+              "cue": "Arms stay straight — pure scapular depression, no elbow bend. Wake up the lats.",
+              "sets": 2,
+              "swaps": ["Band pull-aparts x15", "Face pulls x12"]
+            },
+            {
+              "id": "wu4",
+              "letter": "single",
+              "name": "Push-Up Plank Hold",
+              "target": "2 × 20 sec",
+              "cue": "Hollow body — ribs down, glutes squeezed, wrists under shoulders. This is your Murph push-up base position.",
+              "sets": 2,
+              "logType": "time",
+              "swaps": ["RKC Plank 20 sec", "Push-Up Plus x10"]
             }
           ]
         }
       ]
     },
     {
-      "id": "w2f_circ",
-      "label": "🔥 CORE CIRCUIT",
-      "type": "core",
-      "rounds": "3 Rounds · Circuit · 15-30s between exercises, 90-120s after each round",
+      "id": "pullup_capacity",
+      "label": "💪 BLOCK 1 · PULL-UP CAPACITY",
+      "type": "pull",
+      "rounds": "8 Rounds · Cluster Sets",
       "ss": [
         {
-          "id": "ss_2a",
-          "label": "CIRCUIT 2A",
-          "rest": "90-120s after round",
-          "ar": "Hollow body hold 20s",
+          "id": "ss_pu1",
+          "label": "CLUSTER SETS",
+          "rest": "20s between clusters / 90s after round",
+          "ar": "Dead hang 15 sec between clusters",
           "exs": [
             {
-              "id": "w2f_2a",
-              "letter": "single",
-              "name": "Stiff-Leg Inverted Crunches",
-              "target": "3 × 10-12 🔺 last set to failure",
-              "cue": "Legs straight to ceiling, lower ribs pull toward hips. Drive the posterior tilt — don't just rock.",
-              "sets": 3,
-              "swaps": ["Hanging Knee Raise", "Decline Crunch", "Ab Wheel Rollout", "Captain's Chair Raise"]
+              "id": "pu1a",
+              "letter": "a",
+              "name": "Pull-Ups — Strict",
+              "target": "8 × 5 reps (cluster: 3+2 with 20s pause)",
+              "cue": "Dead hang start, chin clear bar, 2-count descent — use cluster pause to reset grip and stay sharp",
+              "sets": 8,
+              "swaps": ["Band-Assisted Pull-Up", "Ring Row", "Lat Pulldown", "Jumping Pull-Up with slow negative"]
             }
           ]
         },
         {
-          "id": "ss_2b",
-          "label": "CIRCUIT 2B",
-          "rest": "90-120s after round",
-          "ar": "Quadruped diaphragmatic breathing ×5",
-          "exs": [
-            {
-              "id": "w2f_2b",
-              "letter": "single",
-              "name": "Supine Hip-Drop Full ROM PPT",
-              "target": "3 × 10-12 🔺 last set to failure",
-              "cue": "Pelvis posterior tilts fully before the hip drops. Lower back stays in contact with floor. Full arc, not a swing.",
-              "sets": 3,
-              "swaps": ["Lying Leg Raise", "Stability Ball PPT", "Dead Bug", "Reverse Crunch"]
-            }
-          ]
-        },
-        {
-          "id": "ss_2c",
-          "label": "CIRCUIT 2C",
-          "rest": "90-120s after round",
-          "ar": "Hip flexor stretch 20s/side",
-          "exs": [
-            {
-              "id": "w2f_2c",
-              "letter": "single",
-              "name": "Prone APT – Straight-Knee",
-              "target": "3 × 6-8 🔺 last set to failure",
-              "cue": "Lying face down — squeeze glutes and tilt pelvis posteriorly without lifting legs. Hold each rep 1-2 seconds.",
-              "sets": 3,
-              "swaps": ["Glute Bridge", "Hip Thrust", "Bird Dog Hold", "Prone Hip Extension"]
-            }
-          ]
-        },
-        {
-          "id": "ss_2d",
-          "label": "CIRCUIT 2D",
-          "rest": "90-120s after round",
-          "ar": "Dead bug hold 20s",
-          "exs": [
-            {
-              "id": "w2f_2d",
-              "letter": "single",
-              "name": "Total Oblique Elevated Side-Dips",
-              "target": "3 sets/side 🔺 to failure each set",
-              "cue": "Hip elevated off bench or box. Full lateral crunch — squeeze the oblique hard at top, full stretch at bottom.",
-              "sets": 3,
-              "swaps": ["Side Plank Dips", "Cable Side Bend", "DB Side Bend", "Landmine Side Bend"]
-            }
-          ]
-        },
-        {
-          "id": "ss_2e",
-          "label": "CIRCUIT 2E",
-          "rest": "90-120s after round",
-          "ar": "Standing full-body reach ×5 slow",
-          "exs": [
-            {
-              "id": "w2f_2e",
-              "letter": "single",
-              "name": "Jefferson Curls",
-              "target": "3 × 8-10 slow",
-              "cue": "Vertebra by vertebra — chin to chest first, then round down slowly. Load is light. Spine decompression on the way up.",
-              "sets": 3,
-              "swaps": ["Barbell Good Morning", "Seated DB Forward Bend", "Banded Jefferson Curl", "Slow Deadlift Negative"]
-            }
-          ]
-        },
-        {
-          "id": "ss_2f",
-          "label": "CIRCUIT 2F",
-          "rest": "90-120s after round",
-          "ar": "Quadruped rock-back stretch 30s",
-          "exs": [
-            {
-              "id": "w2f_2f",
-              "letter": "single",
-              "name": "Landmine Stiff-Arm Oblique Twists",
-              "target": "3 × 14-16 🔺 last set to failure",
-              "cue": "Arms straight throughout — rotate from the trunk, not the shoulders. Keep hips square. Control the return.",
-              "sets": 3,
-              "swaps": ["Cable Woodchop", "DB Rotational Swing", "Band Pallof Rotation", "Med Ball Rotational Slam"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "w2f_finish",
-      "label": "⚡ FINISHER",
-      "type": "finisher",
-      "rounds": "2-3 Sets · To Failure",
-      "ss": [
-        {
-          "id": "ss_fin",
-          "label": "FINISHER",
+          "id": "ss_pu2",
+          "label": "GRIP FINISHER",
           "rest": "60s",
-          "ar": "Supine knee-hug 20s each side",
+          "ar": "Forearm stretch palm up/down 15 sec each",
           "exs": [
             {
-              "id": "w2f_fin1",
+              "id": "pu2a",
               "letter": "single",
-              "name": "Diagonal Elbow-to-Knee Crunches w/ Hip Flexion",
-              "target": "2-3 sets → failure/side",
-              "cue": "Bring opposite elbow and knee together while the other leg extends. Crunch and rotate — don't just touch and bounce.",
+              "name": "Chin-Up (Supinated Grip)",
+              "target": "3 × 6-8 🔺 last set to failure",
+              "cue": "Supinated grip loads bicep — full ROM, 1 sec pause at top, 3-count descent",
               "sets": 3,
-              "swaps": ["Bicycle Crunch", "Cross-Body Mountain Climber", "Cable Cross Crunch", "V-Up Twist"]
+              "swaps": ["Neutral-Grip Pull-Up", "Assisted Chin-Up", "Lat Pulldown Supinated"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pushup_capacity",
+      "label": "💪 BLOCK 2 · PUSH-UP CAPACITY",
+      "type": "push",
+      "rounds": "Density Work · 4 Rounds",
+      "ss": [
+        {
+          "id": "ss_push1",
+          "label": "SUPERSET 1",
+          "rest": "60s",
+          "ar": "Walk 20 steps + shake arms out",
+          "exs": [
+            {
+              "id": "ps1a",
+              "letter": "a",
+              "name": "Push-Ups — Standard",
+              "target": "4 × 20 🔺 last set to failure",
+              "cue": "Chest to floor, full lockout — if form breaks before 15, elevate hands. Log your failure number.",
+              "sets": 4,
+              "swaps": ["Incline Push-Up (easier)", "Deficit Push-Up (harder)", "Ring Push-Up"]
+            },
+            {
+              "id": "ps1b",
+              "letter": "b",
+              "name": "Diamond Push-Up",
+              "target": "4 × 10-12",
+              "cue": "Hands form diamond under sternum — elbows track back, not flared. Builds tricep lockout endurance.",
+              "sets": 4,
+              "swaps": ["Close-Grip Bench Press", "Tricep Dips", "Cable Pushdown"]
+            }
+          ]
+        },
+        {
+          "id": "ss_push2",
+          "label": "SUPERSET 2",
+          "rest": "60-90s",
+          "ar": "Dead bug hold 20 sec",
+          "exs": [
+            {
+              "id": "ps2a",
+              "letter": "a",
+              "name": "Wide Push-Up",
+              "target": "4 × 15-20",
+              "cue": "Hands wider than shoulder-width — outer chest emphasis. No chest sag.",
+              "sets": 4,
+              "swaps": ["Incline Wide Push-Up", "Cable Fly", "DB Fly on floor"]
+            },
+            {
+              "id": "ps2b",
+              "letter": "b",
+              "name": "Pike Push-Up",
+              "target": "4 × 8-10",
+              "cue": "Hips high, head tracks toward floor — shoulder overhead strength you'll need in mile 2 of Murph.",
+              "sets": 4,
+              "swaps": ["DB Shoulder Press", "Landmine Press", "Arnold Press"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "squat_engine",
+      "label": "🦵 BLOCK 3 · SQUAT + RUN ENGINE",
+      "type": "legs",
+      "rounds": "Air Squat Volume + Run Splits",
+      "ss": [
+        {
+          "id": "ss_sq1",
+          "label": "SQUAT DENSITY",
+          "rest": "45s",
+          "ar": "Hip flexor stretch 20 sec/side",
+          "exs": [
+            {
+              "id": "sq1a",
+              "letter": "single",
+              "name": "Air Squats",
+              "target": "5 × 30 reps",
+              "cue": "Lock in your Murph squat rhythm — below parallel, full extension at top, breathe every 5 reps.",
+              "sets": 5,
+              "swaps": ["Goblet Squat (loaded)", "Box Squat", "Wall Sit 45 sec"]
+            }
+          ]
+        },
+        {
+          "id": "ss_run",
+          "label": "RUN SPLITS",
+          "rest": "90s walk recovery",
+          "ar": "Walk and shake out — nasal only, let HR settle",
+          "exs": [
+            {
+              "id": "run1a",
+              "letter": "single",
+              "name": "Run — 400m Interval",
+              "target": "4 × 400m",
+              "cue": "Log every split — this is your Murph mile pace data. Should feel hard but controlled, not a sprint.",
+              "sets": 4,
+              "logType": "time",
+              "swaps": ["Treadmill 400m", "SkiErg 400m equivalent", "Row 500m"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simulation",
+      "label": "⚡ MURPH SIM FINISHER",
+      "type": "beast",
+      "rounds": "1 Round · Partitioned · Continuous",
+      "ss": [
+        {
+          "id": "ss_sim",
+          "label": "3/4 MURPH SIM (Partitioned)",
+          "rest": "Minimal — walk only if HR is unrecoverable",
+          "ar": "Walk between exercises if needed — log how you feel at each transition",
+          "exs": [
+            {
+              "id": "sim1",
+              "letter": "a",
+              "name": "Pull-Ups",
+              "target": "50 total — partition as: 10 × 5",
+              "cue": "This is where Week 3 steps up from Week 1's half-sim. Cluster as 3+2 if needed — stay technical.",
+              "sets": 10,
+              "swaps": ["Band-Assisted Pull-Up", "Ring Row x8 per round"]
+            },
+            {
+              "id": "sim2",
+              "letter": "b",
+              "name": "Push-Ups",
+              "target": "100 total — partition as: 10 × 10",
+              "cue": "Maintain form standard from Block 2 — no snaking. Drop to knees only as last resort.",
+              "sets": 10,
+              "swaps": ["Incline Push-Up", "Knee Push-Up"]
+            },
+            {
+              "id": "sim3",
+              "letter": "c",
+              "name": "Air Squats",
+              "target": "150 total — partition as: 10 × 15",
+              "cue": "Stay rhythmic and smooth — these will be the hardest thing in real Murph by round 15.",
+              "sets": 10,
+              "swaps": ["Goblet Squat", "Step-Through Lunge"]
             }
           ]
         }
