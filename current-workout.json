@@ -3,6 +3,12 @@
   "meta": "WFWHF · Sat, Apr 26 · Murph Block Week 3",
   "yesterday": "Yesterday: Core & Spine (Friday Dr. Gains)",
   "duration": "60-75",
+  "vest": {
+    "weight": "20lb",
+    "worn": true,
+    "blocks": ["simulation"],
+    "note": "Vest on sim finisher only (Week 3). Week 1: sim only. Week 2: most pull-ups + sim. Week 3: sim only — volume jump is the progression."
+  },
   "blocks": [
     {
       "id": "wu",
@@ -219,27 +225,27 @@
             {
               "id": "sim1",
               "letter": "a",
-              "name": "Pull-Ups",
+              "name": "Pull-Ups 🦺 20lb Vest",
               "target": "50 total — partition as: 10 × 5",
-              "cue": "This is where Week 3 steps up from Week 1's half-sim. Cluster as 3+2 if needed — stay technical.",
+              "cue": "🦺 VEST ON from here. Cluster as 3+2 if needed — stay technical. Week 3 volume jump is the progression, vest is just continuity.",
               "sets": 10,
               "swaps": ["Band-Assisted Pull-Up", "Ring Row x8 per round"]
             },
             {
               "id": "sim2",
               "letter": "b",
-              "name": "Push-Ups",
+              "name": "Push-Ups 🦺 20lb Vest",
               "target": "100 total — partition as: 10 × 10",
-              "cue": "Maintain form standard from Block 2 — no snaking. Drop to knees only as last resort.",
+              "cue": "🦺 Vest stays on. Maintain form standard from Block 2 — no snaking. Drop to knees only as last resort.",
               "sets": 10,
               "swaps": ["Incline Push-Up", "Knee Push-Up"]
             },
             {
               "id": "sim3",
               "letter": "c",
-              "name": "Air Squats",
+              "name": "Air Squats 🦺 20lb Vest",
               "target": "150 total — partition as: 10 × 15",
-              "cue": "Stay rhythmic and smooth — these will be the hardest thing in real Murph by round 15.",
+              "cue": "🦺 Vest stays on through squats. Stay rhythmic and smooth — these will be the hardest thing in real Murph by round 15.",
               "sets": 10,
               "swaps": ["Goblet Squat", "Step-Through Lunge"]
             }
