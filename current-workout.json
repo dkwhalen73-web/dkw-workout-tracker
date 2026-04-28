@@ -28,7 +28,7 @@
               "target": "1 x 400m",
               "cue": "Target 8 min/mile pace - settle in, dont sprint",
               "sets": 1,
-              "logType": "cardio",
+              "logType": "time",
               "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
@@ -46,7 +46,7 @@
               "target": "1 x 400m",
               "cue": "Match Run 1 pace - stay controlled before the sim",
               "sets": 1,
-              "logType": "cardio",
+              "logType": "time",
               "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
@@ -117,7 +117,7 @@
               "target": "1 x 400m",
               "cue": "Legs will be cooked from squats - find your rhythm early",
               "sets": 1,
-              "logType": "cardio",
+              "logType": "time",
               "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
@@ -135,7 +135,7 @@
               "target": "1 x 400m",
               "cue": "Last effort - empty the tank, finish strong",
               "sets": 1,
-              "logType": "cardio",
+              "logType": "time",
               "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
