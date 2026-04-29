@@ -1,298 +1,142 @@
 {
-  "title": "BACK ENDURANCE + CYCLING LEGS & CORE",
-  "meta": "WFWHF · Wed, Apr 29 · Week 3 (Pec Recovery Sub)",
-  "yesterday": "Yesterday: Tuesday Bootcamp — Deadlifts + Pull",
-  "duration": "60-70",
+  "title": "MURPH MINI-SIM (WEEK 2 MAKEUP)",
+  "meta": "Crunch Fitness · Tue, Apr 28 · Murph Block W3",
+  "yesterday": "Yesterday: Travel day - no workout",
+  "duration": "35-45",
+  "modeLabel": "Murph Prep",
+  "type": "murph",
+  "location": "Crunch",
+  "eq": ["Pull-Up Bar", "Dumbbells", "Weight Plate", "Treadmill"],
   "blocks": [
     {
-      "id": "wu",
-      "label": "🔥 WARM-UP",
-      "type": "warmup",
-      "rounds": null,
+      "id": "run-open",
+      "label": "BLOCK 1 - OPENING RUNS",
+      "type": "cardio",
+      "rounds": "2 x 400m - Record each split",
+      "timer": false,
       "ss": [
         {
-          "id": "wu_ss1",
-          "label": "WARM-UP",
+          "id": "ss_run1",
+          "label": "RUN 1",
+          "rest": "90s",
+          "ar": "Walk and shake out arms",
+          "exs": [
+            {
+              "id": "run1",
+              "letter": "single",
+              "name": "400m Run",
+              "target": "1 x 400m",
+              "cue": "Target 8 min/mile pace - settle in, dont sprint",
+              "sets": 1,
+              "logType": "cardio",
+              "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
+            }
+          ]
+        },
+        {
+          "id": "ss_run2",
+          "label": "RUN 2",
+          "rest": "90s",
+          "ar": "Arm circles and wrist mobility",
+          "exs": [
+            {
+              "id": "run2",
+              "letter": "single",
+              "name": "400m Run",
+              "target": "1 x 400m",
+              "cue": "Match Run 1 pace - stay controlled before the sim",
+              "sets": 1,
+              "logType": "cardio",
+              "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sim",
+      "label": "BLOCK 2 - HALF SIM (10 ROUNDS 5/10/15)",
+      "type": "beast",
+      "rounds": "10 Rounds for Time - GO",
+      "timer": true,
+      "ss": [
+        {
+          "id": "ss_sim",
+          "label": "EACH ROUND: 5 PU / 10 PUSH / 15 SQ",
           "rest": null,
           "ar": null,
           "exs": [
             {
-              "id": "wu1",
-              "letter": "single",
-              "name": "Dead Hang",
-              "target": "2 × 30s",
-              "cue": "Relaxed grip at first, then engage scaps at the end of each hang",
-              "sets": 2,
-              "logType": "time",
-              "swaps": ["Scap Pull-Ups", "Banded Dead Hang", "Ring Hang"]
+              "id": "sim_pu",
+              "letter": "a",
+              "name": "Weighted Pull-Ups (20lb DB)",
+              "target": "10 x 5 reps",
+              "cue": "Full dead hang to chin over bar - pinch DB between feet or knees",
+              "sets": 10,
+              "swaps": ["Strict Pull-Ups", "Band-Assisted Pull-Ups", "Lat Pulldown"]
             },
             {
-              "id": "wu2",
-              "letter": "single",
-              "name": "Scap Pull-Ups",
-              "target": "2 × 10",
-              "cue": "Start from full dead hang — depress and retract shoulder blades, no elbow bend",
-              "sets": 2,
-              "swaps": ["Band Pull-Aparts", "Prone Cobra", "Prone Y Raises"]
+              "id": "sim_push",
+              "letter": "b",
+              "name": "Weighted Push-Ups (25lb plate)",
+              "target": "10 x 10 reps",
+              "cue": "Plate centered on upper back - chest to floor, full lockout",
+              "sets": 10,
+              "swaps": ["Bodyweight Push-Ups", "DB Floor Press", "Decline Push-Ups"]
             },
             {
-              "id": "wu3",
-              "letter": "single",
-              "name": "Hip 90-90 Switches",
-              "target": "2 × 8/side",
-              "cue": "Controlled rotation, keep both sit bones heavy, open hip actively",
-              "sets": 2,
-              "swaps": ["Pigeon Stretch", "Figure 4 Stretch", "Lateral Hip Rotations"]
+              "id": "sim_sq",
+              "letter": "c",
+              "name": "Weighted Air Squats (20lb DB goblet)",
+              "target": "10 x 15 reps",
+              "cue": "DB at chest goblet style - hip crease below knee, stand tall",
+              "sets": 10,
+              "swaps": ["Bodyweight Air Squats", "DB Front Squat", "Goblet Squat"]
             }
           ]
         }
       ]
     },
     {
-      "id": "pullup_endurance",
-      "label": "💪 BLOCK 1 · PULL-UP ENDURANCE",
-      "type": "back",
-      "rounds": "Murph-Style Cluster Protocol",
+      "id": "run-close",
+      "label": "BLOCK 3 - CLOSING RUNS",
+      "type": "cardio",
+      "rounds": "2 x 400m - Record each split",
+      "timer": false,
       "ss": [
         {
-          "id": "pu_ss1",
-          "label": "CLUSTER SET PULL-UPS",
-          "rest": "20s intra-set / 90s between rounds",
-          "ar": "Dead hang 20s (wide pronated grip)",
+          "id": "ss_run3",
+          "label": "RUN 3",
+          "rest": "90s",
+          "ar": "Walk recovery and controlled breathing",
           "exs": [
             {
-              "id": "pu1",
+              "id": "run3",
               "letter": "single",
-              "name": "Pull-Ups — Cluster Sets (3+2)",
-              "target": "8 rounds × 5 reps (3 + rest 20s + 2)",
-              "cue": "Full dead hang between reps, chin over bar, no kipping — mirrors Murph partitioning",
-              "sets": 8,
-              "swaps": ["Banded Pull-Ups", "Ring Rows", "Lat Pulldown Heavy"]
+              "name": "400m Run",
+              "target": "1 x 400m",
+              "cue": "Legs will be cooked from squats - find your rhythm early",
+              "sets": 1,
+              "logType": "cardio",
+              "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
         },
         {
-          "id": "pu_ss2",
-          "label": "ECCENTRIC PULL-UP PAIRS",
-          "rest": "60-90s",
-          "ar": "Dead hang 30s neutral grip",
+          "id": "ss_run4",
+          "label": "RUN 4",
+          "rest": null,
+          "ar": null,
           "exs": [
             {
-              "id": "pu2a",
-              "letter": "a",
-              "name": "Eccentric-Overload Pull-Up (5 sec down)",
-              "target": "3 × 4-6 🔺 last set to failure",
-              "cue": "Jump or step to top position, lower for a full 5-count — own every inch of the negative",
-              "sets": 3,
-              "swaps": ["Slow Lat Pulldown Eccentric", "Banded Assisted Eccentric Pull-Up", "Cable Straight-Arm Pulldown"]
-            },
-            {
-              "id": "pu2b",
-              "letter": "b",
-              "name": "Narrow-Grip Sitting Row — Eccentric",
-              "target": "3 × 10-12 🔺 last set to failure",
-              "cue": "3-sec pull to chest, 4-sec return — keep torso still, elbows tight to ribs",
-              "sets": 3,
-              "swaps": ["Banded Seated Row", "1-Arm DB Row", "TRX Row"]
-            }
-          ]
-        },
-        {
-          "id": "pu_ss3",
-          "label": "LAT DENSITY PAIR",
-          "rest": "60-90s",
-          "ar": "Band pull-aparts × 15",
-          "exs": [
-            {
-              "id": "pu3a",
-              "letter": "a",
-              "name": "Wide-Grip Lat Pulldown",
-              "target": "3 × 12-15",
-              "cue": "Lean back slightly, pull elbows to hips, pause 1s at bottom — volume focus, not max load",
-              "sets": 3,
-              "swaps": ["Straight-Arm Cable Pulldown", "Resistance Band Pulldown", "Ring Row Wide"]
-            },
-            {
-              "id": "pu3b",
-              "letter": "b",
-              "name": "Face Pulls",
-              "target": "3 × 15",
-              "cue": "Rope to eye level, external rotation at end — rear delts and rotator cuff health",
-              "sets": 3,
-              "swaps": ["Band Face Pull", "Prone Y Raises", "Reverse DB Fly"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cycling_legs",
-      "label": "🦵 BLOCK 2 · CYCLING LEGS",
-      "type": "legs",
-      "rounds": "3 Rounds · Supersets",
-      "ss": [
-        {
-          "id": "cl_ss1",
-          "label": "SUPERSET 1 — Glute Drive + Hip Flexor",
-          "rest": "60-90s",
-          "ar": "Hip flexor stretch 20s/side",
-          "exs": [
-            {
-              "id": "cl1a",
-              "letter": "a",
-              "name": "Single-Leg Hip Thrust",
-              "target": "3 × 10/side",
-              "cue": "Drive through heel, full glute squeeze at top — cycling power lives in glute extension",
-              "sets": 3,
-              "swaps": ["Glute Bridge", "Banded Hip Thrust", "Cable Kickback"]
-            },
-            {
-              "id": "cl1b",
-              "letter": "b",
-              "name": "Standing Cable Hip Flexion",
-              "target": "3 × 12/side",
-              "cue": "Knee drives up to hip height, control the return — direct hip flexor strengthening for pedal stroke",
-              "sets": 3,
-              "swaps": ["Lying Hip Flexion DB", "Step-Up Knee Drive", "Resistance Band March"]
-            }
-          ]
-        },
-        {
-          "id": "cl_ss2",
-          "label": "SUPERSET 2 — Quad Endurance + Hamstring",
-          "rest": "60-90s",
-          "ar": "Lateral band walk × 12/side",
-          "exs": [
-            {
-              "id": "cl2a",
-              "letter": "a",
-              "name": "Cycling Squat — High-Rep Continuous",
-              "target": "3 × 20-25 (no pause at top)",
-              "cue": "Parallel depth, no lockout between reps — mimics continuous pedal stroke quad demand",
-              "sets": 3,
-              "swaps": ["Leg Press High Rep", "Wall Sit", "DB Goblet Squat"]
-            },
-            {
-              "id": "cl2b",
-              "letter": "b",
-              "name": "Sitting Leg Curl Combo",
-              "target": "3 sets (int rot: 10, ext rot: 10, neutral: failure)",
-              "cue": "Each rotation hits a different hamstring angle — slow eccentric on every rep, no bounce",
-              "sets": 3,
-              "swaps": ["Nordic Curl Negative", "Romanian Deadlift", "Swiss Ball Leg Curl"]
-            }
-          ]
-        },
-        {
-          "id": "cl_ss3",
-          "label": "SUPERSET 3 — VMO + Calf",
-          "rest": "60-90s",
-          "ar": "Ankle circles × 10 each direction",
-          "exs": [
-            {
-              "id": "cl3a",
-              "letter": "a",
-              "name": "Terminal Knee Extension (TKE) — Cable",
-              "target": "3 × 15/side",
-              "cue": "Small ROM at end of extension, squeeze VMO at lockout — cycling knee stability essential",
-              "sets": 3,
-              "swaps": ["Shallow Leg Extension", "Step-Down Slow Eccentric", "Wall Squat with Band"]
-            },
-            {
-              "id": "cl3b",
-              "letter": "b",
-              "name": "Standing Calf Raise — Bent-Knee + Straight-Knee Combo",
-              "target": "3 × 20 (10 straight, 10 bent-knee)",
-              "cue": "Full ROM — heel drop to stretch, pause at top, slow descent. Bent-knee targets soleus for cycling endurance",
-              "sets": 3,
-              "swaps": ["Seated Calf Raise", "Single-Leg Calf Raise", "Smith Machine Calf Raise"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cycling_core",
-      "label": "🔥 BLOCK 3 · CYCLING CORE",
-      "type": "core",
-      "rounds": "3 Rounds · Circuit",
-      "ss": [
-        {
-          "id": "cc_ss1",
-          "label": "ANTI-ROTATION + STABILITY CIRCUIT",
-          "rest": "60-90s",
-          "ar": "Quadruped diaphragmatic breathing × 5",
-          "exs": [
-            {
-              "id": "cc1a",
-              "letter": "a",
-              "name": "Landmine Stiff-Arm Oblique Twists",
-              "target": "3 × 12-14/side",
-              "cue": "Rotate from thorax, not just arms — stiff trunk with controlled rotation mirrors bike position demands",
-              "sets": 3,
-              "swaps": ["Cable Pallof Press", "Band Rotational Press", "Standing Cable Twist"]
-            },
-            {
-              "id": "cc1b",
-              "letter": "b",
-              "name": "Hanging Supported Full PPT",
-              "target": "3 × 10 🔺 last set to failure",
-              "cue": "Tuck hips forward and hold, posterior tilt the pelvis — directly strengthens the cycling position pelvic anchor",
-              "sets": 3,
-              "swaps": ["Lying PPT", "Dead Bug Hold", "Ab Wheel Rollout"]
-            }
-          ]
-        },
-        {
-          "id": "cc_ss2",
-          "label": "LUMBAR ENDURANCE PAIR",
-          "rest": "60-90s",
-          "ar": "Hip flexor stretch 20s/side",
-          "exs": [
-            {
-              "id": "cc2a",
-              "letter": "a",
-              "name": "Stability Lumbar Extensions",
-              "target": "3 sets to failure",
-              "cue": "Pause at top, squeeze glutes and low back — builds the endurance position cyclists lose on long rides",
-              "sets": 3,
-              "swaps": ["GHD Extension", "Superman Hold", "Prone Cobra Isometric"]
-            },
-            {
-              "id": "cc2b",
-              "letter": "b",
-              "name": "Side Plank with Hip Abduction",
-              "target": "3 × 30s/side + 10 lifts",
-              "cue": "Hips stacked, don't let pelvis sag — lateral hip stability protects knees during long pedaling efforts",
-              "sets": 3,
-              "logType": "time",
-              "swaps": ["Abducted Side Plank Static", "Lateral Band Walk", "Clamshells with Band"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "finish",
-      "label": "⚡ FINISHER",
-      "type": "finisher",
-      "rounds": "1 Round",
-      "ss": [
-        {
-          "id": "fin_ss1",
-          "label": "GRIP + HANG FINISHER",
-          "rest": "45-60s",
-          "ar": "Open-close grip squeeze × 10 slow",
-          "exs": [
-            {
-              "id": "fin1",
+              "id": "run4",
               "letter": "single",
-              "name": "Dead Hangs — Pronated Wide Grip",
-              "target": "3 sets max time",
-              "cue": "Relax hands into the bar, breathe, fight the grip failure — this is the Murph limiting factor",
-              "sets": 3,
-              "logType": "time",
-              "swaps": ["Neutral Grip Dead Hang", "Towel Hang", "Farmers Carry"]
+              "name": "400m Run",
+              "target": "1 x 400m",
+              "cue": "Last effort - empty the tank, finish strong",
+              "sets": 1,
+              "logType": "cardio",
+              "swaps": ["400m Row", "500m Row", "1 min Assault Bike Sprint"]
             }
           ]
         }
