@@ -1,6 +1,6 @@
 # Dr. Gains Workout Tracker
 
-This is a simple browser-based workout tracker for the Dr. Gains program.
+This is a simple browser-based workout tracker for the Dr. Gains program. 
 
 ## Files
 
