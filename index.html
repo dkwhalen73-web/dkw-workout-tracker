@@ -656,8 +656,27 @@
 
     function renderExerciseCard(ex, isLast, rest, blockId, blockHasTimer) {
       const sets = APP.sets[ex.id] || [];
-      const primaryLabel = ex.logType === 'time' ? 'Time' : (ex.logType === 'distance' ? 'Distance' : 'Weight');
-      const secondaryLabel = ex.logType === 'time' ? 'Notes' : 'Reps';
+
+      // LOCKED CARDIO RENDERING (regression-proof):
+      // 1. If exercise NAME matches a cardio pattern → ALWAYS Distance + Time, no exceptions.
+      // 2. Otherwise fall back to logType-driven labels.
+      // This guarantees runs/rows/bikes/etc never show Weight + Reps fields again,
+      // regardless of what logType the JSON happens to carry.
+      const isCardio = isCardioExercise(ex);
+      let primaryLabel, secondaryLabel;
+      if (isCardio) {
+        primaryLabel = 'Distance';
+        secondaryLabel = 'Time';
+      } else if (ex.logType === 'time') {
+        primaryLabel = 'Time';
+        secondaryLabel = 'Notes';
+      } else if (ex.logType === 'distance') {
+        primaryLabel = 'Distance';
+        secondaryLabel = 'Time';
+      } else {
+        primaryLabel = 'Weight';
+        secondaryLabel = 'Reps';
+      }
       const tip = inferExerciseTip(ex);
 
       // PUSH 2: Collapse state + progress pill
@@ -1184,6 +1203,22 @@
       const match = String(target).match(/(\d+)(?:\s*x|\s*sets?)/i);
       if (match) return Number(match[1]);
       return 1;
+    }
+
+    // LOCKED: Cardio exercise detector. If this returns true, the renderer ALWAYS
+    // shows Distance + Time fields, no matter what logType the JSON has.
+    // Match by name (most reliable) OR by an explicit cardio logType.
+    function isCardioExercise(ex) {
+      if (!ex) return false;
+      if (ex.logType === 'cardio') return true;
+      const name = String(ex.name || '').toLowerCase();
+      // Cardio movements (machines, running, cycling, swimming, sled work, jump rope).
+      // NOTE: 'row' is excluded as a standalone word because it matches strength rows
+      // (Bent-Over Row, DB Row, Cable Row). Rowing-as-cardio is matched via 'rower' or 'rowing'.
+      const cardioPattern = /\b(run|jog|sprint|treadmill|rower|rowing|bike|cycling|cyclist|assault|skierg|ski erg|swim|sled push|sled drag|jump rope)\b/;
+      // Also flag exercises whose names START with a distance like "400m Row", "1km Run"
+      const distancePrefix = /^\d+\s*(m|km|mi|mile|miles)\b/i;
+      return cardioPattern.test(name) || distancePrefix.test(name);
     }
 
     function inferLogType(name, target) {
