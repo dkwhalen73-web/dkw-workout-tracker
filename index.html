@@ -137,6 +137,24 @@
     .sel-label { font-size: 10px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
     .sel-input { background: var(--navy-deep); border: 1.5px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--cream); padding: 10px; font-size: 14px; font-weight: 600; outline: none; width: 100%; }
     .sel-input:focus { border-color: var(--gold); }
+
+    /* PUSH 2: Collapsible exercise cards */
+    .ex-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; cursor: pointer; user-select: none; }
+    .ex-header-text { flex: 1; min-width: 0; }
+    .ex-collapse-btn { flex-shrink: 0; background: transparent; border: none; color: var(--gold); font-size: 22px; line-height: 1; cursor: pointer; padding: 4px 8px; transition: transform 0.2s ease; opacity: 0.7; }
+    .ex-collapse-btn:active { opacity: 1; }
+    .ex-card.collapsed .ex-collapse-btn { transform: rotate(-90deg); }
+    .ex-card.collapsed .ex-tip,
+    .ex-card.collapsed .ex-cue,
+    .ex-card.collapsed .ex-sets-wrap,
+    .ex-card.collapsed .swap-toggle,
+    .ex-card.collapsed .swap-list { display: none; }
+    .ex-card.collapsed { padding: 12px 14px; }
+    .ex-card.collapsed .ex-name { font-size: 16px; }
+    .ex-card.collapsed .ex-target { font-size: 13px; margin-top: 2px; }
+    .ex-progress-pill { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: rgba(39, 174, 96, 0.18); border: 1px solid rgba(39, 174, 96, 0.4); color: #6fdc8c; font-size: 11px; font-weight: 800; vertical-align: middle; }
+    .ex-progress-pill.partial { background: rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); color: var(--gold); }
+    .ex-progress-pill.empty { display: none; }
   </style>
   <script src="parsed_db.js"></script>
 </head>
@@ -297,6 +315,7 @@
       workout: null,
       sets: {},
       blockTimers: {},
+      collapsed: {}, // PUSH 2: per-exercise collapse state (exId -> true if collapsed)
       restInterval: null
     };
 
@@ -357,6 +376,7 @@
               APP.workout = savedWorkout;
               APP.sets = saved.sets;
               APP.blockTimers = saved.blockTimers || {};
+              APP.collapsed = saved.collapsed || {};
               APP.config = { ...APP.config, ...(saved.config || {}) };
               renderAll();
               setStatus('Resumed session with updated definitions.');
@@ -368,6 +388,7 @@
         APP.workout = freshWorkout;
         APP.sets = createSetState(APP.workout);
         APP.blockTimers = {};
+        APP.collapsed = {};
         saveSession();
         renderAll();
         switchTab('overview');
@@ -382,7 +403,8 @@
               config: { ...APP.config, ...(saved.config || {}) },
               workout: saved.workout || null,
               sets: saved.sets || {},
-              blockTimers: saved.blockTimers || {}
+              blockTimers: saved.blockTimers || {},
+              collapsed: saved.collapsed || {}
             };
             if (APP.workout) {
               renderAll();
@@ -415,13 +437,13 @@
 
     function forceReloadWorkout() {
       localStorage.removeItem(SESSION_KEY);
-      APP.workout = null; APP.sets = {}; APP.blockTimers = {};
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {};
       autoFetchWorkout();
     }
 
     function saveSession() {
       localStorage.setItem(SESSION_KEY, JSON.stringify({
-        config: APP.config, workout: APP.workout, sets: APP.sets, blockTimers: APP.blockTimers
+        config: APP.config, workout: APP.workout, sets: APP.sets, blockTimers: APP.blockTimers, collapsed: APP.collapsed
       }));
     }
 
@@ -433,7 +455,7 @@
     function clearSession() {
       if (!confirm('Clear the saved v15 session?')) return;
       localStorage.removeItem(SESSION_KEY);
-      APP.workout = null; APP.sets = {}; APP.blockTimers = {};
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {};
       renderAll();
       setStatus('Saved session cleared.');
     }
@@ -451,6 +473,7 @@
       APP.workout = workout;
       APP.sets = createSetState(workout);
       APP.blockTimers = {};
+      APP.collapsed = {};
       saveSession(); renderAll(); switchTab('overview');
       setStatus('Workout built. Review the overview, then head to Workout.');
     }
@@ -637,12 +660,28 @@
       const secondaryLabel = ex.logType === 'time' ? 'Notes' : 'Reps';
       const tip = inferExerciseTip(ex);
 
+      // PUSH 2: Collapse state + progress pill
+      const isCollapsed = !!APP.collapsed[ex.id];
+      const doneCount = sets.filter(s => s.d).length;
+      const totalCount = sets.length;
+      let pillClass = 'empty';
+      if (totalCount > 0 && doneCount === totalCount) pillClass = 'complete';
+      else if (doneCount > 0) pillClass = 'partial';
+      const progressPill = totalCount > 0
+        ? `<span class="ex-progress-pill ${pillClass}">${doneCount}/${totalCount}</span>`
+        : '';
+
       return `
-    <div class="ex-card">
-      <div class="ex-name">${escapeHtml(ex.name)}</div>
-      <div class="ex-tip">${escapeHtml(tip)}</div>
-      <div class="ex-target">${escapeHtml(ex.target)}</div>
-      <div style="margin-top:8px">
+    <div class="ex-card${isCollapsed ? ' collapsed' : ''}" id="ex-card-${ex.id}">
+      <div class="ex-header" onclick="toggleCollapse('${ex.id}')">
+        <div class="ex-header-text">
+          <div class="ex-name">${escapeHtml(ex.name)}${progressPill}</div>
+          <div class="ex-tip">${escapeHtml(tip)}</div>
+          <div class="ex-target">${escapeHtml(ex.target)}</div>
+        </div>
+        <button class="ex-collapse-btn" aria-label="Toggle exercise details">▾</button>
+      </div>
+      <div class="ex-sets-wrap" style="margin-top:8px">
         ${sets.map((setRow, index) => `
           <div class="set-row">
             <div class="set-num">${index + 1}</div>
@@ -670,6 +709,14 @@
       ` : ''}
     </div>
   `;
+    }
+
+    // PUSH 2: Toggle collapse state for a single exercise
+    function toggleCollapse(exId) {
+      APP.collapsed[exId] = !APP.collapsed[exId];
+      const card = document.getElementById('ex-card-' + exId);
+      if (card) card.classList.toggle('collapsed');
+      saveSession();
     }
 
     function swapExercise(exId, newName) {
@@ -704,8 +751,26 @@
         if (seconds > 0) startRest(seconds);
       }
 
+      // PUSH 2: Refresh the progress pill on this exercise's card (cheaper than full re-render)
+      updateExerciseProgressPill(id);
+
       saveSession();
       updateProgress();
+    }
+
+    function updateExerciseProgressPill(exId) {
+      const sets = APP.sets[exId] || [];
+      const doneCount = sets.filter(s => s.d).length;
+      const totalCount = sets.length;
+      const card = document.getElementById('ex-card-' + exId);
+      if (!card) return;
+      const pill = card.querySelector('.ex-progress-pill');
+      if (!pill) return;
+      pill.textContent = `${doneCount}/${totalCount}`;
+      pill.classList.remove('empty', 'partial', 'complete');
+      if (totalCount > 0 && doneCount === totalCount) pill.classList.add('complete');
+      else if (doneCount > 0) pill.classList.add('partial');
+      else pill.classList.add('empty');
     }
 
     function updateBlockTimerDisplays() {
@@ -802,6 +867,7 @@
         APP.workout = normalizeLoadedWorkout(data);
         APP.sets = createSetState(APP.workout);
         APP.blockTimers = {};
+        APP.collapsed = {};
         saveSession(); renderAll(); switchTab('overview');
         setStatus('JSON workout loaded successfully.');
       } catch (error) {
