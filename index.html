@@ -7,7 +7,138 @@
   <title>Dr. Gains North Star v15</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --navy: #1F2A44;
+      --navy-light: #263354;
+      --navy-deep: #141D30;
+      --red: #B02A30;
+      --gold: #D4AF37;
+      --cream: #F8F6F0;
+      --green: #27AE60;
+      --ink: #0B101A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: #131c2d;
+      background-image:
+        radial-gradient(ellipse at top, #2b3b63 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='36'%3E%3Cpolygon points='20,4 23,12 32,13 25,19 27,28 20,23 13,28 15,19 8,13 17,12' fill='white' fill-opacity='0.025'/%3E%3C/svg%3E");
+      background-size: 100% 60%, 40px 36px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding-bottom: 120px;
+    }
+
+    button, select, textarea, input { font: inherit; }
+
+    .header { position: sticky; top: 0; z-index: 100; background: var(--navy-deep); border-bottom: 3px solid var(--red); }
+    .stars {
+      padding: 16px 16px 12px; position: relative; background-color: #1B2951;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='72'%3E%3Cpolygon points='11,4 13,8 17,8.5 14,11 15,15 11,13 7,15 8,11 5,8.5 9,8' fill='white' fill-opacity='0.09'/%3E%3C/svg%3E");
+      background-size: 80px 72px;
+      background-position: 4px 2px, 44px 38px;
+      background-repeat: repeat;
+    }
+    .h-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .h-title { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--gold); letter-spacing: 1px; line-height: 1; text-transform: uppercase; }
+    .h-meta { margin-top: 5px; font-size: 11px; color: rgba(248, 246, 240, 0.72); line-height: 1.35; }
+    .sets-num { font-family: 'Anton', sans-serif; font-size: 24px; line-height: 1; color: var(--cream); white-space: nowrap; }
+
+    .progress-bar { height: 10px; background: linear-gradient(180deg, #8B2529 0%, #8B2529 50%, #E8DFD0 50%, #E8DFD0 100%); background-size: 100% 10px; }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), #fff2b2); transition: width 0.35s ease; box-shadow: 0 0 12px rgba(212, 175, 55, 0.5); }
+
+    .tabs { display: flex; background: var(--navy-deep); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .tab-btn { flex: 1; background: transparent; border: none; color: rgba(248, 246, 240, 0.45); font-family: 'Anton', sans-serif; font-size: 12px; padding: 12px 6px; letter-spacing: 1px; border-bottom: 3px solid transparent; cursor: pointer; }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .tab-pane { display: none; padding: 14px; }
+    .tab-pane.active { display: block; }
+
+    .card { background: rgba(20, 29, 48, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+    .card-title { font-family: 'Anton', sans-serif; font-size: 12px; color: var(--gold); letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.14); }
+
+    .builder-grid { display: grid; gap: 12px; }
+    .field-label { display: block; font-size: 10px; color: rgba(248, 246, 240, 0.62); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; font-weight: 800; }
+    .select, .text-area { width: 100%; background: var(--ink); color: var(--cream); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 12px; }
+    .text-area { min-height: 160px; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.45; }
+    .hint { font-size: 12px; line-height: 1.55; color: rgba(248, 246, 240, 0.68); }
+
+    .status-pill, .eq-pill { display: inline-block; padding: 5px 10px; border-radius: 999px; margin: 0 6px 6px 0; font-size: 11px; font-weight: 800; }
+    .status-pill { background: rgba(212, 175, 55, 0.12); border: 1px solid rgba(212, 175, 55, 0.35); color: var(--gold); }
+    .eq-pill { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--cream); }
+
+    .btn { width: 100%; border: none; border-radius: 12px; padding: 16px; cursor: pointer; font-family: 'Anton', sans-serif; letter-spacing: 1px; font-size: 17px; }
+    .btn-primary { background: linear-gradient(135deg, var(--gold), #f0c85d); color: #1a1405; }
+    .btn-secondary { background: rgba(255, 255, 255, 0.04); color: var(--cream); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .btn-danger { background: rgba(176, 42, 48, 0.12); color: #ffb5b5; border: 1px solid rgba(176, 42, 48, 0.35); }
+    .btn-row { display: grid; gap: 10px; }
+
+    .block { margin-bottom: 14px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.16); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+    .block-h { background: linear-gradient(135deg, rgba(27, 41, 81, 0.95), rgba(38, 51, 84, 0.9)); border-left: 5px solid var(--red); padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .block-title { font-family: 'Anton', sans-serif; font-size: 17px; line-height: 1.1; }
+    .block-sub { margin-top: 4px; font-size: 11px; color: rgba(248, 246, 240, 0.66); }
+    .block-body { background: var(--navy-deep); padding: 12px; }
+
+    .ss-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(212, 175, 55, 0.66); margin: 8px 0 10px; }
+
+    .ex-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04); transition: border-color 0.2s; }
+    .ex-card:has(.btn-check.done) { border-color: rgba(39, 174, 96, 0.15); }
+    .ex-name { font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.1; }
+    .ex-tip { font-size: 13px; line-height: 1.4; color: rgba(248, 246, 240, 0.7); margin-top: 4px; font-style: italic; }
+    .ex-target { font-size: 18px; color: #FFE033; font-weight: 800; margin-top: 4px; }
+    .ex-cue { font-size: 15px; line-height: 1.5; color: rgba(248, 246, 240, 0.62); margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+
+    .set-row { display: grid; grid-template-columns: 30px 1fr 1fr 48px; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .set-row:last-child { border-bottom: none; }
+    .set-num { font-family: 'Anton', sans-serif; font-size: 16px; opacity: 0.3; text-align: center; }
+    .set-input { width: 100%; background: rgba(9, 13, 21, 0.8); color: var(--cream); border: 1.5px solid rgba(212, 175, 55, 0.15); border-radius: 10px; padding: 14px 6px; text-align: center; font-size: 18px; font-weight: 800; transition: border-color 0.2s, background 0.2s; }
+    .set-input:focus { border-color: var(--gold); background: #000; outline: none; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15); }
+    .set-input::placeholder { color: rgba(248, 246, 240, 0.22); }
+    .mini-label { font-size: 12px; text-align: center; text-transform: uppercase; letter-spacing: 1px; color: #FFE033; margin-top: 3px; font-weight: 800; }
+
+    .btn-check { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid rgba(212, 175, 55, 0.3); background: rgba(255, 255, 255, 0.03); color: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; transition: all 0.2s; }
+    .btn-check:active { transform: scale(0.9); }
+    .btn-check.done { background: var(--green); border-color: var(--green); color: white; box-shadow: 0 0 12px rgba(39, 174, 96, 0.4); }
+
+    .swap-toggle { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; background: transparent; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 5px 10px; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(248, 246, 240, 0.5); cursor: pointer; transition: all 0.2s; }
+    .swap-toggle:hover, .swap-toggle:active { color: var(--gold); border-color: rgba(212, 175, 55, 0.4); }
+    .swap-list { display: none; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .swap-list.open { display: flex; }
+    .swap-chip { background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; padding: 6px 10px; font-size: 11px; color: var(--gold); cursor: pointer; transition: all 0.15s; }
+    .swap-chip:active { background: rgba(212, 175, 55, 0.2); transform: scale(0.95); }
+
+    /* TIMER CONTROLS — Push 1 update */
+    .timer-controls { display: flex; gap: 6px; flex-shrink: 0; }
+    .timer-btn { flex-shrink: 0; background: rgba(212, 175, 55, 0.12); color: var(--gold); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 7px 10px; font-size: 11px; font-weight: 800; cursor: pointer; min-width: 64px; }
+    .timer-btn.timer-btn-pause { background: rgba(176, 42, 48, 0.18); border-color: rgba(176, 42, 48, 0.5); color: #ffb5b5; }
+    .timer-btn.timer-btn-reset { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.18); color: rgba(248, 246, 240, 0.7); }
+    .timer-readout { display: none; text-align: center; font-family: 'Anton', sans-serif; color: var(--gold); font-size: 24px; margin: 0 0 10px; }
+
+    .rest-pill { position: fixed; right: 14px; bottom: 84px; z-index: 150; display: none; align-items: center; gap: 10px; background: linear-gradient(135deg, rgba(176, 42, 48, 0.98), rgba(130, 19, 24, 0.98)); border: 2px solid rgba(255, 255, 255, 0.7); color: white; border-radius: 999px; padding: 10px 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28); font-family: 'Anton', sans-serif; font-size: 18px; }
+    .rest-close { background: transparent; color: white; border: none; font-size: 16px; cursor: pointer; }
+
+    .finish-btn { position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 140; display: none; }
+
+    .modal-overlay { position: fixed; inset: 0; z-index: 300; display: none; padding: 16px; background: rgba(0, 0, 0, 0.88); align-items: center; justify-content: center; }
+    .modal { width: 100%; max-width: 420px; background: var(--navy-light); border-radius: 16px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.35); }
+    .modal-head { background: linear-gradient(135deg, var(--red), #7e171c); padding: 14px 16px; font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 1px; }
+    .modal-body { padding: 16px; max-height: 60vh; overflow-y: auto; white-space: pre-wrap; font-size: 13px; line-height: 1.55; }
+    .modal-actions { display: grid; gap: 10px; padding: 14px 16px 16px; background: var(--navy-deep); }
+
+    .empty-state { text-align: center; padding: 28px 18px; color: rgba(248, 246, 240, 0.62); line-height: 1.6; }
+
+    .selector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
+    .sel-group { display: flex; flex-direction: column; gap: 5px; }
+    .sel-label { font-size: 10px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+    .sel-input { background: var(--navy-deep); border: 1.5px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--cream); padding: 10px; font-size: 14px; font-weight: 600; outline: none; width: 100%; }
+    .sel-input:focus { border-color: var(--gold); }
+  </style>
+  <script src="parsed_db.js"></script>
 </head>
 
 <body>
@@ -45,16 +176,13 @@
           <button class="btn btn-secondary" style="flex:1" onclick="resumeSession()">Resume Session</button>
           <button class="btn btn-danger" style="flex:1" onclick="clearSession()">Clear All Data</button>
         </div>
-        <div style="display:flex; gap:8px">
-          <button class="btn btn-secondary" style="flex:1" onclick="validateRepoData()">Validate Data</button>
-        </div>
       </div>
       <div class="hint" style="margin-top:12px" id="builderStatus"></div>
     </div>
     <div class="card" style="border-top:1px solid rgba(248,246,240,0.1)">
       <div class="card-title">Program Builder</div>
       <div class="hint">Select your session from the 8-week protocol.</div>
-      
+
       <div class="selector-grid">
         <div class="sel-group" style="grid-column: span 2">
           <label class="sel-label">Training Mode</label>
@@ -115,15 +243,10 @@
     </div>
   </div>
 
-  <div class="tab-pane" id="p-overview">
-    <div id="overviewContent"></div>
-  </div>
-  <div class="tab-pane" id="p-workout">
-    <div id="workoutContent"></div>
-  </div>
+  <div class="tab-pane" id="p-overview"><div id="overviewContent"></div></div>
+  <div class="tab-pane" id="p-workout"><div id="workoutContent"></div></div>
 
-  <div class="rest-pill" id="restPill">REST <span id="restVal">60</span>s <button class="rest-close"
-      onclick="stopRest()">✕</button></div>
+  <div class="rest-pill" id="restPill">REST <span id="restVal">60</span>s <button class="rest-close" onclick="stopRest()">✕</button></div>
 
   <div class="finish-btn" id="finishWrap">
     <button class="btn btn-primary" onclick="finishSession()">★ Complete Session</button>
@@ -134,15 +257,990 @@
       <div class="modal-head">Session Log</div>
       <div class="modal-body" id="logBody"></div>
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="copyClaudeJson()">Copy Claude JSON</button>
-        <button class="btn btn-secondary" onclick="copyLog()">Copy Simple Log</button>
+        <button class="btn btn-primary" onclick="copyLog()">Copy Log</button>
         <button class="btn btn-secondary" onclick="closeModal()">Done</button>
       </div>
     </div>
   </div>
 
   <script src="parsed_db.js"></script>
-  <script src="app.js"></script>
+  <script>
+    const TECHNIQUE_TIPS = {
+      'Russian Twists': 'Rotate shoulders, not just arms. Keep heels down.',
+      'Hanging Supported Full PPT': 'Tuck hips forward. Squeeze lower abs to flatten back.',
+      'Stability APT': 'Arch lower back slightly. Focus on the stretch and control.',
+      'TRUE Kneeling Curl-Downs': 'Crunch ribcage specifically toward hips. Roll like a ball.',
+      'Stability Lumbar Extensions': 'Pause at top. Keep neck neutral. No swinging.',
+      'Walking Oblique Side Bends': 'Focus on lateral contraction. Don\'t lean forward or back.',
+      'Hanging Windshield Wipers': 'Rotate from the trunk. Keep legs straight & controlled.',
+      'Triple-Angle Serratus Protractions (Unilateral)': 'Push the weight forward as far as possible. Don\'t bend elbow.',
+      'Kneeling Rollout': 'Keep back rounded. Only go as far as you can control.',
+      'Hollow Body Rockers': 'Keep lower back pressed into floor. Rock as one unit.',
+      'Reverse Crunches': 'Exhale as knees come up. Focus on the lower-abs tuck.',
+      'Captain\'s Chair Leg Raises': 'Don\'t swing. Lift from the pelvis, not just the legs.',
+      'Lying Leg Raises': 'Press lower back into the floor. No arching.',
+      'Side Plank': 'Keep body in a straight line. Squeeze glutes.',
+      'Bird Dog': 'Reach long, don\'t arch up. Keep core braced.'
+    };
+
+    const SESSION_KEY = 'dg_v15_session';
+    const DAYS = ['Monday', 'Wednesday', 'Friday', 'Saturday'];
+    const LOCATIONS = ['WFWHF', 'Crunch', 'Hotel'];
+
+    let PROGRAM = {};
+    let APP = {
+      config: {
+        mode: 'standard', week: '1', day: 'Monday', location: 'WFWHF',
+        murphFocus: 'pace', travelLocation: 'Crunch', travelFocus: 'Chest & Back',
+        beastDay: 'Friday', beastFormat: 'EMOM', beastDuration: '75'
+      },
+      workout: null,
+      sets: {},
+      blockTimers: {},
+      restInterval: null
+    };
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-pane').forEach(node => node.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(node => node.classList.remove('active'));
+      document.getElementById('p-' + tab).classList.add('active');
+      document.getElementById('t-' + tab).classList.add('active');
+    }
+
+    function init() {
+      document.getElementById('sel-mode').value = APP.config.mode;
+      document.getElementById('sel-week').value = APP.config.week;
+      document.getElementById('sel-day').value = APP.config.day;
+      document.getElementById('sel-location').value = APP.config.location;
+      autoFetchWorkout();
+    }
+
+    async function autoFetchWorkout() {
+      setStatus('Loading today\'s workout...');
+      try {
+        const resp = await fetch('./current-workout.json?t=' + Date.now());
+        if (!resp.ok) throw new Error('No workout file found');
+        const data = await resp.json();
+        const freshWorkout = normalizeLoadedWorkout(data);
+        const freshKey = (data.title || '') + '|' + (data.meta || '');
+
+        const raw = localStorage.getItem(SESSION_KEY);
+        if (raw) {
+          try {
+            const saved = JSON.parse(raw);
+            const savedKey = (saved.workout?.title || '') + '|' + (saved.workout?.meta || '');
+            if (savedKey === freshKey && saved.sets && Object.keys(saved.sets).length > 0) {
+              const savedWorkout = saved.workout;
+              freshWorkout.blocks.forEach((fBlock, bIdx) => {
+                const sBlock = savedWorkout.blocks[bIdx];
+                if (!sBlock) return;
+                fBlock.ss.forEach((fSs, sIdx) => {
+                  const sSs = sBlock.ss[sIdx];
+                  if (!sSs) return;
+                  fSs.exs.forEach((fEx, eIdx) => {
+                    const sEx = sSs.exs[eIdx];
+                    if (!sEx) return;
+                    sEx.swaps = fEx.swaps || [];
+                    sEx.cue = fEx.cue || '';
+                    sEx.target = fEx.target || '';
+                    if (!sEx.originalName) { sEx.name = fEx.name; }
+                  });
+                });
+              });
+
+              APP.workout = savedWorkout;
+              APP.sets = saved.sets;
+              APP.blockTimers = saved.blockTimers || {};
+              APP.config = { ...APP.config, ...(saved.config || {}) };
+              renderAll();
+              setStatus('Resumed session with updated definitions.');
+              return;
+            }
+          } catch (e) { /* corrupted save - load fresh */ }
+        }
+
+        APP.workout = freshWorkout;
+        APP.sets = createSetState(APP.workout);
+        APP.blockTimers = {};
+        saveSession();
+        renderAll();
+        switchTab('overview');
+        setStatus('Workout loaded.');
+      } catch (err) {
+        const raw = localStorage.getItem(SESSION_KEY);
+        if (raw) {
+          try {
+            const saved = JSON.parse(raw);
+            APP = {
+              ...APP,
+              config: { ...APP.config, ...(saved.config || {}) },
+              workout: saved.workout || null,
+              sets: saved.sets || {},
+              blockTimers: saved.blockTimers || {}
+            };
+            if (APP.workout) {
+              renderAll();
+              setStatus('Offline - showing last saved session.');
+              return;
+            }
+          } catch (e) { }
+        }
+        setStatus('No workout found. Paste JSON in the Load tab.');
+      }
+    }
+
+    function setStatus(message) { document.getElementById('builderStatus').textContent = message; }
+
+    function updateBuilderUI() {
+      const mode = APP.config.mode;
+      const weekGrp = document.getElementById('group-week');
+      const dayGrp = document.getElementById('group-day');
+      if (mode === 'standard') { weekGrp.style.display = 'flex'; dayGrp.style.display = 'flex'; }
+      else { weekGrp.style.display = 'none'; dayGrp.style.display = 'none'; }
+    }
+
+    function hardRefresh() {
+      if (confirm('This will clear your saved session, weights, and reps. Proceed?')) {
+        localStorage.removeItem(SESSION_KEY);
+        sessionStorage.clear();
+        location.reload(true);
+      }
+    }
+
+    function forceReloadWorkout() {
+      localStorage.removeItem(SESSION_KEY);
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {};
+      autoFetchWorkout();
+    }
+
+    function saveSession() {
+      localStorage.setItem(SESSION_KEY, JSON.stringify({
+        config: APP.config, workout: APP.workout, sets: APP.sets, blockTimers: APP.blockTimers
+      }));
+    }
+
+    function resumeSession() {
+      if (!APP.workout) { setStatus('No saved workout found yet.'); return; }
+      renderAll(); switchTab('workout'); setStatus('Resumed saved session.');
+    }
+
+    function clearSession() {
+      if (!confirm('Clear the saved v15 session?')) return;
+      localStorage.removeItem(SESSION_KEY);
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {};
+      renderAll();
+      setStatus('Saved session cleared.');
+    }
+
+    function buildWorkout() {
+      const c = APP.config;
+      let workout = null;
+      if (c.mode === 'standard') {
+        if (c.location === 'WFWHF') workout = buildStandardWorkout(Number(c.week), c.day, c.location);
+        else workout = buildTravelWorkout(c.location, standardFocusForDay(c.day), { titlePrefix: `Week ${c.week} ${c.day} Travel Mod` });
+      } else if (c.mode === 'murph') workout = buildMurphWorkout(c.murphFocus, c.location);
+      else if (c.mode === 'travel') workout = buildTravelWorkout(c.travelLocation, c.travelFocus);
+      else if (c.mode === 'beast') workout = buildBeastWorkout(c.beastDay, c.beastFormat, c.beastDuration);
+      if (!workout) { setStatus('That workout could not be built.'); return; }
+      APP.workout = workout;
+      APP.sets = createSetState(workout);
+      APP.blockTimers = {};
+      saveSession(); renderAll(); switchTab('overview');
+      setStatus('Workout built. Review the overview, then head to Workout.');
+    }
+
+    function createSetState(workout) {
+      const setState = {};
+      workout.blocks.forEach(block => {
+        block.ss.forEach(ss => {
+          ss.exs.forEach(ex => {
+            setState[ex.id] = Array.from({ length: ex.sets || 1 }, () => ({ w: '', r: '', d: false }));
+          });
+        });
+      });
+      return setState;
+    }
+
+    function renderAll() {
+      renderHeader(); renderOverview(); renderWorkout(); updateProgress();
+      document.getElementById('finishWrap').style.display = APP.workout ? 'block' : 'none';
+    }
+
+    function renderHeader() {
+      const title = APP.workout ? APP.workout.title : 'Dr. Gains North Star';
+      const meta = APP.workout ? APP.workout.meta : 'Build a workout, resume a saved session, or load tracker JSON.';
+      document.getElementById('hTitle').textContent = title;
+      document.getElementById('hMeta').textContent = meta;
+    }
+
+    function renderOverview() {
+      const root = document.getElementById('overviewContent');
+      if (!APP.workout) {
+        root.innerHTML = `<div class="card empty-state">No active session. Tap "Reload Latest Workout" on the Load tab, or push current-workout.json to the repo.</div>`;
+        return;
+      }
+      const workout = APP.workout;
+      const exerciseNames = workout.blocks.flatMap(block => block.ss).flatMap(ss => ss.exs).map(ex => ex.name.toLowerCase());
+      const configuredEquipment = Array.isArray(workout.eq) ? workout.eq.filter(Boolean) : [];
+      const equipment = configuredEquipment.length > 0 ? Array.from(new Set(configuredEquipment)) : inferEquipment(exerciseNames, []);
+      const statusPills = [
+        workout.modeLabel || workout.type || 'Standard',
+        workout.location || 'WFWHF',
+        workout.duration ? `${workout.duration} min` : null
+      ].filter(Boolean);
+
+      root.innerHTML = `
+    <div class="card">
+      <div class="card-title">Session Identity</div>
+      ${statusPills.map(pill => `<span class="status-pill">${escapeHtml(pill)}</span>`).join('')}
+      <div class="hint" style="margin-top:8px">${escapeHtml(workout.meta || '')}</div>
+      ${workout.yesterday ? `<div class="hint" style="margin-top:4px; font-style:italic">${escapeHtml(workout.yesterday)}</div>` : ''}
+    </div>
+    <div class="card">
+      <div class="card-title">Equipment</div>
+      ${equipment.length > 0 ? equipment.map(item => `<span class="eq-pill">${escapeHtml(item)}</span>`).join('') : '<div class="hint">Bodyweight only.</div>'}
+    </div>
+    <div class="card">
+      <div class="card-title">Block Preview</div>
+      ${workout.blocks.map((block, idx) => `
+        <div style="padding:10px 0; border-bottom:${idx === workout.blocks.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.06)'}">
+          <div style="font-weight:800; color:var(--cream)">${escapeHtml(block.label)}</div>
+          <div class="hint" style="margin-bottom:4px">${escapeHtml(block.rounds || '')}</div>
+          ${block.ss.map(ss => `
+            <div style="padding:3px 0 3px 12px; border-left:2px solid rgba(212,175,55,0.25); margin:4px 0">
+              ${ss.exs.map(ex => `<div class="hint" style="color:rgba(248,246,240,0.8)"><span style="color:var(--gold); font-weight:700">${ex.letter !== 'single' ? ex.letter.toUpperCase() + '.' : '►'}</span> ${escapeHtml(ex.name)} · <span style="color:rgba(248,246,240,0.5)">${escapeHtml(ex.target)}</span></div>`).join('')}
+              ${ss.rest ? `<div class="hint" style="font-size:10px; color:rgba(248,246,240,0.4)">⏱ ${escapeHtml(ss.rest)} · 🔄 ${escapeHtml(ss.ar || '')}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `).join('')}
+    </div>
+  `;
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // PUSH 1 CHANGE: Block timer state machine + suppress rest in timed blocks
+    // ──────────────────────────────────────────────────────────────────
+    // Timer state model:
+    //   state: 'stopped' | 'running' | 'paused'
+    //   elapsed: total ms accumulated while running (excludes current run)
+    //   startedAt: ms timestamp of current running segment (only valid when state==='running')
+    //
+    // Buttons by state:
+    //   stopped → [Start]
+    //   running → [Pause]
+    //   paused  → [Resume] [Reset]
+    // ──────────────────────────────────────────────────────────────────
+
+    function getTimer(blockId) {
+      if (!APP.blockTimers[blockId]) {
+        APP.blockTimers[blockId] = { state: 'stopped', elapsed: 0, startedAt: null };
+      } else {
+        // Migrate old format (running/done booleans) to new state model
+        const t = APP.blockTimers[blockId];
+        if (t.state === undefined) {
+          if (t.running) { t.state = 'running'; }
+          else if (t.done) { t.state = 'paused'; }
+          else { t.state = 'stopped'; }
+          delete t.running;
+          delete t.done;
+        }
+      }
+      return APP.blockTimers[blockId];
+    }
+
+    function timerStart(blockId) {
+      const t = getTimer(blockId);
+      if (t.state === 'running') return;
+      t.state = 'running';
+      t.startedAt = Date.now();
+      saveSession();
+      renderWorkout();
+    }
+
+    function timerPause(blockId) {
+      const t = getTimer(blockId);
+      if (t.state !== 'running') return;
+      t.elapsed += Date.now() - t.startedAt;
+      t.startedAt = null;
+      t.state = 'paused';
+      saveSession();
+      renderWorkout();
+    }
+
+    function timerResume(blockId) {
+      const t = getTimer(blockId);
+      if (t.state !== 'paused') return;
+      t.state = 'running';
+      t.startedAt = Date.now();
+      saveSession();
+      renderWorkout();
+    }
+
+    function timerReset(blockId) {
+      if (!confirm('Reset this block timer to 0? Elapsed time will be lost.')) return;
+      APP.blockTimers[blockId] = { state: 'stopped', elapsed: 0, startedAt: null };
+      saveSession();
+      renderWorkout();
+    }
+
+    function renderTimerControls(blockId) {
+      const t = getTimer(blockId);
+      if (t.state === 'running') {
+        return `<div class="timer-controls"><button class="timer-btn timer-btn-pause" onclick="timerPause('${blockId}')">Pause</button></div>`;
+      }
+      if (t.state === 'paused') {
+        return `<div class="timer-controls">
+          <button class="timer-btn" onclick="timerResume('${blockId}')">Resume</button>
+          <button class="timer-btn timer-btn-reset" onclick="timerReset('${blockId}')">Reset</button>
+        </div>`;
+      }
+      return `<div class="timer-controls"><button class="timer-btn" onclick="timerStart('${blockId}')">Start</button></div>`;
+    }
+
+    function renderWorkout() {
+      const root = document.getElementById('workoutContent');
+      if (!APP.workout) {
+        root.innerHTML = `<div class="card empty-state">Build or load a workout first.</div>`;
+        return;
+      }
+
+      root.innerHTML = APP.workout.blocks.map(block => `
+    <div class="block">
+      <div class="block-h">
+        <div>
+          <div class="block-title">${escapeHtml(block.label)}</div>
+          ${block.rounds ? `<div class="block-sub">${escapeHtml(block.rounds)}</div>` : ''}
+        </div>
+        ${block.timer ? renderTimerControls(block.id) : ''}
+      </div>
+      <div class="block-body">
+        ${block.timer ? `<div class="timer-readout" id="timer-display-${block.id}" style="display:block">${formatTimerDisplay(block.id)}</div>` : ''}
+        ${block.ss.map(ss => `
+          <div class="ss-label">${escapeHtml(ss.label)}</div>
+          ${ss.exs.map((ex, exIndex) => renderExerciseCard(ex, exIndex === ss.exs.length - 1, ss.rest, block.id, block.timer)).join('')}
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+    }
+
+    function renderExerciseCard(ex, isLast, rest, blockId, blockHasTimer) {
+      const sets = APP.sets[ex.id] || [];
+      const primaryLabel = ex.logType === 'time' ? 'Time' : (ex.logType === 'distance' ? 'Distance' : 'Weight');
+      const secondaryLabel = ex.logType === 'time' ? 'Notes' : 'Reps';
+      const tip = inferExerciseTip(ex);
+
+      return `
+    <div class="ex-card">
+      <div class="ex-name">${escapeHtml(ex.name)}</div>
+      <div class="ex-tip">${escapeHtml(tip)}</div>
+      <div class="ex-target">${escapeHtml(ex.target)}</div>
+      <div style="margin-top:8px">
+        ${sets.map((setRow, index) => `
+          <div class="set-row">
+            <div class="set-num">${index + 1}</div>
+            <div>
+              <input class="set-input" value="${escapeHtml(setRow.w)}" placeholder="-" onchange="updateSet('${ex.id}', ${index}, 'w', this.value)">
+              <div class="mini-label">${escapeHtml(primaryLabel)}</div>
+            </div>
+            <div>
+              <input class="set-input" value="${escapeHtml(setRow.r)}" placeholder="-" onchange="updateSet('${ex.id}', ${index}, 'r', this.value)">
+              <div class="mini-label">${escapeHtml(secondaryLabel)}</div>
+            </div>
+            <button class="btn-check ${setRow.d ? 'done' : ''}" onclick="toggleSet('${ex.id}', ${index}, this, ${isLast}, '${escapeHtml(rest || '')}', '${blockId}', ${blockHasTimer ? 'true' : 'false'})">✓</button>
+          </div>
+        `).join('')}
+      </div>
+      ${ex.cue ? `<div class="ex-cue">${escapeHtml(ex.cue)}</div>` : ''}
+      ${ex.swaps && ex.swaps.length > 0 ? `
+        <button class="swap-toggle" onclick="this.nextElementSibling.classList.toggle('open')">⇄ Swap</button>
+        <div class="swap-list">
+          ${ex.originalName && ex.originalName !== ex.name ? `
+            <div class="swap-chip" style="background:rgba(212,175,55,0.15); border:1px solid var(--gold); color:var(--gold)" onclick="swapExercise('${ex.id}', ${JSON.stringify(ex.originalName).replace(/"/g, '&quot;')})">↺ Original: ${escapeHtml(ex.originalName)}</div>
+          ` : ''}
+          ${ex.swaps.map(s => `<div class="swap-chip" onclick="swapExercise('${ex.id}', ${JSON.stringify(s).replace(/"/g, '&quot;')})">${escapeHtml(s)}</div>`).join('')}
+        </div>
+      ` : ''}
+    </div>
+  `;
+    }
+
+    function swapExercise(exId, newName) {
+      for (const block of APP.workout.blocks) {
+        for (const ss of block.ss) {
+          const ex = ss.exs.find(e => e.id === exId);
+          if (ex) {
+            if (!ex.originalName) ex.originalName = ex.name;
+            ex.name = newName;
+            saveSession(); renderAll();
+            return;
+          }
+        }
+      }
+    }
+
+    function updateSet(id, index, key, value) {
+      APP.sets[id][index][key] = value;
+      saveSession();
+    }
+
+    function toggleSet(id, index, btn, isLast, rest, blockId, blockHasTimer) {
+      const row = APP.sets[id][index];
+      row.d = !row.d;
+      btn.classList.toggle('done');
+
+      // PUSH 1 CHANGE: In timed/sim blocks, do NOT auto-start the rest pill.
+      // The whole point of a timed sim is to push through with minimal rest.
+      // Standard supersets still trigger the rest pill on the last exercise.
+      if (row.d && !blockHasTimer && isLast && rest) {
+        const seconds = extractRestSeconds(rest);
+        if (seconds > 0) startRest(seconds);
+      }
+
+      saveSession();
+      updateProgress();
+    }
+
+    function updateBlockTimerDisplays() {
+      Object.keys(APP.blockTimers).forEach(blockId => {
+        const t = APP.blockTimers[blockId];
+        if (!t || t.state !== 'running') return;
+        const display = document.getElementById('timer-display-' + blockId);
+        if (display) display.textContent = formatTimerDisplay(blockId);
+      });
+      requestAnimationFrame(updateBlockTimerDisplays);
+    }
+
+    function formatTimerDisplay(blockId) {
+      const t = APP.blockTimers[blockId];
+      if (!t) return '00:00';
+      const elapsed = (t.elapsed || 0) + (t.state === 'running' && t.startedAt ? Date.now() - t.startedAt : 0);
+      const totalSeconds = Math.floor(elapsed / 1000);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function updateProgress() {
+      const allSets = Object.values(APP.sets).flat();
+      const doneSets = allSets.filter(setRow => setRow.d).length;
+      document.getElementById('setsDone').textContent = `${doneSets} / ${allSets.length}`;
+      document.getElementById('pFill').style.width = allSets.length ? `${(doneSets / allSets.length) * 100}%` : '0%';
+    }
+
+    function startRest(seconds) {
+      stopRest();
+      const pill = document.getElementById('restPill');
+      const value = document.getElementById('restVal');
+      let remaining = seconds;
+      value.textContent = remaining;
+      pill.style.display = 'flex';
+      APP.restInterval = setInterval(() => {
+        remaining -= 1;
+        value.textContent = remaining;
+        if (remaining <= 0) {
+          stopRest();
+          try { navigator.vibrate(250); } catch (error) { }
+          alert('Rest over.');
+        }
+      }, 1000);
+    }
+
+    function stopRest() {
+      clearInterval(APP.restInterval);
+      APP.restInterval = null;
+      document.getElementById('restPill').style.display = 'none';
+    }
+
+    function finishSession() {
+      if (!APP.workout) return;
+      const exerciseLookup = {};
+      APP.workout.blocks.forEach(block => block.ss.forEach(ss => ss.exs.forEach(ex => { exerciseLookup[ex.id] = ex; })));
+
+      let text = `DR. GAINS SESSION\n${APP.workout.title}\n${APP.workout.meta}\n`;
+      Object.keys(APP.sets).forEach(id => {
+        const completed = APP.sets[id].filter(setRow => setRow.d);
+        if (!completed.length) return;
+        const ex = exerciseLookup[id];
+        text += `\n${ex.name}: ${completed.map(setRow => `${setRow.w || '-'} x ${setRow.r || '-'}`).join(', ')}`;
+      });
+
+      // Append block timer totals, if any
+      const timerSummaries = APP.workout.blocks
+        .filter(b => b.timer && APP.blockTimers[b.id])
+        .map(b => `\n[Timer] ${b.label}: ${formatTimerDisplay(b.id)}`);
+      if (timerSummaries.length) text += '\n' + timerSummaries.join('');
+
+      document.getElementById('logBody').textContent = text;
+      document.getElementById('logModal').style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('logModal').style.display = 'none'; }
+
+    function copyLog() {
+      navigator.clipboard.writeText(document.getElementById('logBody').textContent)
+        .then(() => alert('Session log copied.'))
+        .catch(() => alert('Copy failed in this browser.'));
+    }
+
+    function loadFromJson() {
+      let raw = document.getElementById('loadInput').value.trim();
+      raw = raw.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '');
+      raw = raw.trim();
+      const firstBrace = raw.indexOf('{');
+      const lastBrace = raw.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace > firstBrace) raw = raw.substring(firstBrace, lastBrace + 1);
+      try {
+        const data = JSON.parse(raw);
+        APP.workout = normalizeLoadedWorkout(data);
+        APP.sets = createSetState(APP.workout);
+        APP.blockTimers = {};
+        saveSession(); renderAll(); switchTab('overview');
+        setStatus('JSON workout loaded successfully.');
+      } catch (error) {
+        alert('JSON error: ' + (error.message || 'Unknown') + '\n\nPaste the raw JSON block from Claude - no extra text needed.');
+      }
+    }
+
+    function normalizeLoadedWorkout(data) {
+      const workout = { ...data };
+      workout.title = workout.title || 'Loaded Workout';
+      workout.meta = workout.meta || 'Loaded from tracker JSON';
+      workout.modeLabel = workout.modeLabel || 'Loaded JSON';
+      workout.location = workout.location || 'Custom';
+      workout.duration = workout.duration || '';
+      if (workout.blocks) {
+        workout.blocks = workout.blocks.map(function (b, bi) {
+          return {
+            id: b.id || 'loaded-b' + bi,
+            label: b.label || 'Block ' + (bi + 1),
+            type: b.type || 'standard',
+            rounds: b.rounds || '',
+            timer: b.timer || false,
+            ss: (b.ss || []).map(function (ss, si) {
+              return {
+                id: ss.id || 'loaded-ss' + bi + '-' + si,
+                label: ss.label || '',
+                rest: ss.rest || '60 sec',
+                ar: ss.ar || '',
+                exs: (ss.exs || []).map(function (ex, ei) {
+                  return {
+                    id: ex.id || 'loaded-ex' + bi + '-' + si + '-' + ei,
+                    letter: ex.letter || String.fromCharCode(97 + ei),
+                    name: ex.name || 'Exercise',
+                    target: ex.target || '',
+                    cue: ex.cue || '',
+                    sets: ex.sets || parseSetCount(ex.target || '1'),
+                    logType: ex.logType || inferLogType(ex.name || '', ex.target || ''),
+                    swaps: ex.swaps || []
+                  };
+                })
+              };
+            })
+          };
+        });
+      }
+      return workout;
+    }
+
+    function buildStandardWorkout(week, day, location) {
+      if (typeof DR_GAINS_FULL_DB !== 'undefined' && DR_GAINS_FULL_DB[week] && DR_GAINS_FULL_DB[week][day]) {
+        const dbEntry = JSON.parse(JSON.stringify(DR_GAINS_FULL_DB[week][day]));
+        if (!dbEntry.blocks || dbEntry.blocks.length === 0) {
+          alert(day + ' is a bootcamp or rest day - no Dr. Gains session scheduled.');
+          return null;
+        }
+        return {
+          title: dbEntry.title || 'Week ' + week + ' ' + day,
+          meta: location + ' · Week ' + week + ' · ' + day,
+          modeLabel: 'Standard 8-Week',
+          type: 'standard',
+          location: location,
+          duration: estimateDuration(dbEntry.blocks),
+          eq: [],
+          blocks: dbEntry.blocks.map(function (b) {
+            return {
+              id: b.id || slug(b.label),
+              label: b.label || 'Block',
+              type: b.type || 'standard',
+              rounds: b.rounds || '',
+              timer: b.timer || false,
+              ss: (b.ss || []).map(function (ss) {
+                return {
+                  id: ss.id || slug(ss.label || b.label),
+                  label: ss.label || '',
+                  rest: ss.rest || '60 sec',
+                  ar: ss.ar || '',
+                  exs: (ss.exs || []).map(function (ex, ei) {
+                    return {
+                      id: ex.id,
+                      letter: ex.letter || String.fromCharCode(97 + ei),
+                      name: ex.name,
+                      target: ex.target,
+                      cue: ex.cue || '',
+                      sets: ex.sets || parseSetCount(ex.target),
+                      logType: ex.logType || inferLogType(ex.name, ex.target),
+                      swaps: ex.swaps || []
+                    };
+                  })
+                };
+              })
+            };
+          })
+        };
+      }
+
+      const plan = PROGRAM[week]?.[day];
+      if (!plan) {
+        alert('Week ' + week + ' ' + day + ' was not available from the reference data.');
+        return null;
+      }
+      const warmups = plan.items.filter(item => isWarmupItem(item));
+      const finishers = plan.items.filter(item => isFinisherItem(item));
+      const mains = plan.items.filter(item => !isWarmupItem(item) && !isFinisherItem(item));
+      const grouped = groupPlanItems(mains);
+      const blocks = [];
+      if (warmups.length) blocks.push(itemsToBlock(warmups, '🔥 Warm-Up', 'Warm-up flow'));
+      grouped.forEach((group, index) => blocks.push(itemsToBlock(group.items, 'BLOCK ' + (index + 1), group.label)));
+      if (finishers.length) blocks.push(itemsToBlock(finishers, '⚡ Finisher', 'Close hard'));
+      return {
+        title: 'Week ' + week + ' ' + day.toUpperCase() + ' - ' + plan.heading,
+        meta: location + ' · Week ' + week + ' · ' + day,
+        modeLabel: 'Standard 8-Week',
+        type: 'standard',
+        location: location,
+        duration: estimateDuration(blocks),
+        eq: [],
+        blocks: blocks
+      };
+    }
+
+    function buildTravelWorkout(location, focus, options = {}) {
+      const templates = {
+        'Chest & Back': [
+          group('Warm-Up', [{ name: 'Bike or brisk walk', target: '4 min', logType: 'time', cue: 'Raise temp first.' }, { name: 'Band pull-aparts', target: '2x15', cue: 'Prime shoulders.' }], '30 sec'),
+          group('Density Pair 1', [{ name: location === 'Hotel' ? 'DB Floor Press' : 'Incline DB Press', target: '4x8-12', cue: 'Smooth eccentric.' }, { name: location === 'Hotel' ? '1-Arm DB Row' : 'Seated Cable Row', target: '4x10-12', cue: 'Own the squeeze.' }], '75 sec', 'Dead hang 20 sec or doorway lat stretch'),
+          group('Density Pair 2', [{ name: location === 'Hotel' ? 'Push-Up Mechanical Drop Set' : 'Machine Chest Press', target: '3x12-15', cue: 'Keep pace high.' }, { name: location === 'Hotel' ? 'Suitcase DB Row' : 'Neutral-Grip Pulldown', target: '3x10-15', cue: 'Chest tall.' }], '60 sec', 'Scap wall slides x10')
+        ],
+        'Arms': [
+          group('Warm-Up', [{ name: 'Dead hang or wrist mobility', target: '2 rounds', cue: 'Open elbows and wrists.' }], '30 sec'),
+          group('Superset 1', [{ name: 'Hammer Curl', target: '4x8-12', cue: 'Neutral grip.' }, { name: 'Rope Pressdown', target: '4x10-12', cue: 'Lockout hard.' }], '75 sec', 'Farmer carry 15m'),
+          group('Superset 2', [{ name: 'Incline DB Curl', target: '3x10-12', cue: 'Long range.' }, { name: 'Overhead DB Extension', target: '3x10-12', cue: 'Elbows stable.' }], '60 sec', 'Wrist circles x10 each way')
+        ],
+        'Core & Spine': [
+          group('Primer', [{ name: 'Dead bug hold', target: '2x20 sec', logType: 'time', cue: 'Ribs down.' }, { name: 'Hip flexor stretch', target: '2x20 sec/side', logType: 'time', cue: 'Open front line.' }], '30 sec'),
+          group('Circuit', [{ name: 'Hanging knee raise or captain chair raise', target: '4x8-12', cue: 'Posterior tilt.' }, { name: 'Cable crunch or crunch variation', target: '4x10-15', cue: 'Flex through abs.' }, { name: 'Back extension or bird dog', target: '4x10-15', cue: 'Move slow.' }], '90 sec', 'Breathing reset x4')
+        ],
+        'Legs & Shoulders': [
+          group('Warm-Up', [{ name: 'Lateral band walk', target: '2x10/side', cue: 'Wake up glutes.' }, { name: 'Arm circles', target: '30 sec', logType: 'time', cue: 'Prep shoulders.' }], '30 sec'),
+          group('Superset 1', [{ name: location === 'Hotel' ? 'Goblet Squat' : 'Hack Squat or Leg Press', target: '4x8-12', cue: 'Control depth.' }, { name: 'Arnold Press', target: '4x8-12', cue: 'Smooth turn over.' }], '75 sec', 'Hip flexor stretch 20 sec/side'),
+          group('Superset 2', [{ name: location === 'Hotel' ? 'DB RDL' : 'Seated Leg Curl', target: '3x10-12', cue: 'Posterior chain.' }, { name: 'Lateral Raise Mechanical Set', target: '3x12-15', cue: 'Keep traps quiet.' }], '60 sec', 'Overhead carry 10m')
+        ],
+        'Full Upper': [
+          group('Circuit', [{ name: 'DB Bench or Push-Up', target: '4x10-12', cue: 'Push hard.' }, { name: '1-Arm Row', target: '4x10-12', cue: 'Squeeze lats.' }, { name: 'Arnold Press', target: '4x8-10', cue: 'Stay tall.' }, { name: 'Hammer Curl', target: '4x10-12', cue: 'No swing.' }], '90 sec', 'Walk recovery')
+        ],
+        'Full Body': [
+          group('Circuit', [{ name: 'Goblet Squat', target: '5x10-15', cue: 'Breathe and brace.' }, { name: 'Push-Up', target: '5x10-20', cue: 'Full lockout.' }, { name: 'DB Row', target: '5x10-12', cue: 'Hip square.' }, { name: 'Reverse Lunge', target: '5x8/leg', cue: 'Own the landing.' }], '90 sec', 'Walk recovery')
+        ]
+      };
+      const baseBlocks = templates[focus] || templates['Full Body'];
+      return {
+        title: options.titlePrefix ? `${options.titlePrefix} - ${focus}` : `${location.toUpperCase()} ${focus.toUpperCase()}`,
+        meta: `${location} · Travel build · ${focus}`,
+        modeLabel: 'Travel Mod',
+        type: 'travel',
+        location,
+        duration: estimateDuration(baseBlocks),
+        eq: location === 'Hotel' ? ['Dumbbells', 'Bench', 'Bodyweight'] : ['Dumbbells', 'Cable Machine', 'Bench', 'Machines'],
+        blocks: baseBlocks
+      };
+    }
+
+    function buildMurphWorkout(focus, location) {
+      const map = {
+        pace: [
+          group('Warm-Up', [{ name: 'Easy row or run', target: '5 min', logType: 'time', cue: 'Raise temp.' }, { name: 'Dead hang', target: '2x30 sec', logType: 'time', cue: 'Prep grip.' }], '30 sec'),
+          group('Pace Builder', [{ name: 'Pull-Ups', target: '10 rounds x 5', cue: 'Clean reps.' }, { name: 'Push-Ups', target: '10 rounds x 10', cue: 'No snake.' }, { name: 'Air Squats', target: '10 rounds x 15', cue: 'Stay smooth.' }], '20 sec', 'Walk and shake out'),
+          group('Run Split', [{ name: location === 'Hotel' ? 'Treadmill 400m' : '400m Run', target: '3 sets', logType: 'time', cue: 'Practice race pace.' }], '90 sec', 'Walk recovery')
+        ],
+        volume: [
+          group('Pull-Up Capacity', [{ name: 'Assisted or banded pull-up cluster', target: '8 rounds x 4-6', cue: 'Submax crisp sets.' }, { name: 'Ring row or pulldown', target: '4x12-15', cue: 'Get extra volume.' }], '60 sec', 'Hang 15 sec'),
+          group('Push and Squat Volume', [{ name: 'Push-Up density', target: '8 min continuous sets', cue: 'Keep short breaks.' }, { name: 'Air squat density', target: '8 min continuous sets', cue: 'Stay nasal.' }], '90 sec', 'Walk recovery')
+        ],
+        simulation: [
+          group('Warm-Up', [{ name: 'Easy run', target: '800m', logType: 'time', cue: 'Prime system.' }], '60 sec'),
+          group('Half Sim', [{ name: 'Pull-Ups', target: '50 total', cue: 'Partition as needed.' }, { name: 'Push-Ups', target: '100 total', cue: 'Stay technical.' }, { name: 'Air Squats', target: '150 total', cue: 'Stay even.' }], 'as needed', 'Walk and breathe'),
+          group('Run Out', [{ name: 'Run', target: '800m', logType: 'time', cue: 'Hold form under fatigue.' }], '0 sec')
+        ],
+        pullup: [
+          group('Grip Builder', [{ name: 'Dead Hang', target: '4xmax time', logType: 'time', cue: 'Switch grips.' }, { name: 'Scap pull-up', target: '4x10', cue: 'Own the bottom.' }], '60 sec', 'Forearm stretch'),
+          group('Strength Ladder', [{ name: 'Weighted or strict pull-up', target: '6 ladders', cue: 'Quality first.' }, { name: 'Lat pulldown burn set', target: '4x15-20', cue: 'Keep elbows down.' }], '75 sec', 'Band pull-aparts x15')
+        ]
+      };
+      const blocks = map[focus] || map.pace;
+      return {
+        title: `Murph Prep - ${focus.charAt(0).toUpperCase() + focus.slice(1)}`,
+        meta: `${location} · Murph training`,
+        modeLabel: 'Murph',
+        type: 'murph',
+        location,
+        duration: estimateDuration(blocks),
+        eq: location === 'Hotel' ? ['Pull-Up Bar', 'Dumbbells', 'Bodyweight'] : ['Pull-Up Bar', 'Weighted Vest', 'Track or Treadmill'],
+        blocks
+      };
+    }
+
+    function buildBeastWorkout(day, format, duration) {
+      const focus = day === 'Friday' ? 'Core + Engine' : 'Legs + Shoulders + Engine';
+      const blocks = [];
+      blocks.push(group('Warm-Up', [
+        { name: 'Bike / row / SkiErg', target: '5 min', logType: 'time', cue: 'Build heat.' },
+        { name: 'Dynamic mobility wave', target: '2 rounds', cue: 'Open hips and shoulders.' }
+      ], '30 sec'));
+
+      if (format === 'EMOM') {
+        blocks.push(group('EMOM Engine', [
+          { name: day === 'Friday' ? 'Calorie row' : 'Calorie bike', target: '12 rounds', cue: 'Minute 1' },
+          { name: day === 'Friday' ? 'Toes-to-bar or knee raise' : 'DB thruster', target: '12 rounds', cue: 'Minute 2' },
+          { name: day === 'Friday' ? 'Burpee-over-erg' : 'Walking lunge', target: '12 rounds', cue: 'Minute 3' }
+        ], 'Built into EMOM', 'Move to next station'));
+      } else if (format === 'AMRAP') {
+        blocks.push(group('AMRAP', [
+          { name: 'Run or row', target: '400m / 500m', logType: 'time', cue: 'Open hard.' },
+          { name: day === 'Friday' ? 'Sit-Up + V-Up combo' : 'Goblet squat', target: '20 reps', cue: 'Stay composed.' },
+          { name: day === 'Friday' ? 'Push press' : 'Box step-up', target: '15 reps', cue: 'Keep moving.' },
+          { name: 'Burpees', target: '10 reps', cue: 'No idle standing.' }
+        ], '20-30 min AMRAP', 'Walk 20 sec if needed'));
+      } else if (format === 'Chipper') {
+        blocks.push(group('Chipper', [
+          { name: 'Row', target: '1000m', logType: 'time', cue: 'Steady start.' },
+          { name: day === 'Friday' ? 'Sit-ups' : 'Air squats', target: '80 reps', cue: 'Chunk smart.' },
+          { name: day === 'Friday' ? 'KB swings' : 'DB push press', target: '60 reps', cue: 'Breathe at the top.' },
+          { name: 'Burpees', target: '40 reps', cue: 'Stay relentless.' }
+        ], 'For time', 'Minimal transition'));
+      } else if (format === 'Intervals') {
+        blocks.push(group('Intervals', [
+          { name: 'Machine sprint', target: '6 rounds x 2 min', logType: 'time', cue: 'Hit hard, recover controlled.' },
+          { name: day === 'Friday' ? 'Core combo' : 'Lower-body burner', target: '6 rounds x 45 sec', logType: 'time', cue: 'No idle rest.' }
+        ], '1 min between rounds', 'Light walk and breath reset'));
+      } else {
+        blocks.push(group('For Time', [
+          { name: 'Run', target: '800m', logType: 'time', cue: 'Open steady.' },
+          { name: day === 'Friday' ? 'Sandbag carry' : 'Sled push', target: '6 lengths', cue: 'Own pace.' },
+          { name: day === 'Friday' ? 'Hanging knee raises' : 'DB thrusters', target: '50 reps', cue: 'Break intentionally.' },
+          { name: 'Burpees', target: '30 reps', cue: 'Finish under control.' }
+        ], 'For time', 'Minimal transition'));
+      }
+
+      blocks.push(group('Score', [
+        { name: 'Score / Notes', target: `${duration} min cap`, cue: 'Record rounds, time, calories, and what cooked you.' }
+      ], '0 sec'));
+
+      return {
+        title: `${day.toUpperCase()} BEAST MODE - ${format.toUpperCase()}`,
+        meta: `WFWHF · ${focus} · ${duration} min`,
+        modeLabel: 'Beast Mode',
+        type: 'beast',
+        location: 'WFWHF',
+        duration,
+        eq: ['Rower / Bike / SkiErg', 'Dumbbells', 'Bodyweight', 'Sled / Carry implements'],
+        blocks
+      };
+    }
+
+    function group(label, exercises, rest = '60 sec', activeRest = '') {
+      return {
+        id: slug(label) + '-' + Math.random().toString(36).slice(2, 6),
+        label, rounds: '', timer: false,
+        ss: [{
+          id: slug(label), label, rest, ar: activeRest,
+          exs: exercises.map((exercise, index) => ({
+            id: `${slug(label)}-${index + 1}`,
+            letter: String.fromCharCode(97 + index),
+            sets: parseSetCount(exercise.target),
+            ...exercise
+          }))
+        }]
+      };
+    }
+
+    function itemsToBlock(items, blockLabel, sectionLabel) {
+      return {
+        id: slug(blockLabel + '-' + sectionLabel),
+        label: blockLabel,
+        rounds: sectionLabel,
+        timer: false,
+        ss: [{
+          id: slug(sectionLabel || blockLabel),
+          label: sectionLabel || blockLabel,
+          rest: extractRestFromItems(items),
+          ar: extractActiveRestFromItems(items),
+          exs: items.map((item, idx) => ({
+            id: `${slug(blockLabel)}-${idx + 1}-${slug(item.name)}`,
+            letter: String.fromCharCode(97 + idx),
+            name: item.name,
+            target: item.target,
+            cue: cleanCue(item.note),
+            sets: parseSetCount(item.target),
+            logType: inferLogType(item.name, item.target)
+          }))
+        }]
+      };
+    }
+
+    function groupPlanItems(items) {
+      const grouped = [];
+      items.forEach(item => {
+        const key = groupKey(item.prefix, item.name);
+        let group = grouped.find(entry => entry.key === key);
+        if (!group) { group = { key, label: item.prefix || item.name, items: [] }; grouped.push(group); }
+        group.items.push(item);
+      });
+      return grouped;
+    }
+
+    function groupKey(prefix, name) {
+      if (!prefix) return `single-${name}`;
+      const normalized = prefix.replace(/\s+/g, '');
+      if (/^[A-Za-z]+\d+[A-Za-z]$/.test(normalized)) return normalized.slice(0, -1);
+      if (/^\d+[A-Za-z]$/.test(normalized)) return normalized.slice(0, -1);
+      return normalized;
+    }
+
+    function parseSetCount(target) {
+      const match = String(target).match(/(\d+)(?:\s*x|\s*sets?)/i);
+      if (match) return Number(match[1]);
+      return 1;
+    }
+
+    function inferLogType(name, target) {
+      const nameText = String(name).toLowerCase();
+      const targetText = String(target).toLowerCase();
+      const timeTargetPattern = /(\d+\s*(sec|secs|s|min|mins|minute|minutes)\b|for time|max time|amrap|emom|time cap|\bcap\b)/;
+      const distanceTargetPattern = /(\d+\s*(m|km|mi|mile|miles|meter|meters|metre|metres)\b|distance)/;
+      if (timeTargetPattern.test(targetText)) return 'time';
+      if (distanceTargetPattern.test(targetText)) return 'distance';
+      if (/(run|treadmill|bike|rower|ski(erg)?|erg)/.test(nameText) && timeTargetPattern.test(targetText)) return 'time';
+      return 'standard';
+    }
+
+    function extractRestFromItems(items) {
+      for (const item of items) {
+        const rest = item.note.match(/Rest:\s*([^|]+)/i);
+        if (rest) return rest[1].trim();
+      }
+      return '60 sec';
+    }
+
+    function extractActiveRestFromItems(items) {
+      for (const item of items) {
+        const ar = item.note.match(/Active Rest:\s*(.+)$/i);
+        if (ar) return ar[1].trim();
+      }
+      return '';
+    }
+
+    function extractRestSeconds(rest) {
+      const matches = String(rest).match(/\d+/g);
+      if (!matches) return 0;
+      const nums = matches.map(Number).filter(n => n > 0);
+      if (nums.length === 0) return 0;
+      return Math.min(...nums, 60);
+    }
+
+    function cleanCue(note) {
+      if (!note) return '';
+      return note
+        .replace(/Rest:\s*[^|]*\|?/ig, '')
+        .replace(/Active Rest:\s*[^|]*\|?/ig, '')
+        .replace(/Warm-up\s*\|?/ig, '')
+        .replace(/→\s*No rest[^|]*/ig, 'Move directly to the next exercise.')
+        .replace(/\|\s*\|/g, '|')
+        .replace(/^[\s|]+|[\s|]+$/g, '')
+        .trim();
+    }
+
+    function inferExerciseTip(ex) {
+      const name = String(ex.name || '');
+      const cleanName = name.replace(/^SS\d+[A-Z]:\s*/i, '').trim();
+      const rawCue = String(ex.cue || '').toLowerCase();
+      const clean = cleanCue(ex.cue || '');
+      if (TECHNIQUE_TIPS[cleanName]) return TECHNIQUE_TIPS[cleanName];
+      for (const [key, tip] of Object.entries(TECHNIQUE_TIPS)) {
+        if (cleanName.toLowerCase().includes(key.toLowerCase())) return tip;
+      }
+      const lowerName = cleanName.toLowerCase();
+      if (/row|pull|lat/.test(lowerName)) return 'Lead with elbows. Squeeze upper back.';
+      if (/press|push/.test(lowerName)) return 'Brace core. Control the eccentric.';
+      if (/squat|lunge|split squat/.test(lowerName)) return 'Stay rooted. Keep knees tracking.';
+      if (/curl|tricep|extension|kickback/.test(lowerName)) return 'Full range. No momentum.';
+      const isTransition = /→|move directly|next exercise|rest:|active rest/i.test(rawCue) || /move directly|next exercise/i.test(clean);
+      if (clean && !isTransition && clean.length > 5) {
+        return clean.split(/[|.]/)[0].replace(/\s+/g, ' ').trim();
+      }
+      return 'Controlled reps. Focus on the muscle contraction.';
+    }
+
+    function isWarmupItem(item) { return /warm-up/i.test(item.prefix) || /warm-up/i.test(item.note) || /warm-up/i.test(item.name); }
+    function isFinisherItem(item) { return /finisher/i.test(item.prefix) || /finisher/i.test(item.name); }
+
+    function inferEquipment(exerciseNames, eq) {
+      const found = new Set(eq);
+      const joined = exerciseNames.join(' ');
+      const rules = [
+        [/cable|pulldown|pushdown|lat pull|rope ext|rope tri|rope curl|cross.?cable|contralateral|face.?pull|sitting.*row|seated.*row|tricep ext|90°.*ext/i, 'Cable Machine'],
+        [/\bdb\b|dumbbell|hammer curl|spider curl|concentration|incline curl|twist.?press|squeeze press|pull.?over|arnold|lateral raise|anterior raise|side.?hug|kickback|skull.?crush|zottman|fly|press combo/i, 'Dumbbells'],
+        [/bench|incline|decline|preacher|prone|supine|spider curl|skull.?crush/i, 'Bench'],
+        [/pull.?up|dead hang|hang|hanging|chin.?up/i, 'Pull-Up Bar'],
+        [/barbell|deadlift|squat|clean|snatch|landmine|jefferson|good morning|front squat|back squat|pendlay|t.?bar/i, 'Barbell'],
+        [/landmine/i, 'Landmine Attachment'],
+        [/sled|drag/i, 'Sled'],
+        [/ring|trx|suspension/i, 'Rings / TRX'],
+        [/stability|ball crunch|hyperextend.*ball/i, 'Stability Ball'],
+        [/rollout|ab wheel/i, 'Ab Wheel'],
+        [/band|pull.?apart/i, 'Resistance Bands'],
+        [/plate carry|plate pinch|weighted/i, 'Weight Plates'],
+        [/rope/i, 'Rope Attachment'],
+        [/run\b|treadmill|sprint/i, 'Treadmill / Track'],
+        [/rower|row.*erg/i, 'Rower'],
+        [/bike|assault/i, 'Assault Bike'],
+        [/skierg/i, 'SkiErg'],
+        [/jump rope/i, 'Jump Rope'],
+        [/yoke/i, 'Yoke'],
+        [/tire/i, 'Tire'],
+        [/battle rope/i, 'Battle Ropes'],
+        [/kettlebell|\bkb\b/i, 'Kettlebell'],
+        [/vest/i, 'Weighted Vest'],
+        [/box|plyo/i, 'Plyo Box'],
+        [/leg press/i, 'Leg Press Machine'],
+        [/leg curl|leg extension|sitting.*curl|sitting.*ext/i, 'Leg Curl / Extension Machine'],
+        [/farmer/i, 'Dumbbells'],
+        [/calf raise/i, 'Calf Raise Station'],
+        [/roman|ghd|hyperextension/i, 'Roman Chair / GHD']
+      ];
+      exerciseNames.forEach(name => { rules.forEach(([pattern, label]) => { if (pattern.test(name)) found.add(label); }); });
+      rules.forEach(([pattern, label]) => { if (pattern.test(joined)) found.add(label); });
+      return Array.from(found);
+    }
+
+    function standardFocusForDay(day) {
+      return { Monday: 'Chest & Back', Wednesday: 'Arms', Friday: 'Core & Spine', Saturday: 'Legs & Shoulders' }[day] || 'Full Body';
+    }
+
+    function estimateDuration(blocks) { return String(Math.max(45, blocks.length * 12 + 12)); }
+    function slug(input) { return String(input).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+    function capitalize(value) { return value.charAt(0).toUpperCase() + value.slice(1); }
+
+    init();
+    updateBlockTimerDisplays();
+  </script>
 </body>
 
 </html>
