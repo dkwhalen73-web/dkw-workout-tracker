@@ -303,6 +303,7 @@
       sets: {},
       blockTimers: {},
       collapsed: {},
+      roundCounters: {},
       restInterval: null
     };
 
@@ -363,6 +364,7 @@
               APP.sets = saved.sets;
               APP.blockTimers = saved.blockTimers || {};
               APP.collapsed = saved.collapsed || {};
+              APP.roundCounters = saved.roundCounters || {};
               APP.config = { ...APP.config, ...(saved.config || {}) };
               renderAll();
               setStatus('Resumed session with updated definitions.');
@@ -384,7 +386,7 @@
         if (raw) {
           try {
             const saved = JSON.parse(raw);
-            APP = { ...APP, config: { ...APP.config, ...(saved.config || {}) }, workout: saved.workout || null, sets: saved.sets || {}, blockTimers: saved.blockTimers || {}, collapsed: saved.collapsed || {} };
+            APP = { ...APP, config: { ...APP.config, ...(saved.config || {}) }, workout: saved.workout || null, sets: saved.sets || {}, blockTimers: saved.blockTimers || {}, collapsed: saved.collapsed || {}, roundCounters: saved.roundCounters || {} };
             if (APP.workout) { renderAll(); setStatus('Offline - showing last saved session.'); return; }
           } catch (e) { }
         }
@@ -408,12 +410,12 @@
 
     function forceReloadWorkout() {
       localStorage.removeItem(SESSION_KEY);
-      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {};
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {}; APP.roundCounters = {};
       autoFetchWorkout();
     }
 
     function saveSession() {
-      localStorage.setItem(SESSION_KEY, JSON.stringify({ config: APP.config, workout: APP.workout, sets: APP.sets, blockTimers: APP.blockTimers, collapsed: APP.collapsed }));
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ config: APP.config, workout: APP.workout, sets: APP.sets, blockTimers: APP.blockTimers, collapsed: APP.collapsed, roundCounters: APP.roundCounters }));
     }
 
     function resumeSession() {
@@ -424,7 +426,7 @@
     function clearSession() {
       if (!confirm('Clear the saved v15 session?')) return;
       localStorage.removeItem(SESSION_KEY);
-      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {};
+      APP.workout = null; APP.sets = {}; APP.blockTimers = {}; APP.collapsed = {}; APP.roundCounters = {};
       renderAll(); setStatus('Saved session cleared.');
     }
 
@@ -438,7 +440,7 @@
       else if (c.mode === 'travel') workout = buildTravelWorkout(c.travelLocation, c.travelFocus);
       else if (c.mode === 'beast') workout = buildBeastWorkout(c.beastDay, c.beastFormat, c.beastDuration);
       if (!workout) { setStatus('That workout could not be built.'); return; }
-      APP.workout = workout; APP.sets = createSetState(workout); APP.blockTimers = {}; APP.collapsed = {};
+      APP.workout = workout; APP.sets = createSetState(workout); APP.blockTimers = {}; APP.collapsed = {}; APP.roundCounters = {};
       saveSession(); renderAll(); switchTab('overview');
       setStatus('Workout built. Review the overview, then head to Workout.');
     }
@@ -535,6 +537,31 @@
       saveSession(); renderWorkout();
     }
 
+    function getRoundCount(blockId) {
+      return APP.roundCounters[blockId] || 0;
+    }
+
+    function bumpRound(blockId, delta) {
+      const current = getRoundCount(blockId);
+      const next = Math.max(0, current + delta);
+      APP.roundCounters[blockId] = next;
+      saveSession();
+      const el = document.getElementById('round-count-' + blockId);
+      if (el) el.textContent = next;
+    }
+
+    function renderRoundCounter(blockId) {
+      const count = getRoundCount(blockId);
+      return '<div style="display:flex;align-items:center;gap:10px;margin:0 0 10px;justify-content:center">' +
+        '<button onclick="bumpRound(\'' + blockId + '\',-1)" style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(212,175,55,0.4);background:rgba(255,255,255,0.04);color:var(--gold);font-size:20px;cursor:pointer;line-height:1">&#8722;</button>' +
+        '<div style="text-align:center">' +
+          '<div id="round-count-' + blockId + '" style="font-family:Anton,sans-serif;font-size:32px;color:var(--gold);line-height:1">' + count + '</div>' +
+          '<div style="font-size:10px;letter-spacing:1px;color:rgba(248,246,240,0.5);margin-top:2px">ROUNDS</div>' +
+        '</div>' +
+        '<button onclick="bumpRound(\'' + blockId + '\',1)" style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(212,175,55,0.4);background:rgba(255,255,255,0.04);color:var(--gold);font-size:20px;cursor:pointer;line-height:1">&#43;</button>' +
+      '</div>';
+    }
+
     function renderTimerControls(blockId) {
       const t = getTimer(blockId);
       if (t.state === 'running') {
@@ -554,7 +581,8 @@
         (block.rounds ? '<div class="block-sub">' + escapeHtml(block.rounds) + '</div>' : '') + '</div>' +
         (block.timer ? renderTimerControls(block.id) : '') + '</div>' +
         '<div class="block-body">' +
-        (block.timer ? '<div class="timer-readout" id="timer-display-' + block.id + '" style="display:block">' + formatTimerDisplay(block.id) + '</div>' : '') +
+(block.timer ? '<div class="timer-readout" id="timer-display-' + block.id + '" style="display:block">' + formatTimerDisplay(block.id) + '</div>' : '') +
+        (block.timer && block.type === 'beast' ? renderRoundCounter(block.id) : '') +
         block.ss.map(ss =>
           '<div class="ss-label">' + escapeHtml(ss.label) + '</div>' +
           ss.exs.map((ex, exIdx) => renderExerciseCard(ex, exIdx === ss.exs.length - 1, ss.rest, block.id, block.timer)).join('')
@@ -567,6 +595,7 @@
 
       // LOCKED CARDIO RENDERING: name-based detection always wins over logType
       const isCardio = isCardioExercise(ex);
+      const isNotes = ex.logType === 'notes';
       let primaryLabel, secondaryLabel;
       if (isCardio) { primaryLabel = 'Distance'; secondaryLabel = 'Time'; }
       else if (ex.logType === 'time') { primaryLabel = 'Time'; secondaryLabel = 'Notes'; }
@@ -590,14 +619,17 @@
         '<div class="ex-target">' + escapeHtml(ex.target) + '</div>' +
         '</div><button class="ex-collapse-btn" aria-label="Toggle">&#9662;</button></div>' +
         '<div class="ex-sets-wrap" style="margin-top:8px">' +
-        sets.map((setRow, index) =>
-          '<div class="set-row">' +
-          '<div class="set-num">' + (index + 1) + '</div>' +
-          '<div><input class="set-input" value="' + escapeHtml(setRow.w) + '" placeholder="-" onchange="updateSet(\'' + ex.id + '\',' + index + ',\'w\',this.value)"><div class="mini-label">' + escapeHtml(primaryLabel) + '</div></div>' +
-          '<div><input class="set-input" value="' + escapeHtml(setRow.r) + '" placeholder="-" onchange="updateSet(\'' + ex.id + '\',' + index + ',\'r\',this.value)"><div class="mini-label">' + escapeHtml(secondaryLabel) + '</div></div>' +
-          '<button class="btn-check ' + (setRow.d ? 'done' : '') + '" onclick="toggleSet(\'' + ex.id + '\',' + index + ',this,' + isLast + ',\'' + escapeHtml(rest || '') + '\',\'' + blockId + '\',' + (blockHasTimer ? 'true' : 'false') + ')">&#10003;</button>' +
-          '</div>'
-        ).join('') + '</div>' +
+        (isNotes ?
+          '<textarea class="text-area" rows="4" placeholder="Time, partition, vest weight, form notes..." onchange="updateSet(\'' + ex.id + '\',0,\'w\',this.value)" style="font-size:14px;resize:vertical">' + escapeHtml((APP.sets[ex.id] && APP.sets[ex.id][0] && APP.sets[ex.id][0].w) || '') + '</textarea>' :
+          sets.map((setRow, index) =>
+            '<div class="set-row">' +
+            '<div class="set-num">' + (index + 1) + '</div>' +
+            '<div><input class="set-input" value="' + escapeHtml(setRow.w) + '" placeholder="-" onchange="updateSet(\'' + ex.id + '\',' + index + ',\'w\',this.value)"><div class="mini-label">' + escapeHtml(primaryLabel) + '</div></div>' +
+            '<div><input class="set-input" value="' + escapeHtml(setRow.r) + '" placeholder="-" onchange="updateSet(\'' + ex.id + '\',' + index + ',\'r\',this.value)"><div class="mini-label">' + escapeHtml(secondaryLabel) + '</div></div>' +
+            '<button class="btn-check ' + (setRow.d ? 'done' : '') + '" onclick="toggleSet(\'' + ex.id + '\',' + index + ',this,' + isLast + ',\'' + escapeHtml(rest || '') + '\',\'' + blockId + '\',' + (blockHasTimer ? 'true' : 'false') + ')">&#10003;</button>' +
+            '</div>'
+          ).join('')
+        ) + '</div>' +
         (ex.cue ? '<div class="ex-cue">' + escapeHtml(ex.cue) + '</div>' : '') +
         (ex.swaps && ex.swaps.length > 0 ?
           '<button class="swap-toggle" onclick="this.nextElementSibling.classList.toggle(\'open\')">&#8644; Swap</button>' +
@@ -760,7 +792,7 @@
           label: b.label || 'Block ' + (bi + 1),
           type: b.type || 'standard',
           rounds: b.rounds || '',
-          timer: b.timer || false,
+          timer: b.timer || b.type === 'beast' || false,
           ss: (b.ss || []).map((ss, si) => ({
             id: ss.id || 'loaded-ss' + bi + '-' + si,
             label: ss.label || '',
