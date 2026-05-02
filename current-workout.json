@@ -1,6 +1,6 @@
 {
-  "title": "MURPH PREP · WEEK 3",
-  "meta": "WFWHF · Sat, May 2 · Murph Prep Wk 3",
+  "title": "MURPH PREP \u00b7 WEEK 3",
+  "meta": "WFWHF \u00b7 Sat, May 2 \u00b7 Murph Prep Wk 3",
   "yesterday": "Yesterday: Core & Spine (Fri) + full rest overnight",
   "duration": "70-85",
   "vest": true,
@@ -9,7 +9,7 @@
       "id": "wu",
       "label": "WARM-UP",
       "type": "warmup",
-      "rounds": "Easy activation — 10 min",
+      "rounds": "Easy activation \u2014 10 min",
       "ss": [
         {
           "id": "wu_run",
@@ -21,11 +21,15 @@
               "id": "wu1",
               "letter": "single",
               "name": "Easy 400m Run (NO vest)",
-              "target": "1 round — conversational pace",
-              "cue": "Nasal breathing, loosen the hips, no effort — this is just blood flow",
+              "target": "1 round \u2014 conversational pace",
+              "cue": "Nasal breathing, loosen the hips, no effort \u2014 this is just blood flow",
               "sets": 1,
               "logType": "time",
-              "swaps": ["800m walk-jog","5 min treadmill easy","Row 3 min easy"]
+              "swaps": [
+                "800m walk-jog",
+                "5 min treadmill easy",
+                "Row 3 min easy"
+              ]
             }
           ]
         },
@@ -39,29 +43,39 @@
               "id": "wu2",
               "letter": "a",
               "name": "Dead Hang",
-              "target": "2 × 30s (wide pronated grip)",
-              "cue": "Full passive hang — decompress, grip warms up, shoulder packing cue",
+              "target": "2 \u00d7 30s (wide pronated grip)",
+              "cue": "Full passive hang \u2014 decompress, grip warms up, shoulder packing cue",
               "sets": 2,
               "logType": "time",
-              "swaps": ["Band lat stretch","Doorway lat stretch"]
+              "swaps": [
+                "Band lat stretch",
+                "Doorway lat stretch"
+              ]
             },
             {
               "id": "wu3",
               "letter": "b",
               "name": "Air Squat Flow",
-              "target": "2 × 10 slow reps",
-              "cue": "Pause at bottom, full depth, arms out for balance — prime knees and hips",
+              "target": "2 \u00d7 10 slow reps",
+              "cue": "Pause at bottom, full depth, arms out for balance \u2014 prime knees and hips",
               "sets": 2,
-              "swaps": ["Goblet squat","Hip circles","Leg swings"]
+              "swaps": [
+                "Goblet squat",
+                "Hip circles",
+                "Leg swings"
+              ]
             },
             {
               "id": "wu4",
               "letter": "c",
               "name": "Scap Pull-Up",
-              "target": "2 × 8",
-              "cue": "Start dead hang, pack the shoulder blades DOWN before any elbow bend — pure scap activation",
+              "target": "2 \u00d7 8",
+              "cue": "Start dead hang, pack the shoulder blades DOWN before any elbow bend \u2014 pure scap activation",
               "sets": 2,
-              "swaps": ["Band pull-apart","Lat pulldown activation"]
+              "swaps": [
+                "Band pull-apart",
+                "Lat pulldown activation"
+              ]
             }
           ]
         }
@@ -69,9 +83,9 @@
     },
     {
       "id": "cap1",
-      "label": "CAPACITY BLOCK 1 · PULL-UPS (No Vest)",
+      "label": "CAPACITY BLOCK 1 \u00b7 PULL-UPS (No Vest)",
       "type": "pull",
-      "rounds": "Cluster Sets — vest-free",
+      "rounds": "Cluster Sets \u2014 vest-free",
       "ss": [
         {
           "id": "cap1_ss1",
@@ -83,10 +97,14 @@
               "id": "cap1a",
               "letter": "single",
               "name": "Pull-Up Clusters (3+2 method, NO vest)",
-              "target": "6 clusters — 3 reps, 20s rest, 2 reps per cluster",
-              "cue": "Full dead hang between reps, chest to bar, no kipping — mirror Murph partitioned reps (5/round). Track total reps completed.",
+              "target": "6 clusters \u2014 3 reps, 20s rest, 2 reps per cluster",
+              "cue": "Full dead hang between reps, chest to bar, no kipping \u2014 mirror Murph partitioned reps (5/round). Track total reps completed.",
               "sets": 6,
-              "swaps": ["Banded pull-up clusters","Ring row clusters","Lat pulldown clusters"]
+              "swaps": [
+                "Banded pull-up clusters",
+                "Ring row clusters",
+                "Lat pulldown clusters"
+              ]
             }
           ]
         },
@@ -100,10 +118,14 @@
               "id": "cap1b",
               "letter": "single",
               "name": "Lat Pulldown Burn (wide pronated grip)",
-              "target": "3 × 15-20 — lighter load, fast-ish pace",
-              "cue": "Elbows drive DOWN and BACK, not just back. Keep chest tall. Volume flusher — not a strength set.",
+              "target": "3 \u00d7 15-20 \u2014 lighter load, fast-ish pace",
+              "cue": "Elbows drive DOWN and BACK, not just back. Keep chest tall. Volume flusher \u2014 not a strength set.",
               "sets": 3,
-              "swaps": ["Band pulldown","Ring row burnout","Cable straight-arm pulldown"]
+              "swaps": [
+                "Band pulldown",
+                "Ring row burnout",
+                "Cable straight-arm pulldown"
+              ]
             }
           ]
         }
@@ -111,9 +133,9 @@
     },
     {
       "id": "cap2",
-      "label": "CAPACITY BLOCK 2 · PUSH-UPS + SQUATS (No Vest)",
+      "label": "CAPACITY BLOCK 2 \u00b7 PUSH-UPS + SQUATS (No Vest)",
       "type": "push",
-      "rounds": "Density blocks — vest-free",
+      "rounds": "Density blocks \u2014 vest-free",
       "ss": [
         {
           "id": "cap2_ss1",
@@ -125,10 +147,14 @@
               "id": "cap2a",
               "letter": "single",
               "name": "Push-Up Density Sets (NO vest)",
-              "target": "4 rounds × max clean reps — stop at 20 or when form breaks",
-              "cue": "Chest to floor, full lockout, zero snake hips. Stop the set the moment form slips — quality mirrors Murph. Log reps per round.",
+              "target": "4 rounds \u00d7 max clean reps \u2014 stop at 20 or when form breaks",
+              "cue": "Chest to floor, full lockout, zero snake hips. Stop the set the moment form slips \u2014 quality mirrors Murph. Log reps per round.",
               "sets": 4,
-              "swaps": ["Incline push-up","Band-resisted push-up","Floor DB press"]
+              "swaps": [
+                "Incline push-up",
+                "Band-resisted push-up",
+                "Floor DB press"
+              ]
             }
           ]
         },
@@ -142,10 +168,14 @@
               "id": "cap2b",
               "letter": "single",
               "name": "Air Squat Density Sets (NO vest)",
-              "target": "4 rounds × 20 reps — controlled pace",
-              "cue": "Full depth, knees track toes, arms forward for balance. Breathe at the top of each rep. Practice Murph squat economy — not speed.",
+              "target": "4 rounds \u00d7 20 reps \u2014 controlled pace",
+              "cue": "Full depth, knees track toes, arms forward for balance. Breathe at the top of each rep. Practice Murph squat economy \u2014 not speed.",
               "sets": 4,
-              "swaps": ["Goblet squat","Leg press light","Step squat"]
+              "swaps": [
+                "Goblet squat",
+                "Leg press light",
+                "Step squat"
+              ]
             }
           ]
         }
@@ -153,45 +183,53 @@
     },
     {
       "id": "sim",
-      "label": "SIM FINISHER · FULL 50/100/150 (WITH VEST)",
+      "label": "SIM FINISHER - FULL 50/100/150 (WITH VEST)",
       "type": "beast",
-      "rounds": "1 round — WITH VEST — track total time",
+      "rounds": "10 rounds x 5/10/15 - WITH VEST - track total time",
       "ss": [
         {
           "id": "sim_ss1",
-          "label": "VEST ON — SIMULATION",
-          "rest": "as needed — keep moving",
-          "ar": "Walk between exercises if needed — no sitting",
+          "label": "ROTATING ROUNDS - VEST ON",
+          "rest": "as needed between rounds - keep moving",
+          "ar": "Walk between exercises if needed \u2014 no sitting",
           "exs": [
             {
               "id": "sim1",
               "letter": "a",
               "name": "Pull-Ups WITH VEST",
-              "target": "50 total — partition however needed (5s, 3s, singles)",
-              "cue": "Use whatever partition keeps reps clean. Suggested: 5+5+5+5+5+4+4+4+4+4+3+3+3 — adjust in real time. Dead hang between reps when needed. Log total time to complete 50.",
-              "sets": 1,
+              "target": "5 reps per round x 10 rounds = 50 total",
+              "cue": "5 reps, then straight to push-ups. Full dead hang each rep. If grip fails mid-round, shake out and finish the 5 before moving on. Use ROUNDS counter to track.",
+              "sets": 10,
               "logType": "time",
-              "swaps": ["Banded pull-up 50 reps","Ring row 50 reps"]
+              "swaps": [
+                "Banded pull-up 50 reps",
+                "Ring row 50 reps"
+              ]
             },
             {
               "id": "sim2",
               "letter": "b",
               "name": "Push-Ups WITH VEST",
-              "target": "100 total — partition as needed",
-              "cue": "Suggested partition: 10s until form breaks, then drop to 5s. No snaking. Log sets completed and any rest taken.",
-              "sets": 1,
+              "target": "10 reps per round x 10 rounds = 100 total",
+              "cue": "10 reps, chest to floor, full lockout. Straight to squats after. No snaking. Drop to knees if form breaks.",
+              "sets": 10,
               "logType": "time",
-              "swaps": ["Knee push-up 100 reps","Incline push-up 100 reps"]
+              "swaps": [
+                "Knee push-up 100 reps",
+                "Incline push-up 100 reps"
+              ]
             },
             {
               "id": "sim3",
               "letter": "c",
               "name": "Air Squats WITH VEST",
-              "target": "150 total — partition as needed",
-              "cue": "Suggested: 15s or 20s. Breathe at the top. The vest makes depth harder — stay deliberate. Log pace per 50 reps.",
-              "sets": 1,
+              "target": "15 reps per round x 10 rounds = 150 total",
+              "cue": "15 reps, full depth, then back to pull-ups for next round. Breathe at the top. Squats are your active rest between upper body movements.",
+              "sets": 10,
               "logType": "time",
-              "swaps": ["Bodyweight squat 150 reps"]
+              "swaps": [
+                "Bodyweight squat 150 reps"
+              ]
             }
           ]
         },
@@ -205,9 +243,10 @@
               "id": "sim_notes",
               "letter": "single",
               "name": "Session Notes",
-              "target": "Log: total time, partition used, vest, any form breaks",
-              "cue": "Record total sim time. Note which exercise slowed you most. This is your Week 3 benchmark.",
+              "target": "Log: total time, any rest taken, which round got hard",
+              "cue": "Record total sim time. Note when grip started failing and which round you had to break. This is your Week 3 benchmark.",
               "sets": 1,
+              "logType": "notes",
               "swaps": []
             }
           ]
