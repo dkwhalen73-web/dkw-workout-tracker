@@ -1,179 +1,183 @@
-// DR. GAINS — Week 4 Monday: Chest & Back (Power vs Iso Supersets)
-// Date: 2026-05-04 | Pec Strain Protocol: Right pec modified — iso flies kept light/cable, no bilateral pressing, Push-Up Pops replaced
-
 {
-  "title": "BACK-DOMINANT · PEC STRAIN PROTOCOL",
-  "meta": "WFWHF · Mon, May 4 · Week 4",
-  "yesterday": "Yesterday: Rest day (Sunday Week 3 — Week 3 sim benchmark set at 25:14)",
-  "duration": "60-70",
+  "title": "BICEPS, TRICEPS & FOREARMS",
+  "meta": "WFWHF · Wed, May 6 · Week 4",
+  "yesterday": "Yesterday: Bootcamp — hammies, running, SkiErg, wall balls, Bulgarian split squats",
+  "duration": "55-65",
   "blocks": [
     {
-      "id": "w4m_wu",
+      "id": "wu",
       "label": "🔥 WARM-UP",
       "type": "warmup",
       "rounds": null,
       "ss": [
         {
-          "id": "w4m_wu_ss1",
-          "label": "WARM-UP MOVES",
+          "id": "ss_wu",
+          "label": "WARM-UP",
           "rest": null,
           "ar": null,
           "exs": [
             {
-              "id": "w4m_wu1",
+              "id": "wu1",
               "letter": "single",
-              "name": "Through, Up & Out (DB)",
-              "target": "2-3 × 12-15",
-              "cue": "Week 4 prescribed warm-up. Light DB — arc the arm through, up, and out in a smooth single motion. Mobilizes the shoulder joint through full ROM before any loading.",
-              "sets": 3,
-              "swaps": ["Band Pull-Apart", "Arm Circles", "Scapular Wall Slides"]
+              "name": "Contralateral Incline Face-Pulls",
+              "target": "2 × warm-up",
+              "cue": "Lie on incline bench, pull cable/band across body to opposite ear, retract scapula at peak",
+              "sets": 2,
+              "swaps": ["Band Face-Pulls", "TRX Face-Pulls", "Prone DB Face-Pulls"]
             }
           ]
         }
       ]
     },
     {
-      "id": "w4m_b1",
-      "label": "💪 BLOCK 1 · BACK & CHEST (Power vs Iso)",
-      "type": "back",
-      "rounds": "3 Rounds · Supersets",
+      "id": "arms",
+      "label": "💪 BLOCK 1 · BICEPS & TRICEPS",
+      "type": "arms",
+      "rounds": "3 Rounds · Power vs Iso Supersets",
       "ss": [
         {
-          "id": "w4m_b1_ss1",
-          "label": "SUPERSET 1 — Triple-Grip Lat Pull + Iso Upper Fly",
+          "id": "ss1",
+          "label": "SUPERSET 1",
           "rest": "60-90s",
-          "ar": "Dead hang 30s — neutral grip, passive and decompressing",
+          "ar": "Dead hang 20-30s",
           "exs": [
             {
-              "id": "w4m_b1_ss1a",
+              "id": "s1a",
               "letter": "a",
-              "name": "Triple-Grip Lat Pull",
-              "target": "3 × wide OH: 8-10, narrow OH: 8-10, narrow UH: failure",
-              "cue": "One set hits all three grips: wide overhand 8-10, narrow overhand 8-10, flip to narrow underhand and go to failure. Initiate each pull with lat depression — not a shoulder shrug. Control the ascent.",
+              "name": "Kneeling Narrow-Grip Crunched Tricep Extensions",
+              "target": "3 × 8-10 🔺 last set to failure",
+              "cue": "Kneel facing cable, elbows tucked tight, crunch torso slightly forward, full extension at bottom",
               "sets": 3,
-              "swaps": ["Single-Arm Pulldown", "Assisted Pull-Up", "Cable Straight-Arm Pulldown", "Machine Pulldown"]
+              "swaps": ["Rope Tricep Pushdowns", "DB Skull Crushers", "Band Tricep Extensions", "Overhead Cable Tricep Extensions"]
             },
             {
-              "id": "w4m_b1_ss1b",
+              "id": "s1b",
               "letter": "b",
-              "name": "Alternating Isometric Upper Fly (Cable)",
-              "target": "3 × 14-16/side, 14-16/side, failure — PEC STRAIN: GO LIGHT",
-              "cue": "One arm holds the cable fly position isometrically while the other presses and releases. RIGHT PEC: Use 60-70% of normal load. Stop if any sharp sensation — this is iso tension, not a stretch.",
+              "name": "Forward-to-Lateral Rotating Curls – Supinated",
+              "target": "3 × 16/side 🔺 last set to failure",
+              "cue": "Start curl forward (front plane), rotate arc laterally to finish — supinate fully at peak, control descent",
               "sets": 3,
-              "swaps": ["Pec Deck (light)", "Band Chest Fly", "TRX Fly (feet forward, reduced angle)"]
+              "swaps": ["Standard DB Curls", "Cable Curls", "Incline DB Curls"]
             }
           ]
         },
         {
-          "id": "w4m_b1_ss2",
-          "label": "SUPERSET 2 — Incline Row + Step-Back Lower Fly",
+          "id": "ss2",
+          "label": "SUPERSET 2",
           "rest": "60-90s",
-          "ar": "Band pull-aparts × 15 — slow squeeze at the end range",
+          "ar": "Wrist circles x10 each direction",
           "exs": [
             {
-              "id": "w4m_b1_ss2a",
+              "id": "s2a",
               "letter": "a",
-              "name": "Incline Row (Narrow & Wide Grip)",
-              "target": "3 × wide: 6-8, narrow: 6-8, wide-to-narrow: failure",
-              "cue": "Chest on a low-incline bench, DBs hanging. Wide grip = elbows flare, hits upper back. Narrow grip = elbows tucked, hits lower lats. On the combo set, alternate grip every rep to failure.",
+              "name": "Behind-the-Back Tricep Pushdowns – Twisting Bilateral",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Stand with cable at low anchor behind you, arms at sides — extend and twist through full lockout, keep elbows stable",
               "sets": 3,
-              "swaps": ["Pendlay Row", "Chest-Supported T-Bar Row", "Machine Incline Row", "Cable Row"]
+              "swaps": ["Rope Pushdowns", "DB Kickbacks", "Band Behind-Back Extensions"]
             },
             {
-              "id": "w4m_b1_ss2b",
+              "id": "s2b",
               "letter": "b",
-              "name": "Step-Back Lower Fly (Cable, Low Anchor)",
-              "target": "3 × 14-16, 14-16, failure — PEC STRAIN: LIGHT LOAD, SLOW",
-              "cue": "Step away from the low pulley, cable arc upward toward center. Lower fly targets the sternal head of the pec. RIGHT PEC ONLY: reduce load 30-40%. If strain flares, switch to unilateral left-side-only reps.",
+              "name": "Leaning Hammer 21s with Rep Partials",
+              "target": "3 sets to failure",
+              "cue": "Lean slightly forward, 7 bottom-half partials → 7 top-half partials → 7 full ROM; neutral grip throughout",
               "sets": 3,
-              "swaps": ["DB Lower Fly (flat bench)", "Band Fly (low)", "Left Arm Only Cable Fly"]
+              "swaps": ["Standard Hammer Curls", "Cable Hammer Curls", "Cross-Body Hammer Curls"]
             }
           ]
         },
         {
-          "id": "w4m_b1_ss3",
-          "label": "SUPERSET 3 — Squatting Unilateral Row + Landmine Fly",
+          "id": "ss3",
+          "label": "SUPERSET 3",
           "rest": "60-90s",
-          "ar": "Thoracic rotation — 5 reps each side, hands-and-knees",
+          "ar": "Farmers carry 15m (light DBs)",
           "exs": [
             {
-              "id": "w4m_b1_ss3a",
+              "id": "s3a",
               "letter": "a",
-              "name": "Squatting Unilateral Row (Cable)",
-              "target": "3 × 8-10 each side, 8-10, failure",
-              "cue": "Squat down, one arm rows from the low cable. The squat position keeps the torso upright and isolates the lat without lower back compensation. Don't stand as you pull — stay in the squat.",
+              "name": "Rotating Lateral Tricep Extensions – Compound Variation",
+              "target": "3 × 10-12 🔺 last set to failure",
+              "cue": "Arm extended laterally, rotate through pronated-to-neutral on the extension — targets lateral head, keep shoulder packed",
               "sets": 3,
-              "swaps": ["Single-Arm DB Row", "Half-Kneeling Cable Row", "Meadows Row", "Landmine Row"]
+              "swaps": ["Cable Lateral Tricep Extensions", "DB Kickbacks", "Band Lateral Extensions"]
             },
             {
-              "id": "w4m_b1_ss3b",
+              "id": "s3b",
               "letter": "b",
-              "name": "Landmine Midline-Crossing Fly",
-              "target": "3 × 14-16 each side, failure — PEC STRAIN: RIGHT SIDE LIGHT",
-              "cue": "Landmine at hip height, arc the barbell end across your body to the opposite hip. Right side: use bodyweight or minimal loading — let the left side do full work. Stop if you feel right pec recruitment under strain.",
+              "name": "Bicep Peak Max-Extension Curls – Unilateral",
+              "target": "3 × 14-16/side 🔺 last set to failure",
+              "cue": "Full stretch at bottom (shoulder slightly in front of elbow), drive through full supination at peak, squeeze hard at top",
               "sets": 3,
-              "swaps": ["Cable Crossover (mid)", "Band Crossover", "DB Crossover (light)"]
-            }
-          ]
-        },
-        {
-          "id": "w4m_b1_ss4",
-          "label": "SUPERSET 4 — Trap Shrug Combo + Single-DB Pull-Over",
-          "rest": "60-90s",
-          "ar": "Scapular wall slides × 10 — arms against wall, slow upward drive",
-          "exs": [
-            {
-              "id": "w4m_b1_ss4a",
-              "letter": "a",
-              "name": "Trap Shrug Combo (Unilateral DB)",
-              "target": "3 × cross-body: 6-8, abducted: 6-8, rotating pause: failure/side",
-              "cue": "Three positions each set: (1) arm across body, shrug toward opposite shoulder. (2) arm abducted at 45°, shrug straight up. (3) arm neutral, shrug with a rotation pause at the top. Each hits a different trap fiber.",
-              "sets": 3,
-              "swaps": ["Cable Trap Shrug", "Barbell Shrug", "Smith Machine Shrug", "Farmer Carry Hold"]
-            },
-            {
-              "id": "w4m_b1_ss4b",
-              "letter": "b",
-              "name": "Single-DB Pull-Over",
-              "target": "3 × 14-16, 14-16, failure — PEC STRAIN: REDUCE ROM",
-              "cue": "Supine on bench, DB held overhead with both hands. Arc back and overhead — STOP before you feel any pec stretch tension on the right side. This is lat work today, not chest. Shorten the range to keep it pec-safe.",
-              "sets": 3,
-              "swaps": ["Cable Pull-Over (standing)", "Straight-Arm Pushdown (cable)", "Band Pull-Over"]
+              "swaps": ["Preacher Curls", "Incline DB Curls", "Low Cable Curls", "Concentration Curls"]
             }
           ]
         }
       ]
     },
     {
-      "id": "w4m_b2",
-      "label": "⚡ FINISHER · BACK COMBO + PEC-SAFE SUB",
+      "id": "finisher1",
+      "label": "⚡ FINISHER · TRICEPS",
       "type": "finisher",
-      "rounds": "2-3 Rounds · To Failure",
+      "rounds": "2-3 sets to failure · Superset",
       "ss": [
         {
-          "id": "w4m_b2_ss1",
+          "id": "ss_f1",
           "label": "FINISHER SUPERSET",
           "rest": "60-90s",
-          "ar": "Cat-cow × 8 slow reps — decompress the spine",
+          "ar": "Neck rolls + shoulder mobility 30s",
           "exs": [
             {
-              "id": "w4m_b2_ss1a",
+              "id": "f1a",
               "letter": "a",
-              "name": "Kamalu Total Back Combo",
-              "target": "2-3 sets to failure",
-              "cue": "Full Kamalu sequence: upright row → high pull → bent row, flowing without stopping. Each rep is 3 movements. The fatigue accumulates fast — keep the chain clean until it breaks.",
+              "name": "Ground-Stop DB Skull-Crushers – Triple-Grip Combo",
+              "target": "2-3 sets to failure (neutral → pronated → supinated, alternating)",
+              "cue": "Lower to floor with control, pause at ground-stop, press back — rotate grip each rep for triple-head stimulus",
               "sets": 3,
-              "swaps": ["Cable Row + Face Pull Combo", "Barbell Complex", "DB Complex Row"]
+              "swaps": ["Cable Skull Crushers", "EZ Bar Skull Crushers", "Bench DB Skull Crushers"]
             },
             {
-              "id": "w4m_b2_ss1b",
+              "id": "f1b",
               "letter": "b",
-              "name": "Dead Hang (Pronated Wide-Grip)",
-              "target": "2-3 sets to max time — PEC STRAIN SUB for Push-Up Pops",
-              "cue": "Push-Up Pops are off today — right pec. Wide pronated hang instead: decompresses the shoulder joint, builds grip and lat engagement under load. Passive hang, shoulders reaching up. Shoot for 30-45s per set.",
+              "name": "Iso-Supination DB Side-Swings – Unilateral",
+              "target": "2-3 sets/side to failure",
+              "cue": "Swing DB laterally from hip in an arc, supinate at peak — isometric hold 1s at top, slow eccentric return",
               "sets": 3,
-              "logType": "time",
-              "swaps": ["Neutral Grip Dead Hang", "Active Hang", "Ring Hang"]
+              "swaps": ["Standard Curls", "Cable Side Curls", "Incline Side Curls"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finisher2",
+      "label": "⚡ FINISHER · FOREARMS",
+      "type": "finisher",
+      "rounds": "3 sets to failure · Superset",
+      "ss": [
+        {
+          "id": "ss_f2",
+          "label": "FOREARM FINISHER",
+          "rest": "60-90s",
+          "ar": "Band pull-aparts x12",
+          "exs": [
+            {
+              "id": "f2a",
+              "letter": "a",
+              "name": "Pronated Reverse Preacher Curls – Narrow Grip",
+              "target": "3 sets to failure",
+              "cue": "Forearms on pad, narrow overhand grip — full ROM from extension to peak flexion, brachioradialis focus",
+              "sets": 3,
+              "swaps": ["Barbell Reverse Curls", "Cable Reverse Curls", "DB Reverse Curls"]
+            },
+            {
+              "id": "f2b",
+              "letter": "b",
+              "name": "High-Cable Concentration Wrist Flexion + AD-duction",
+              "target": "3 sets/side to failure",
+              "cue": "Cable high, pull wrist into flexion then adduct (ulnar deviation) — isolate forearm flexors and FCU, controlled tempo",
+              "sets": 3,
+              "swaps": ["DB Wrist Curls", "Barbell Wrist Curls", "Band Wrist Flexion"]
             }
           ]
         }
