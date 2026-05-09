@@ -20,7 +20,7 @@
 “id”: “w1”,
 “letter”: “single”,
 “name”: “Dead Hang - Pronated Wide Grip”,
-“target”: “2 × 30 sec”,
+“target”: “2 x 30 sec”,
 “cue”: “Fully relaxed shoulders at bottom, breathe, decompress spine”,
 “sets”: 2,
 “logType”: “time”,
@@ -30,8 +30,8 @@
 “id”: “w2”,
 “letter”: “single”,
 “name”: “Scapular Pull-Ups”,
-“target”: “2 × 10”,
-“cue”: “Arms straight, initiate with shoulder blades only — depress and retract before pulling”,
+“target”: “2 x 10”,
+“cue”: “Arms straight, initiate with shoulder blades only  -  depress and retract before pulling”,
 “sets”: 2,
 “swaps”: [“Band Pull-Aparts”, “Scapular Wall Slides”, “Face Pulls light”]
 },
@@ -39,8 +39,8 @@
 “id”: “w3”,
 “letter”: “single”,
 “name”: “Alternating Supinated Row & Face-Pull Combo”,
-“target”: “2 × 10”,
-“cue”: “Light cable or band — warm up scapular retractors and rear delts together”,
+“target”: “2 x 10”,
+“cue”: “Light cable or band  -  warm up scapular retractors and rear delts together”,
 “sets”: 2,
 “swaps”: [“Band Face Pulls”, “TRX Row”, “Light DB Row”]
 }
@@ -64,8 +64,8 @@
 “id”: “p1a”,
 “letter”: “a”,
 “name”: “Weighted Pull-Ups - 20lb Vest”,
-“target”: “3 × 5-6”,
-“cue”: “Full dead hang at bottom, drive elbows to hips, chin clears bar — stop before failure to save grip for ride”,
+“target”: “3 x 5-6”,
+“cue”: “Full dead hang at bottom, drive elbows to hips, chin clears bar  -  stop before failure to save grip for ride”,
 “sets”: 3,
 “swaps”: [“Bodyweight Pull-Ups”, “Band-Assisted Pull-Ups”, “Lat Pulldown Heavy”]
 },
@@ -73,8 +73,8 @@
 “id”: “p1b”,
 “letter”: “b”,
 “name”: “4:1 Eccentric Triple-Grip Sitting Rows”,
-“target”: “3 × 8-10 (wide / mid / close)”,
-“cue”: “4-second eccentric on every rep — wide grip first 8-10, mid 8-10, close to failure. Chest tall, scapular retraction at peak”,
+“target”: “3 x 8-10 (wide / mid / close)”,
+“cue”: “4-second eccentric on every rep  -  wide grip first 8-10, mid 8-10, close to failure. Chest tall, scapular retraction at peak”,
 “sets”: 3,
 “swaps”: [“Cable Seated Row”, “Barbell Bent Row”, “T-Bar Row”, “DB Row”]
 }
@@ -90,8 +90,8 @@
 “id”: “p2a”,
 “letter”: “a”,
 “name”: “Triple-Grip Lat Pulldown”,
-“target”: “3 × 8-10 (wide OH / narrow OH / narrow UH)”,
-“cue”: “130 / 150 / 170 — pull bar to upper chest, elbows drive down and back, full stretch overhead”,
+“target”: “3 x 8-10 (wide OH / narrow OH / narrow UH)”,
+“cue”: “130 / 150 / 170  -  pull bar to upper chest, elbows drive down and back, full stretch overhead”,
 “sets”: 3,
 “swaps”: [“Single-Arm Lat Pulldown”, “Cable Straight-Arm Pulldown”, “Band Pulldown”]
 },
@@ -99,8 +99,8 @@
 “id”: “p2b”,
 “letter”: “b”,
 “name”: “Incline Row - Narrow & Wide Grip”,
-“target”: “3 × 6-8 each grip”,
-“cue”: “Chest on 45-degree incline bench, elbows flare wide for wide grip / tuck for narrow — full ROM, no shrug”,
+“target”: “3 x 6-8 each grip”,
+“cue”: “Chest on 45-degree incline bench, elbows flare wide for wide grip / tuck for narrow  -  full ROM, no shrug”,
 “sets”: 3,
 “swaps”: [“DB Incline Row”, “Cable Incline Row”, “TRX Row”]
 }
@@ -116,8 +116,8 @@
 “id”: “p3a”,
 “letter”: “a”,
 “name”: “Trap Shrug Combo - Unilateral”,
-“target”: “3 × 6-8 per side (cross-body / abducted / rotating-pause)”,
-“cue”: “3 positions per side — full elevation and hold at top, control eccentric. No chest involvement.”,
+“target”: “3 x 6-8 per side (cross-body / abducted / rotating-pause)”,
+“cue”: “3 positions per side  -  full elevation and hold at top, control eccentric. No chest involvement.”,
 “sets”: 3,
 “swaps”: [“DB Shrugs Bilateral”, “Cable Shrugs”, “Barbell Shrug”]
 },
@@ -125,8 +125,8 @@
 “id”: “p3b”,
 “letter”: “b”,
 “name”: “Squatting Unilateral Row”,
-“target”: “3 × 8-10 per side”,
-“cue”: “Cable or DB — deep squat base, row elbow past hip, full stretch at bottom each rep”,
+“target”: “3 x 8-10 per side”,
+“cue”: “Cable or DB  -  deep squat base, row elbow past hip, full stretch at bottom each rep”,
 “sets”: 3,
 “swaps”: [“Standing Single-Arm Cable Row”, “DB Row”, “Landmine Row”]
 }
@@ -150,8 +150,8 @@
 “id”: “a1a”,
 “letter”: “a”,
 “name”: “Single-Arm Lat Pulldown”,
-“target”: “5 × 15 @ 37.5 lb”,
-“cue”: “Slight lean away from stack, pull elbow to hip — pause 1 sec at bottom, slow return overhead”,
+“target”: “5 x 15 @ 37.5 lb”,
+“cue”: “Slight lean away from stack, pull elbow to hip  -  pause 1 sec at bottom, slow return overhead”,
 “sets”: 5,
 “swaps”: [“Single-Arm Cable Row”, “Single-Arm Band Pulldown”, “Single-Arm DB Row”]
 },
@@ -159,8 +159,8 @@
 “id”: “a1b”,
 “letter”: “b”,
 “name”: “Farmer Carries”,
-“target”: “6 × 20 yards @ 70 lb each hand”,
-“cue”: “Shoulders packed, chest tall — this is pec-safe grip/trap work. Breathe between sets.”,
+“target”: “6 x 20 yards @ 70 lb each hand”,
+“cue”: “Shoulders packed, chest tall  -  this is pec-safe grip/trap work. Breathe between sets.”,
 “sets”: 6,
 “logType”: “cardio”,
 “swaps”: [“Suitcase Carry”, “Yoke Carry”, “Single-Arm Farmer Carry”]
@@ -185,8 +185,8 @@
 “id”: “f1”,
 “letter”: “a”,
 “name”: “Bodyweight Pull-Ups - Cluster Sets”,
-“target”: “3 clusters × (3+2+1) reps — 15s rest between mini-sets”,
-“cue”: “No vest. Full ROM. Goal is quality reps, not grinding. Stop if form degrades — big ride today.”,
+“target”: “3 clusters x (3+2+1) reps  -  15s rest between mini-sets”,
+“cue”: “No vest. Full ROM. Goal is quality reps, not grinding. Stop if form degrades  -  big ride today.”,
 “sets”: 3,
 “swaps”: [“Band-Assisted Pull-Ups”, “Jumping Pull-Ups”, “TRX Row”]
 },
@@ -195,7 +195,7 @@
 “letter”: “b”,
 “name”: “Kamalu Total Back Combo”,
 “target”: “2 sets to failure”,
-“cue”: “Rotate through all back angles — retracted row, Y-raise, reverse fly. Light weight, full scapular control.”,
+“cue”: “Rotate through all back angles  -  retracted row, Y-raise, reverse fly. Light weight, full scapular control.”,
 “sets”: 2,
 “swaps”: [“Band Total Back Circuit”, “DB Y-T-W Circuit”, “TRX Total Back”]
 }
